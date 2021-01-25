@@ -1,1 +1,6 @@
-sceneSetups: []
+sceneSetups:
+- path: D:/project 4/backup cyberized/Cyberized/Unity/Cyberized/Assets/Scenes/Level
+    1.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0

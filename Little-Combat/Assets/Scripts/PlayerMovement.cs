@@ -5,11 +5,17 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed, gravity, jumpForce, minCrouchHeight, maxCrouchHeight;
+    public Transform cameraRotation, cameraFollow;
+
+    //camera
+    public float lookSpeed;
 
     //privates
     private CharacterController controller;
     private Vector3 moveDir;
-    private float downForce, groundedCooldown = 0.1f;
+    private float downForce;
+    private Vector2 rotation;
+
 
     private void Start()
     {
@@ -25,20 +31,26 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement()
     {
-        moveDir.x = Input.GetAxisRaw("Horizontal");
-        moveDir.z = Input.GetAxisRaw("Vertical");
+        moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        moveDir *= speed;
+        moveDir = transform.TransformDirection(moveDir);
 
-        controller.Move(moveDir.normalized * speed * Time.deltaTime);
+        //controller
+        controller.Move(moveDir * Time.deltaTime);
         controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
+        cameraFollow.position = transform.position;
+
+        //player forward on movement
+        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        {
+            transform.forward = new Vector3(cameraRotation.forward.x, transform.forward.y, cameraRotation.forward.z);
+        }
     }
     public void Gravity()
     {
         if(controller.isGrounded)
         {
-            if (Time.time >= groundedCooldown + Time.time)
-            {
-                downForce = -0.1f;
-            }
+            downForce = -0.1f;
             if (Input.GetButtonDown("Jump"))
             {
                 downForce = jumpForce;
@@ -51,13 +63,13 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Crouch()
     {
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            controller.height = minCrouchHeight;
-        }
-        else
-        {
-            controller.height = maxCrouchHeight;
-        }
+        //if (Input.GetKey(KeyCode.LeftControl))
+        //{
+        //    controller.height = minCrouchHeight;
+        //}
+        //else
+        //{
+        //    controller.height = maxCrouchHeight;
+        //}
     }
 }
