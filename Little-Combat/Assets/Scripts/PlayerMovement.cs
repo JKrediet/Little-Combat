@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Movement()
     {
+        //recieve input for playerdirection
         moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         moveDir *= speed;
         moveDir = transform.TransformDirection(moveDir);
@@ -50,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(controller.isGrounded)
         {
-            downForce = -0.1f;
+            //downForce = -0.1f;
             if (Input.GetButtonDown("Jump"))
             {
                 downForce = jumpForce;
