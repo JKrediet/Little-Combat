@@ -46,6 +46,8 @@ public class Laser : MonoBehaviour
         //transform.forward = new Vector3(cam.forward.x, transform.forward.y, cam.forward.z);
         //funtion in playermovement
 
+        lineRen.enabled = true;
+
         Ray ray = new Ray(shootPoint.position, shootPoint.forward);
         RaycastHit _hit;
 
