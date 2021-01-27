@@ -29,6 +29,11 @@ public class Laser : MonoBehaviour
         }else
         {
             StopLaser();
+            Reflective[] array = FindObjectsOfType<Reflective>();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i].OnEndReflection();
+            }
         }
     }
 
@@ -54,6 +59,12 @@ public class Laser : MonoBehaviour
             }
             else
             {
+                Reflective[] array = FindObjectsOfType<Reflective>();
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i].OnEndReflection();
+                }
+
                 Interaction tempInt = _hit.transform.GetComponent<Interaction>();
                 if (tempInt)
                 {
@@ -63,9 +74,16 @@ public class Laser : MonoBehaviour
         }
         else
         {
+            Reflective[] array = FindObjectsOfType<Reflective>();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i].OnEndReflection();
+            }
+
             lineRen.SetPosition(0, shootPoint.position);
             lineRen.SetPosition(1, transform.position + shootPoint.forward * lineLength);
         }
+
     }
 
 
