@@ -20,56 +20,50 @@ public class Laser : MonoBehaviour
     // Update is called every frame after update
     void LateUpdate()
     {
-        // Check for left mouse button input;
         if (Input.GetButton("Fire1"))
         {
-            StartLaser();
-        }
-        if (Input.GetButtonUp("Fire1"))
+            transform.forward = new Vector3(cam.forward.x, transform.forward.y, cam.forward.z);
+
+            // Shoot the laser
+            ShootLaser();
+        }else
         {
             StopLaser();
         }
     }
 
-    private void StartLaser()
+    private void ShootLaser()
     {
-        // Rotate the player towards the laser
-        transform.forward = new Vector3(cam.forward.x, transform.forward.y, cam.forward.z);
+        lineRen.enabled = true;
 
-        // Save raycast data here
+        Ray ray = new Ray(shootPoint.position, shootPoint.forward);
         RaycastHit _hit;
 
-        // Shoot a raycast and check if it hit anything
-        if(Physics.Raycast(transform.position, transform.forward, out _hit, lineLength))
+        if(Physics.Raycast(ray, out _hit, lineLength))
         {
-            // If it hits anything
-
-            // Show the line renderer
-            lineRen.enabled = true;
-
-            // Draw the line towards the point the raycast hits
             lineRen.SetPosition(0, shootPoint.position);
             lineRen.SetPosition(1, _hit.point);
 
-            // TODO: trigger interactions
-            Interaction tempInt = _hit.transform.GetComponent<Interaction>();
-            if(tempInt != null)
+            if (_hit.transform.tag == "Reflective")
             {
-                tempInt.OnInteraction();
+                _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, transform.forward, _hit.normal);
+            }
+            else
+            {
+                Interaction tempInt = _hit.transform.GetComponent<Interaction>();
+                if (tempInt)
+                {
+                    tempInt.OnInteraction();
+                }
             }
         }
         else
         {
-            // If nothing is hit
-
-            // Show the line renderer
-            lineRen.enabled = true;
-
-            // Draw the linerenderer over the level
             lineRen.SetPosition(0, shootPoint.position);
-            lineRen.SetPosition(1, transform.position + transform.forward * lineLength);
+            lineRen.SetPosition(1, transform.position + shootPoint.forward * lineLength);
         }
     }
+
 
     private void StopLaser()
     {
