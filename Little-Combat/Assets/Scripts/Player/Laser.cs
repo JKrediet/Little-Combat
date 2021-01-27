@@ -42,7 +42,8 @@ public class Laser : MonoBehaviour
     private void StartLaser()
     {
         // Rotate the player towards the laser
-        transform.forward = new Vector3(cam.forward.x, transform.forward.y, cam.forward.z);
+        //transform.forward = new Vector3(cam.forward.x, transform.forward.y, cam.forward.z);
+        //funtion in playermovement
 
         // Save raycast data here
         RaycastHit _hit;
@@ -67,7 +68,7 @@ public class Laser : MonoBehaviour
             }
 
             // if hits pushalbe object
-            if(_hit.transform.tag == "Steen")
+            if(_hit.transform.tag == "Pickup")
             {
                 //make player parent of object
                 pushRef = _hit.transform;

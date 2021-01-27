@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed, gravity, jumpForce, minCrouchHeight, maxCrouchHeight;
-    public Transform cameraRotation, cameraFollow;
+    public float speed, gravity, jumpForce, minCrouchHeight, maxCrouchHeight, rotationSpeed;
+    public Transform cameraReference, cameraFollow;
+    private Quaternion targetRotation;
 
     //camera
     public float lookSpeed;
@@ -13,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     //privates
     private CharacterController controller;
     private Vector3 moveDir;
-    private float downForce;
+    private float downForce, rotationTime;
     private Vector2 rotation;
 
 
@@ -36,15 +37,27 @@ public class PlayerMovement : MonoBehaviour
         moveDir *= speed;
         moveDir = transform.TransformDirection(moveDir);
 
-        //controller
+        //movement
         controller.Move(moveDir * Time.deltaTime);
         controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
         cameraFollow.position = transform.position;
 
-        //player forward on movement
-        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        //rotate player to camera forward on input
+        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical") || (Input.GetButton("Fire1")))
         {
-            transform.forward = new Vector3(cameraRotation.forward.x, transform.forward.y, cameraRotation.forward.z);
+            //get forward
+            Vector3 forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
+            targetRotation = Quaternion.LookRotation(forward);
+
+            //early smooth, faster the longer mousebutton is hold
+            rotationTime += Time.deltaTime * rotationSpeed;
+
+            //rotate toward forward overtime
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationTime);
+        }
+        else
+        {
+            rotationTime = 0;
         }
     }
     public void Gravity()
