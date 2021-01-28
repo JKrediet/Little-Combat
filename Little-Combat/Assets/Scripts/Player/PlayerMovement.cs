@@ -36,9 +36,12 @@ public class PlayerMovement : MonoBehaviour
         if (!status_Push)
         {
             //recieve input for playerdirection
-            moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-            moveDir *= speed;
-            moveDir = transform.TransformDirection(moveDir);
+            if(controller.isGrounded)
+            {
+                moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+                moveDir *= speed;
+                moveDir = transform.TransformDirection(moveDir);
+            }
 
             //movement
             controller.Move(moveDir * Time.deltaTime);

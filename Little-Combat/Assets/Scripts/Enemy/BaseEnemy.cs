@@ -67,7 +67,7 @@ public class BaseEnemy : MonoBehaviour
     {
         if (enemyController.isGrounded)
         {
-  
+            
         }
         else
         {
@@ -75,10 +75,9 @@ public class BaseEnemy : MonoBehaviour
             enemyController.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
         }
     }
-    IEnumerator Attack()
+    protected virtual IEnumerator Attack()
     {
         isAttacking = true;
-        print("rawr");
         yield return new WaitForSeconds(1);
         isAttacking = false;
     }
