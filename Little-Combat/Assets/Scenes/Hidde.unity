@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 392110054}
   m_Layer: 0
   m_Name: TestInteraction
-  m_TagString: Untagged
+  m_TagString: Interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 1190882969}
   lineRen: {fileID: 354940060}
-  lineLength: 5
+  lineLength: 20
 --- !u!114 &1190882972
 MonoBehaviour:
   m_ObjectHideFlags: 0

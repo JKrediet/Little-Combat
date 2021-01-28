@@ -39,10 +39,6 @@ public class Laser : MonoBehaviour
 
     private void ShootLaser()
     {
-        // Rotate the player towards the laser
-        //transform.forward = new Vector3(cam.forward.x, transform.forward.y, cam.forward.z);
-        //funtion in playermovement
-
         lineRen.enabled = true;
 
         Ray ray = new Ray(shootPoint.position, shootPoint.forward);
@@ -57,13 +53,8 @@ public class Laser : MonoBehaviour
             {
                 _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, transform.forward, _hit.normal);
             }
-            else
+            else if (_hit.transform.tag == "Interactive")
             {
-                Reflective[] array = FindObjectsOfType<Reflective>();
-                for (int i = 0; i < array.Length; i++)
-                {
-                    array[i].OnEndReflection();
-                }
 
                 Interaction tempInt = _hit.transform.GetComponent<Interaction>();
                 if (tempInt)
