@@ -112,7 +112,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if(controller.isGrounded)
         {
-            downForce = -0.1f;
             if (!status_Push)
             {
                 if (Input.GetButtonDown("Jump"))

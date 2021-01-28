@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveObjects : MonoBehaviour
 {
 
-    public float lineLength, push_objectRotationSpeed;
+    public float lineLength;
     //pushable object reference
     public Transform objectDump;
     private Transform pushRef;
