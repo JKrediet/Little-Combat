@@ -5,11 +5,16 @@ using UnityEngine;
 public class MoveObjects : MonoBehaviour
 {
 
-    public float lineLength;
+    public float lineLength, push_objectRotationSpeed;
     //pushable object reference
     public Transform objectDump;
     private Transform pushRef;
+    private CharacterController controller;
 
+    private void Start()
+    {
+        controller = GetComponent<CharacterController>();
+    }
     void Update()
     {
         if (Input.GetButton("Fire2"))
@@ -27,11 +32,6 @@ public class MoveObjects : MonoBehaviour
             ObjectWallCheck();
             pushRef.rotation = transform.rotation;
         }
-    }
-    //werkt nog niet helemaal
-    private void FixedUpdate()
-    {
-        ObjectRefDistanceCheck();
     }
 
     private void MoveObject()
@@ -111,19 +111,5 @@ public class MoveObjects : MonoBehaviour
         {
             GetComponent<PlayerMovement>().push_left = false;
         }
-    }
-
-    //if object to far from holdlocation, let go of it
-    private void ObjectRefDistanceCheck()
-    {
-        // werkt gek met push kijk later na <--
-        //if (pushRef != null)
-        //{
-        //    float distance = Vector3.Distance(transform.localPosition + new Vector3(0,0,2), pushRef.position);
-        //    if (distance > 2)
-        //    {
-        //        StopLaser();
-        //    }
-        //}
     }
 }

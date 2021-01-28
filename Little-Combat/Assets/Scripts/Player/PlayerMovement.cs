@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
@@ -100,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             //movement
-            controller.Move(moveDir * Time.deltaTime);
+            controller.Move(moveDir / 2 * Time.deltaTime);
             controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
             cameraFollow.position = transform.position;
 
@@ -110,10 +112,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if(controller.isGrounded)
         {
-            //downForce = -0.1f;
-            if (Input.GetButtonDown("Jump"))
+            downForce = -0.1f;
+            if (!status_Push)
             {
-                downForce = jumpForce;
+                if (Input.GetButtonDown("Jump"))
+                {
+                    downForce = jumpForce;
+                }
             }
         }
         else
