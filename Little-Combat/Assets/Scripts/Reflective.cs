@@ -6,6 +6,11 @@ public class Reflective : MonoBehaviour
 {
     public LineRenderer lineRen;
 
+    private void Update()
+    {
+        lineRen.enabled = false;
+    }
+
     public void OnReflection(Vector3 hitPoint, Vector3 direction, Vector3 normal)
     {
         lineRen.enabled = true;
