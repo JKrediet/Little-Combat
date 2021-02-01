@@ -6,8 +6,15 @@ public class SpawnObject : MonoBehaviour
 {
     public Transform spawnedObject;
 
+    private Transform lastObject;
+
     public void SpawnObjectIn()
     {
-        Instantiate(spawnedObject, transform.position, transform.rotation);
+        if(lastObject)
+        {
+            Destroy(lastObject.gameObject);
+        }
+        lastObject = Instantiate(spawnedObject, transform.position, transform.rotation);
+
     }
 }

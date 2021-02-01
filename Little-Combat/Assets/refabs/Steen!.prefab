@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f124cae38f966a94f8d87134fba3f55e, type: 2}
+  - {fileID: 2100000, guid: 290a42256e8591141bbbdaeca5be5c52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 7597765168966559997}
   - component: {fileID: 7597765168966559998}
   - component: {fileID: 1307302651680575107}
+  - component: {fileID: 6220935613727589221}
   m_Layer: 0
   m_Name: Steen!
   m_TagString: Push
@@ -193,8 +194,22 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &6220935613727589221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597765168966559938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0467e2da02a7d499309bc4980ee7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolve: {fileID: -6465566751694194690, guid: 375847d4d0229794caea35eb542aa07c, type: 3}
+  rend: {fileID: 0}
 --- !u!1 &7597765170341413970
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +269,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f124cae38f966a94f8d87134fba3f55e, type: 2}
+  - {fileID: 2100000, guid: 290a42256e8591141bbbdaeca5be5c52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

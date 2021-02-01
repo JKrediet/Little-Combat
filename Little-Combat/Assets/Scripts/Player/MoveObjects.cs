@@ -7,9 +7,11 @@ public class MoveObjects : MonoBehaviour
 
     public float lineLength;
     //pushable object reference
-    public Transform objectDump;
+    public Transform objectDump, objectLocation;
     private Transform pushRef;
     private CharacterController controller;
+    private bool putObjectInPos, isHolding;
+    private Vector3 pos;
 
     private void Start()
     {
@@ -17,11 +19,14 @@ public class MoveObjects : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButton("Fire2"))
+        if (!isHolding)
         {
-            MoveObject();
+            if (Input.GetButton("Fire2"))
+            {
+                MoveObject();
+            }
         }
-        else
+        if (Input.GetButtonUp("Fire2"))
         {
             StopMovingObjects();
         }
@@ -50,7 +55,14 @@ public class MoveObjects : MonoBehaviour
                 pushRef.SetParent(transform);
 
                 //set object to position in front of player
-                pushRef.localPosition = new Vector3(0, 0, 2);
+                if(!putObjectInPos)
+                {
+                    pushRef.localPosition = new Vector3(0, 0, 2);
+                    putObjectInPos = true;
+                    pushRef.GetComponent<Rigidbody>().useGravity = !putObjectInPos;
+                }
+                pushRef.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                pushRef.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             }
             if (_hit_Object.transform.tag == "Push")
             {
@@ -62,19 +74,51 @@ public class MoveObjects : MonoBehaviour
                 pushRef.SetParent(transform);
 
                 //set object to position in front of player
-                pushRef.localPosition = new Vector3(0, 0, 2);
+                if (!putObjectInPos)
+                {
+                    pushRef.localPosition = new Vector3(0, 0, 2);
+                    putObjectInPos = true;
+                    pushRef.GetComponent<Rigidbody>().useGravity = !putObjectInPos;
+                }
             }
+            if (_hit_Object.transform.tag == "Laser")
+            {
+                //make player parent of object
+                pushRef = _hit_Object.transform;
+                pushRef.SetParent(transform);
+                GetComponent<PlayerMovement>().isHoldingLaser = true;
+
+                //set object to position in front of player
+                if (!putObjectInPos)
+                {
+                    pushRef.localPosition = new Vector3(0, 0, 2);
+                    putObjectInPos = true;
+                }
+            }
+        }
+        else
+        {
+            isHolding = true;
+            StopMovingObjects();
         }
     }
     private void StopMovingObjects()
     {
-        if (pushRef != null)
+        if (pushRef)
         {
+            if (pushRef.transform.tag != "Laser")
+            {
+                // gravity weer aan
+                pushRef.GetComponent<Rigidbody>().useGravity = true;
+            }
             //remove object as player child
             pushRef.SetParent(objectDump);
             GetComponent<PlayerMovement>().status_Push = false;
-            pushRef = null;
+            GetComponent<PlayerMovement>().isHoldingLaser = false;
+            putObjectInPos = false;
+            pushRef = null; // deze helemaal onderaan
         }
+        isHolding = false;
     }
     //check if youre pushing it against a wall
     private void ObjectWallCheck()

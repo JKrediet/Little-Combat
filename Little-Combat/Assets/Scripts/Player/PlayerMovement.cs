@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed, gravity, jumpForce, minCrouchHeight, maxCrouchHeight, CameraRotationSpeed;
     public Transform cameraReference, cameraFollow;
-    public bool status_Push, push_forward, push_right, push_left, push_any;
+    public bool status_Push, push_forward, push_right, push_left, push_any, isHoldingLaser;
 
     //privates
     private Quaternion targetRotation;
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
             cameraFollow.position = transform.position;
 
             //rotate player to camera forward on input
-            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical") || (Input.GetButton("Fire1")))
+            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical") || Input.GetButton("Fire1") || isHoldingLaser)
             {
                 //get forward
                 Vector3 forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);

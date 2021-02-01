@@ -8,6 +8,7 @@ TagManager:
   - Push
   - Reflective
   - Interactive
+  - Laser
   layers:
   - Default
   - TransparentFX
