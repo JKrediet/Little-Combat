@@ -9,6 +9,8 @@ public class Laser : MonoBehaviour
 
     public float lineLength;
 
+    public bool isContinues;
+
     private Transform cam;
 
     // Start is called before the first frame update
@@ -20,16 +22,23 @@ public class Laser : MonoBehaviour
     // Update is called every frame after update
     void LateUpdate()
     {
-        if (Input.GetButton("Fire1"))
+        if (!isContinues)
         {
-            transform.forward = new Vector3(cam.forward.x, transform.forward.y, cam.forward.z);
+            if (Input.GetButton("Fire1"))
+            {
+                transform.forward = new Vector3(cam.forward.x, transform.forward.y, cam.forward.z);
 
-            // Shoot the laser
-            ShootLaser();
-        }else
+                // Shoot the laser
+                ShootLaser();
+            }
+            else
+            {
+                StopLaser();
+            }
+        }
+        else
         {
-            StopLaser();
-            
+            ShootLaser();
         }
     }
 
@@ -42,18 +51,15 @@ public class Laser : MonoBehaviour
 
         if(Physics.Raycast(ray, out _hit, lineLength))
         {
-            
-
             lineRen.SetPosition(0, shootPoint.position);
             lineRen.SetPosition(1, _hit.point);
 
-            if (_hit.transform.tag == "Reflective")
+            if (_hit.transform.GetComponent<Reflective>())
             {
                 _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, transform.forward, _hit.normal);
             }
-            else if (_hit.transform.tag == "Interactive")
+            else
             {
-
                 Interaction tempInt = _hit.transform.GetComponent<Interaction>();
                 if (tempInt)
                 {
@@ -63,8 +69,6 @@ public class Laser : MonoBehaviour
         }
         else
         {
-            
-
             lineRen.SetPosition(0, shootPoint.position);
             lineRen.SetPosition(1, transform.position + shootPoint.forward * lineLength);
         }

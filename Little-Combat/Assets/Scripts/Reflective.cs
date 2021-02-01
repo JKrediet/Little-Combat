@@ -23,17 +23,14 @@ public class Reflective : MonoBehaviour
 
         if(Physics.Raycast(ray, out _hit))
         {
-            
-
             lineRen.SetPosition(0, hitPoint);
             lineRen.SetPosition(1, _hit.point);
 
-            if(_hit.transform.tag == "Reflective")
+            if (_hit.transform.GetComponent<Reflective>())
             {
-
                 _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, reflect, _hit.normal);
             }
-            else if(_hit.transform.tag == "Interactive")
+            else
             {
                 Interaction tempInt = _hit.transform.GetComponent<Interaction>();
 
