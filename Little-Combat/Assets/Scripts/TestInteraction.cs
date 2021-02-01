@@ -6,6 +6,8 @@ public class TestInteraction : Interaction // This is an interaction. It can be 
 {
     private MeshRenderer render;
 
+    public GameObject door;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,8 @@ public class TestInteraction : Interaction // This is an interaction. It can be 
 
         // Turn the color of the cube green
         render.material.SetColor("_BaseColor", Color.green);
+
+        door.SetActive(false);
     }
 
     // Update is called once per frame
