@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     //privates
     private Quaternion targetRotation;
-    private CharacterController controller;
+    public CharacterController controller;
     private Vector3 moveDir;
     private float downForce, rotationTime;
     private Vector2 rotation;
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
             //recieve input for playerdirection
             if(controller.isGrounded)
             {
-                moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+                moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical") * 0.5f).normalized;
                 moveDir *= speed;
                 moveDir = transform.TransformDirection(moveDir);
             }

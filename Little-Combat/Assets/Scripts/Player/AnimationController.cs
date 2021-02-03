@@ -4,22 +4,63 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
+    private Animator anim;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Update()
     {
-        if(Input.GetAxisRaw("Vertical") == 0)
+        //player moet naar goeie kant kijken
+        transform.TransformDirection(FindObjectOfType<PlayerMovement>().gameObject.transform.forward);
+
+        //idle
+        if (Input.GetAxisRaw("Vertical") == 0)
         {
-            GetComponent<Animator>().SetInteger("PlayerState", 0);
+            anim.SetInteger("PlayerState", 0);
         }
         else
         {
+            //run
             if (Input.GetButton("Running"))
             {
-                GetComponent<Animator>().SetInteger("PlayerState", 2);
+                anim.SetInteger("PlayerState", 2);
             }
+            //walk
             else
             {
-                GetComponent<Animator>().SetInteger("PlayerState", 1);
+                anim.SetInteger("PlayerState", 1);
             }
+        }
+        if (!FindObjectOfType<PlayerMovement>().controller.isGrounded)
+        {
+            anim.SetBool("Jump", true);
+        }
+        //sideways left = 3 right = 4
+        if (Input.GetAxisRaw("Horizontal") == 0)
+        {
+
+        }
+        else
+        {
+            //right
+            if (Input.GetAxisRaw("Horizontal") == -1)
+            {
+                anim.SetInteger("PlayerState", 4);
+            }
+            //left
+            if (Input.GetAxisRaw("Horizontal") == 1)
+            {
+                anim.SetInteger("PlayerState", 3);
+
+            }
+        }
+    }
+    private void LateUpdate()
+    {
+        if (FindObjectOfType<PlayerMovement>().controller.isGrounded)
+        {
+            anim.SetBool("Jump", false);
         }
     }
 }
