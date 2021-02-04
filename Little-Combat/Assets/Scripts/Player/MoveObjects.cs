@@ -17,7 +17,7 @@ public class MoveObjects : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
     }
-    void Update()
+    void FixedUpdate()
     {
         if (!isHolding)
         {
@@ -82,7 +82,7 @@ public class MoveObjects : MonoBehaviour
                 //make player parent of object
                 pushRef = _hit_Object.transform;
                 pushRef.SetParent(transform);
-                pushRef.gameObject.layer = 11;
+                //pushRef.gameObject.layer = 11;
 
                 //set object to position in front of player
                 if (!putObjectInPos)
