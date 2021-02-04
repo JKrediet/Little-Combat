@@ -11,10 +11,10 @@ public class PlayerMovement : MonoBehaviour
     //privates
     private Quaternion targetRotation;
     public CharacterController controller;
-    private Vector3 moveDir;
-    private float downForce, rotationTime;
+    private Vector3 moveDir, movement;
+    private float downForce, rotationTime, targetAngle;
     private Vector2 rotation;
-
+    private float turnSmoothBelocity;
 
     private void Start()
     {
@@ -38,32 +38,33 @@ public class PlayerMovement : MonoBehaviour
             //recieve input for playerdirection
             if(controller.isGrounded)
             {
-                moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical") * 0.5f).normalized;
-                moveDir *= speed;
-                moveDir = transform.TransformDirection(moveDir);
-            }
-
-            //movement
-            controller.Move(moveDir * Time.deltaTime);
-            controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
-            cameraFollow.position = transform.position;
-
-            //rotate player to camera forward on input
-            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical") || Input.GetButton("Fire1") || isHoldingLaser)
-            {
-                //get forward
-                Vector3 forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
-                targetRotation = Quaternion.LookRotation(forward);
-
-                //early smooth, faster the longer mousebutton is hold
-                rotationTime += Time.deltaTime * CameraRotationSpeed;
-
-                //rotate toward forward overtime
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationTime);
+                moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+                //moveDir = transform.TransformDirection(moveDir);
             }
             else
             {
-                rotationTime = 0;
+                Vector3 movement = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                controller.Move(movement * Time.deltaTime);
+            }
+
+            //rotate player to camera forward on input
+            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+            {
+                targetAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg + cameraReference.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothBelocity, 0.1f);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                //movement
+                Vector3 movement = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                controller.Move(movement * speed * Time.deltaTime);
+            }
+            controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
+            cameraFollow.position = transform.position;
+
+            //set to camera forward
+            if (isHoldingLaser)
+            {
+                Vector3 forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
             }
         }
         if(status_Push)
@@ -139,4 +140,25 @@ public class PlayerMovement : MonoBehaviour
         //    controller.height = maxCrouchHeight;
         //}
     }
+
+
+    //dit is reserve....
+    
+    ////rotate player to camera forward on input
+    //        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical") || Input.GetButton("Fire1") || isHoldingLaser)
+    //        {
+    //            //get forward
+    //            Vector3 forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
+    //targetRotation = Quaternion.LookRotation(forward);
+
+    //            //early smooth, faster the longer mousebutton is hold
+    //            rotationTime += Time.deltaTime* CameraRotationSpeed;
+
+    ////rotate toward forward overtime
+    //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationTime);
+    //        }
+    //        else
+    //        {
+    //            rotationTime = 0;
+    //        }
 }

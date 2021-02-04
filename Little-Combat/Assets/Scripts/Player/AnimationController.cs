@@ -15,11 +15,7 @@ public class AnimationController : MonoBehaviour
         transform.TransformDirection(FindObjectOfType<PlayerMovement>().gameObject.transform.forward);
 
         //idle
-        if (Input.GetAxisRaw("Vertical") == 0)
-        {
-            anim.SetInteger("PlayerState", 0);
-        }
-        else
+        if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
         {
             //run
             if (Input.GetButton("Running"))
@@ -32,28 +28,13 @@ public class AnimationController : MonoBehaviour
                 anim.SetInteger("PlayerState", 1);
             }
         }
+        else
+        {
+            anim.SetInteger("PlayerState", 0);
+        }
         if (!FindObjectOfType<PlayerMovement>().controller.isGrounded)
         {
             anim.SetBool("Jump", true);
-        }
-        //sideways left = 3 right = 4
-        if (Input.GetAxisRaw("Horizontal") == 0)
-        {
-
-        }
-        else
-        {
-            //right
-            if (Input.GetAxisRaw("Horizontal") == -1)
-            {
-                anim.SetInteger("PlayerState", 4);
-            }
-            //left
-            if (Input.GetAxisRaw("Horizontal") == 1)
-            {
-                anim.SetInteger("PlayerState", 3);
-
-            }
         }
     }
     private void LateUpdate()
