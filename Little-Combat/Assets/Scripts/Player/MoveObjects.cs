@@ -59,6 +59,7 @@ public class MoveObjects : MonoBehaviour
             // if hits pushalbe object
             if (_hit_Object.transform.tag == "Pickup")
             {
+                GetComponent<PlayerMovement>().isHoldingPickup = true;
                 //make player parent of object
                 pushRef = _hit_Object.transform;
                 pushRef.SetParent(transform);
@@ -128,6 +129,7 @@ public class MoveObjects : MonoBehaviour
             pushRef.gameObject.layer = 0;
             GetComponent<PlayerMovement>().status_Push = false;
             GetComponent<PlayerMovement>().isHoldingLaser = false;
+            GetComponent<PlayerMovement>().isHoldingPickup = false;
             putObjectInPos = false;
             pushRef = null; // deze helemaal onderaan
         }

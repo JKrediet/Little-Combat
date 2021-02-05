@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed, gravity, jumpForce, minCrouchHeight, maxCrouchHeight, CameraRotationSpeed;
     public Transform cameraReference, cameraFollow;
-    public bool status_Push, push_forward, push_right, push_left, push_any, isHoldingLaser;
+    public bool status_Push, push_forward, push_right, push_left, push_any, isHoldingLaser, isHoldingPickup;
 
     //privates
     private Quaternion targetRotation;
@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     private float downForce, targetAngle, startSpeed;
     private Vector2 rotation;
     private float turnSmoothBelocity;
+
+    //attack
+    public bool isAttacking;
 
     //movement collision check
     private bool mayNotMoveForward;
@@ -33,92 +36,101 @@ public class PlayerMovement : MonoBehaviour
         Gravity();
         Crouch();
         CheckForCollsion();
+        if(Input.GetButtonDown("Fire1"))
+        {
+            if(controller.isGrounded)
+            {
+                FindObjectOfType<AnimationController>().Attack();
+            }
+        }
     }
 
     public void Movement()
     {
-        //if not pushing something, use these movement controls
-        if (!status_Push)
+        if (!isAttacking)
         {
-            //recieve input for playerdirection
-            if(controller.isGrounded)
+            //if not pushing something, use these movement controls
+            if (!status_Push)
             {
-                moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-                //moveDir = transform.TransformDirection(moveDir);
-                //rotate player to camera forward on input
-                if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+                //recieve input for playerdirection
+                if (controller.isGrounded)
                 {
-                    speed = startSpeed;
-                    if (Input.GetButton("Fire2"))
+                    moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+                    //moveDir = transform.TransformDirection(moveDir);
+                    //rotate player to camera forward on input
+                    if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
                     {
-                        speed = startSpeed / 2;
+                        speed = startSpeed;
+                        if (Input.GetButton("Fire2"))
+                        {
+                            speed = startSpeed / 2;
+                        }
+                        targetAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg + cameraReference.eulerAngles.y;
+                        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothBelocity, 0.05f);
+                        transform.rotation = Quaternion.Euler(0f, angle, 0f);
                     }
-                    targetAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg + cameraReference.eulerAngles.y;
-                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothBelocity, 0.05f);
-                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                    else
+                    {
+                        speed = 0;
+                    }
                 }
-                else
+
+                //movement
+                movement = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                controller.Move(movement * speed * Time.deltaTime);
+                controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
+                cameraFollow.position = transform.position;
+
+                //set to camera forward
+                if (isHoldingLaser)
                 {
-                    speed = 0;
+                    Vector3 forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
                 }
             }
+            //push object
+            if (status_Push)
+            {
+                //recieve input for playerdirection
+                moveDir = new Vector3(0, 0, Input.GetAxisRaw("Vertical")).normalized;
+                moveDir *= speed;
+                moveDir = transform.TransformDirection(moveDir);
 
-            //movement
-            movement = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(movement * speed * Time.deltaTime);
-            controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
-            cameraFollow.position = transform.position;
+                //rotation
+                //check if you may rotate/move in given direction and limit movement
+                if (push_forward)
+                {
+                    push_any = true;
+                    moveDir.x = Mathf.Clamp(moveDir.z, 0, -1);
+                }
+                if (push_right)
+                {
+                    push_any = true;
+                    float tempInput = Input.GetAxisRaw("Horizontal");
+                    tempInput = Mathf.Clamp(tempInput, -1, 0);
+                    transform.Rotate(0, tempInput, 0, Space.Self);
+                }
+                if (push_left)
+                {
+                    push_any = true;
+                    float tempInput = Input.GetAxisRaw("Horizontal");
+                    tempInput = Mathf.Clamp(tempInput, 0, 1);
+                    transform.Rotate(0, tempInput, 0, Space.Self);
+                }
+                //none are true
+                if (!push_forward && !push_left && !push_right)
+                {
+                    push_any = false;
+                }
+                if (!push_any)
+                {
+                    transform.Rotate(0, Input.GetAxisRaw("Horizontal"), 0, Space.Self);
+                }
 
-            //set to camera forward
-            if (isHoldingLaser)
-            {
-                Vector3 forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
+                //movement
+                controller.Move(moveDir / 2 * Time.deltaTime);
+                controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
+                cameraFollow.position = transform.position;
             }
-        }
-        //push object
-        if(status_Push)
-        {
-            //recieve input for playerdirection
-            moveDir = new Vector3(0, 0, Input.GetAxisRaw("Vertical")).normalized;
-            moveDir *= speed;
-            moveDir = transform.TransformDirection(moveDir);
-
-            //rotation
-            //check if you may rotate/move in given direction and limit movement
-            if(push_forward)
-            {
-                push_any = true;
-                moveDir.x = Mathf.Clamp(moveDir.z, 0, -1);
-            }
-            if(push_right)
-            {
-                push_any = true;
-                float tempInput = Input.GetAxisRaw("Horizontal");
-                tempInput = Mathf.Clamp(tempInput, -1, 0);
-                transform.Rotate(0, tempInput, 0, Space.Self);
-            }
-            if(push_left)
-            {
-                push_any = true;
-                float tempInput = Input.GetAxisRaw("Horizontal");
-                tempInput = Mathf.Clamp(tempInput, 0, 1);
-                transform.Rotate(0, tempInput, 0, Space.Self);
-            }
-            //none are true
-            if(!push_forward && !push_left && !push_right)
-            {
-                push_any = false;
-            }
-            if (!push_any)
-            {
-                transform.Rotate(0, Input.GetAxisRaw("Horizontal"), 0, Space.Self);
-            }
-
-            //movement
-            controller.Move(moveDir / 2 * Time.deltaTime);
-            controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
-            cameraFollow.position = transform.position;
-
         }
     }
     public void Gravity()
@@ -127,9 +139,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!status_Push)
             {
-                if (Input.GetButtonDown("Jump"))
+                if (!isHoldingPickup)
                 {
-                    downForce = jumpForce;
+                    if (Input.GetButtonDown("Jump"))
+                    {
+                        downForce = jumpForce;
+                    }
                 }
             }
         }
@@ -158,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(Input.GetButton("Fire2"))
                 {
-                    print("pickup");
+                    //print("pickup");
                 }
             }
         }

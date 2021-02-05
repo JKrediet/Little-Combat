@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
+    public bool attack;
     private Animator anim;
     private void Start()
     {
@@ -11,38 +12,41 @@ public class AnimationController : MonoBehaviour
     }
     void Update()
     {
-        //player moet naar goeie kant kijken
+        //player model to playercontroller forward
         transform.TransformDirection(FindObjectOfType<PlayerMovement>().gameObject.transform.forward);
 
         //idle
-        if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
+        if (!attack)
         {
-            //pickup
-            if (Input.GetButton("Fire2"))
+            if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
             {
-                anim.SetInteger("PlayerState", 2);
+                //pickup
+                if (Input.GetButton("Fire2"))
+                {
+                    anim.SetInteger("PlayerState", 2);
+                }
+                //walk
+                else
+                {
+                    anim.SetInteger("PlayerState", 1);
+                }
             }
-            //walk
             else
             {
-                anim.SetInteger("PlayerState", 1);
+                if (Input.GetButton("Fire2"))
+                {
+                    anim.SetInteger("PlayerState", 3);
+                }
+                //walk
+                else
+                {
+                    StopMoving();
+                }
             }
-        }
-        else
-        {
-            if (Input.GetButton("Fire2"))
+            if (!FindObjectOfType<PlayerMovement>().controller.isGrounded)
             {
-                anim.SetInteger("PlayerState", 3);
+                anim.SetBool("Jump", true);
             }
-            //walk
-            else
-            {
-                anim.SetInteger("PlayerState", 0);
-            }
-        }
-        if (!FindObjectOfType<PlayerMovement>().controller.isGrounded)
-        {
-            anim.SetBool("Jump", true);
         }
     }
     private void LateUpdate()
@@ -51,5 +55,22 @@ public class AnimationController : MonoBehaviour
         {
             anim.SetBool("Jump", false);
         }
+    }
+    public void Attack()
+    {
+        StopMoving();
+        attack = true;
+        anim.SetBool("IsAttacking", attack);
+        FindObjectOfType<PlayerMovement>().isAttacking = attack;
+    }
+    public void StopAttack()
+    {
+        attack = false;
+        anim.SetBool("IsAttacking", attack);
+        FindObjectOfType<PlayerMovement>().isAttacking = attack;
+    }
+    public void StopMoving()
+    {
+        anim.SetInteger("PlayerState", 0);
     }
 }
