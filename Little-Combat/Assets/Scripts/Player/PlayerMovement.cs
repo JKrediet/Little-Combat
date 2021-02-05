@@ -12,9 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private Quaternion targetRotation;
     public CharacterController controller;
     private Vector3 moveDir, movement;
-    private float downForce, rotationTime, targetAngle, startSpeed;
+    private float downForce, targetAngle, startSpeed;
     private Vector2 rotation;
     private float turnSmoothBelocity;
+
+    //movement collision check
+    private bool mayNotMoveForward;
 
     private void Start()
     {
@@ -24,11 +27,12 @@ public class PlayerMovement : MonoBehaviour
         startSpeed = speed;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Movement();
         Gravity();
         Crouch();
+        CheckForCollsion();
     }
 
     public void Movement()
@@ -45,8 +49,12 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
                 {
                     speed = startSpeed;
+                    if (Input.GetButton("Fire2"))
+                    {
+                        speed = startSpeed / 2;
+                    }
                     targetAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg + cameraReference.eulerAngles.y;
-                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothBelocity, 0.1f);
+                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothBelocity, 0.05f);
                     transform.rotation = Quaternion.Euler(0f, angle, 0f);
                 }
                 else
@@ -67,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
             }
         }
+        //push object
         if(status_Push)
         {
             //recieve input for playerdirection
@@ -140,25 +149,24 @@ public class PlayerMovement : MonoBehaviour
         //    controller.height = maxCrouchHeight;
         //}
     }
-
-
-    //dit is reserve....
-    
-    ////rotate player to camera forward on input
-    //        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical") || Input.GetButton("Fire1") || isHoldingLaser)
-    //        {
-    //            //get forward
-    //            Vector3 forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
-    //targetRotation = Quaternion.LookRotation(forward);
-
-    //            //early smooth, faster the longer mousebutton is hold
-    //            rotationTime += Time.deltaTime* CameraRotationSpeed;
-
-    ////rotate toward forward overtime
-    //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationTime);
-    //        }
-    //        else
-    //        {
-    //            rotationTime = 0;
-    //        }
+    private void CheckForCollsion()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, transform.forward, out hit, 0.6f))
+        {
+            if(hit.transform.tag == "Pickup")
+            {
+                if(Input.GetButton("Fire2"))
+                {
+                    print("pickup");
+                }
+            }
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * 0.6f;
+        Gizmos.DrawRay(transform.position, direction);
+    }
 }

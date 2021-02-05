@@ -17,8 +17,8 @@ public class AnimationController : MonoBehaviour
         //idle
         if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
         {
-            //run
-            if (Input.GetButton("Running"))
+            //pickup
+            if (Input.GetButton("Fire2"))
             {
                 anim.SetInteger("PlayerState", 2);
             }
@@ -30,7 +30,15 @@ public class AnimationController : MonoBehaviour
         }
         else
         {
-            anim.SetInteger("PlayerState", 0);
+            if (Input.GetButton("Fire2"))
+            {
+                anim.SetInteger("PlayerState", 3);
+            }
+            //walk
+            else
+            {
+                anim.SetInteger("PlayerState", 0);
+            }
         }
         if (!FindObjectOfType<PlayerMovement>().controller.isGrounded)
         {

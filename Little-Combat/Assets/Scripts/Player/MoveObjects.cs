@@ -10,7 +10,7 @@ public class MoveObjects : MonoBehaviour
     public Transform objectDump, objectLocation;
     private Transform pushRef;
     private CharacterController controller;
-    private bool putObjectInPos, isHolding;
+    public bool putObjectInPos, isHolding;
     private Vector3 pos;
 
     private void Start()
@@ -62,7 +62,7 @@ public class MoveObjects : MonoBehaviour
                 //make player parent of object
                 pushRef = _hit_Object.transform;
                 pushRef.SetParent(transform);
-                pushRef.gameObject.layer = 11;
+                //pushRef.gameObject.layer = 11;
 
                 //set object to position in front of player
                 if (!putObjectInPos)

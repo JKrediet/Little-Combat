@@ -1150,6 +1150,8 @@ MonoBehaviour:
   lineLength: 5
   objectDump: {fileID: 539000991}
   objectLocation: {fileID: 1284570011}
+  putObjectInPos: 0
+  isHolding: 0
 --- !u!4 &931750991
 Transform:
   m_ObjectHideFlags: 0
@@ -1181,7 +1183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   gravity: 20
-  jumpForce: 7
+  jumpForce: 5
   minCrouchHeight: 0.5
   maxCrouchHeight: 2
   CameraRotationSpeed: 2
