@@ -58,20 +58,25 @@ public class AnimationController : MonoBehaviour
     }
     public void Attack()
     {
-        //stuff that needs to happen for attack
-        StopMoving();
-        attack = true;
-        FindObjectOfType<PlayerMovement>().isAttacking = attack;
-        anim.SetBool("IsAttacking", attack);
-
+        if (attack == false)
+        {
+            //stuff that needs to happen for attack
+            StopMoving();
+            attack = true;
+            FindObjectOfType<PlayerMovement>().isAttacking = attack;
+            anim.SetBool("IsAttacking", attack);
+        }
+    }
+    public void ActualAttack()
+    {
         //actual attack here
         FindObjectOfType<PlayerMovement>().BasicAttack();
     }
     public void StopAttack()
     {
         attack = false;
-        anim.SetBool("IsAttacking", attack);
         FindObjectOfType<PlayerMovement>().isAttacking = attack;
+        anim.SetBool("IsAttacking", attack);
     }
     public void StopMoving()
     {

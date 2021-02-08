@@ -2688,7 +2688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   gravity: 20
-  jumpForce: 5
+  jumpForce: 7
   minCrouchHeight: 0.5
   maxCrouchHeight: 2
   CameraRotationSpeed: 2

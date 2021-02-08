@@ -37,8 +37,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         Gravity();
-        Crouch();
-        CheckForCollsion();
     }
     private void Update()
     {
@@ -46,10 +44,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if (controller.isGrounded)
             {
-                if(Time.time > nextAttack)
+                if (!status_Push)
                 {
-                    nextAttack = Time.time + attackCooldown;
-                    FindObjectOfType<AnimationController>().Attack();
+                    if (Time.time > nextAttack)
+                    {
+                        nextAttack = Time.time + attackCooldown;
+                        FindObjectOfType<AnimationController>().Attack();
+                    }
                 }
             }
         }
@@ -90,12 +91,6 @@ public class PlayerMovement : MonoBehaviour
                 controller.Move(movement * speed * Time.deltaTime);
                 controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
                 cameraFollow.position = transform.position;
-
-                //set to camera forward
-                if (isHoldingLaser)
-                {
-                    transform.forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
-                }
             }
             //push object
             if (status_Push)
@@ -117,36 +112,20 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    private void LateUpdate()
+    {
+        //set to camera forward
+        if (isHoldingLaser)
+        {
+            transform.forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
+        }
+    }
     public void Gravity()
     {
-        if(controller.isGrounded)
-        {
-            if (!status_Push)
-            {
-                if (!isHoldingPickup)
-                {
-                    if (Input.GetButtonDown("Jump"))
-                    {
-                        downForce = jumpForce;
-                    }
-                }
-            }
-        }
-        else
+        if(!controller.isGrounded)
         {
             downForce -= gravity * Time.deltaTime;
         }
-    }
-    public void Crouch()
-    {
-        //if (Input.GetKey(KeyCode.LeftControl))
-        //{
-        //    controller.height = minCrouchHeight;
-        //}
-        //else
-        //{
-        //    controller.height = maxCrouchHeight;
-        //}
     }
     public void BasicAttack()
     {
@@ -163,17 +142,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    private void CheckForCollsion()
+    private void OnCollisionEnter(Collision hit)
     {
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, 0.6f))
+        if (hit.transform.tag == "Pickup")
         {
-            if(hit.transform.tag == "Pickup")
+            if (Input.GetButton("Fire2"))
             {
-                if(Input.GetButton("Fire2"))
-                {
-                    //print("pickup");
-                }
+                //wekrt neit
             }
         }
     }

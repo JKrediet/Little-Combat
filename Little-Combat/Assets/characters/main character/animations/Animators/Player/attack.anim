@@ -53555,10 +53555,17 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.5
+    functionName: ActualAttack
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: c045d13197ac5034a8c940ec91f24357, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.4666667
     functionName: StopAttack
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: c045d13197ac5034a8c940ec91f24357, type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
