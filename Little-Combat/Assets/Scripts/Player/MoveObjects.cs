@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MoveObjects : MonoBehaviour
 {
-
     public float lineLength;
     //pushable object reference
     public Transform objectDump, objectLocation;
@@ -60,13 +59,14 @@ public class MoveObjects : MonoBehaviour
             // if hits pushalbe object
             if (_hit_Object.transform.tag == "Pickup")
             {
-                StopMovingObjects();
+                //StopMovingObjects();
+                Unparent();
 
                 GetComponent<PlayerMovement>().isHoldingPickup = true;
                 //make player parent of object
                 pushRef = _hit_Object.transform;
                 pushRef.SetParent(transform);
-                pushRef.gameObject.layer = 11;
+                //pushRef.gameObject.layer = 11;
 
                 //set object to position in front of player
                 if (!putObjectInPos)
@@ -80,7 +80,9 @@ public class MoveObjects : MonoBehaviour
             }
             else if (_hit_Object.transform.tag == "Push")
             {
-                StopMovingObjects();
+                Unparent();
+
+                //StopMovingObjects();
 
                 //make player know it is pushing something
                 GetComponent<PlayerMovement>().status_Push = true;
@@ -88,7 +90,7 @@ public class MoveObjects : MonoBehaviour
                 //make player parent of object
                 pushRef = _hit_Object.transform;
                 pushRef.SetParent(transform);
-                pushRef.gameObject.layer = 11;
+                //pushRef.gameObject.layer = 11;
 
                 //set object to position in front of player
                 if (!putObjectInPos)
@@ -100,6 +102,8 @@ public class MoveObjects : MonoBehaviour
             }
             else if (_hit_Object.transform.tag == "Laser")
             {
+                Unparent();
+
                 //make player parent of object
                 pushRef = _hit_Object.transform;
                 pushRef.SetParent(transform);
@@ -134,5 +138,14 @@ public class MoveObjects : MonoBehaviour
             pushRef = null; // deze helemaal onderaan
         }
         isHolding = false;
+    }
+
+    private void Unparent()
+    {
+        if(pushRef != null)
+        {
+            GetComponent<PlayerMovement>().status_Push = false;
+            pushRef.SetParent(objectDump);
+        }
     }
 }
