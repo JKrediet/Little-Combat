@@ -7,6 +7,8 @@ public class Laser : MonoBehaviour
     public Transform shootPoint;
     public LineRenderer lineRen;
 
+    public Transform laserEffect;
+
     public float lineLength;
 
     public bool isContinues;
@@ -51,6 +53,9 @@ public class Laser : MonoBehaviour
 
         if(Physics.Raycast(ray, out _hit, lineLength))
         {
+            laserEffect.gameObject.SetActive(true);
+            laserEffect.position = _hit.point;
+
             lineRen.SetPosition(0, shootPoint.position);
             lineRen.SetPosition(1, _hit.point);
 
@@ -69,6 +74,8 @@ public class Laser : MonoBehaviour
         }
         else
         {
+            laserEffect.gameObject.SetActive(false);
+
             lineRen.SetPosition(0, shootPoint.position);
             lineRen.SetPosition(1, transform.position + shootPoint.forward * lineLength);
         }

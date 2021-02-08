@@ -25,6 +25,11 @@ public class MoveObjects : MonoBehaviour
             {
                 MoveObject();
             }
+            else
+            {
+                isHolding = true;
+                StopMovingObjects();
+            }
         }
         if (pushRef)
         {
@@ -35,10 +40,6 @@ public class MoveObjects : MonoBehaviour
                 isHolding = true;
                 StopMovingObjects();
             }
-        }
-        if (Input.GetButtonUp("Fire2"))
-        {
-            StopMovingObjects();
         }
 
         //wall check for pushing/holding objects
@@ -108,11 +109,6 @@ public class MoveObjects : MonoBehaviour
                     putObjectInPos = true;
                 }
             }
-        }
-        else
-        {
-            isHolding = true;
-            StopMovingObjects();
         }
     }
     private void StopMovingObjects()

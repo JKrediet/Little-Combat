@@ -6,6 +6,8 @@ public class Reflective : MonoBehaviour
 {
     public LineRenderer lineRen;
 
+    public Transform laserEffect;
+
     private void Update()
     {
         lineRen.enabled = false;
@@ -26,6 +28,9 @@ public class Reflective : MonoBehaviour
             lineRen.SetPosition(0, hitPoint);
             lineRen.SetPosition(1, _hit.point);
 
+            laserEffect.gameObject.SetActive(true);
+            laserEffect.position = _hit.point;
+
             if (_hit.transform.GetComponent<Reflective>())
             {
                 _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, reflect, _hit.normal);
@@ -42,6 +47,8 @@ public class Reflective : MonoBehaviour
         }
         else
         {
+            laserEffect.gameObject.SetActive(false);
+
             lineRen.SetPosition(0, hitPoint);
             lineRen.SetPosition(1, transform.position + reflect * 1000f);
         }
