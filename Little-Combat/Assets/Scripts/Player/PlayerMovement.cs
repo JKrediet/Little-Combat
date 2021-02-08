@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed, gravity, jumpForce, minCrouchHeight, maxCrouchHeight, CameraRotationSpeed;
+    public float speed, gravity, jumpForce, minCrouchHeight, maxCrouchHeight, CameraRotationSpeed, playerDamage;
     public Transform cameraReference, cameraFollow;
+
+    //shitload aan testdingen, please no remove!
     public bool status_Push, push_forward, push_right, push_left, push_any, isHoldingLaser, isHoldingPickup;
 
     //privates
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     //attack
     public bool isAttacking;
+    private float nextAttack, attackCooldown;
 
     //movement collision check
     private bool mayNotMoveForward;
@@ -36,11 +39,18 @@ public class PlayerMovement : MonoBehaviour
         Gravity();
         Crouch();
         CheckForCollsion();
-        if(Input.GetButtonDown("Fire1"))
+    }
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
         {
-            if(controller.isGrounded)
+            if (controller.isGrounded)
             {
-                FindObjectOfType<AnimationController>().Attack();
+                if(Time.time > nextAttack)
+                {
+                    nextAttack = Time.time + attackCooldown;
+                    FindObjectOfType<AnimationController>().Attack();
+                }
             }
         }
     }
@@ -164,6 +174,21 @@ public class PlayerMovement : MonoBehaviour
         //    controller.height = maxCrouchHeight;
         //}
     }
+    public void BasicAttack()
+    {
+        //actual attack
+        Collider[] colliders = Physics.OverlapSphere(transform.position + transform.forward, 1);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.gameObject != gameObject)
+            {
+                if (collider.GetComponent<EnemyHealth>())
+                {
+                    collider.GetComponent<EnemyHealth>().GiveDamage(playerDamage);
+                }
+            }
+        }
+    }
     private void CheckForCollsion()
     {
         RaycastHit hit;
@@ -183,5 +208,7 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Vector3 direction = transform.TransformDirection(Vector3.forward) * 0.6f;
         Gizmos.DrawRay(transform.position, direction);
+
+        Gizmos.DrawSphere(transform.position + transform.forward, 0.5f);
     }
 }

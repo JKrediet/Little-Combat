@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth = 6;
     public float health;
@@ -16,11 +16,7 @@ public class PlayerHealth : MonoBehaviour
         health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
         if (health == 0)
         {
-            //player died
+            //enemy died
         }
-    }
-    public void GiveHealth(int _healthRestored)
-    {
-        health = Mathf.Clamp(health + _healthRestored, 0, maxHealth);
     }
 }

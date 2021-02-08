@@ -1188,6 +1188,7 @@ MonoBehaviour:
   minCrouchHeight: 0.5
   maxCrouchHeight: 2
   CameraRotationSpeed: 2
+  playerDamage: 1
   cameraReference: {fileID: 558796178}
   cameraFollow: {fileID: 632614434}
   status_Push: 0
@@ -1198,6 +1199,7 @@ MonoBehaviour:
   isHoldingLaser: 0
   isHoldingPickup: 0
   controller: {fileID: 0}
+  isAttacking: 0
 --- !u!114 &931750993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1211,6 +1213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 6
+  health: 0
 --- !u!54 &931750994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1993,6 +1996,7 @@ GameObject:
   - component: {fileID: 1646622811}
   - component: {fileID: 1646622810}
   - component: {fileID: 1646622809}
+  - component: {fileID: 1646622813}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -2076,6 +2080,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646622813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646622808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59acd47ccc472614da8218a0237ef529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 6
+  health: 0
 --- !u!1 &1812015024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2844,6 +2862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c045d13197ac5034a8c940ec91f24357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: 0
 --- !u!4 &1564599743101744218
 Transform:
   m_ObjectHideFlags: 0
