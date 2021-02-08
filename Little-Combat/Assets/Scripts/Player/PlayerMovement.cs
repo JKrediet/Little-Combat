@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cameraReference, cameraFollow;
 
     //shitload aan testdingen, please no remove!
-    public bool status_Push, push_forward, push_right, push_left, push_any, isHoldingLaser, isHoldingPickup;
+    public bool status_Push, isHoldingLaser, isHoldingPickup;
 
     //privates
     private Quaternion targetRotation;
@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
                 //set to camera forward
                 if (isHoldingLaser)
                 {
-                    Vector3 forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
+                    transform.forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
                 }
             }
             //push object

@@ -118,6 +118,11 @@ public class MoveObjects : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            GetComponent<PlayerMovement>().status_Push = false;
+
+        }
     }
     private void StopMovingObjects()
     {

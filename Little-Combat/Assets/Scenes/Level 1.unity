@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c1d9216f57701479b6f9c0f37d353d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 7597765168966559999, guid: 26808de457857d34e83e73077512f04b, type: 3}
+  spawnedObject: {fileID: 7597765168966559938, guid: 26808de457857d34e83e73077512f04b, type: 3}
 --- !u!1 &41560954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,6 +1777,8 @@ MonoBehaviour:
   lineLength: 5
   objectDump: {fileID: 539000991}
   objectLocation: {fileID: 0}
+  putObjectInPos: 0
+  isHolding: 0
 --- !u!4 &931750991
 Transform:
   m_ObjectHideFlags: 0
@@ -1812,6 +1814,7 @@ MonoBehaviour:
   minCrouchHeight: 0.5
   maxCrouchHeight: 2
   CameraRotationSpeed: 2
+  playerDamage: 0
   cameraReference: {fileID: 558796178}
   cameraFollow: {fileID: 632614434}
   status_Push: 0
@@ -1820,7 +1823,9 @@ MonoBehaviour:
   push_left: 0
   push_any: 0
   isHoldingLaser: 0
+  isHoldingPickup: 0
   controller: {fileID: 0}
+  isAttacking: 0
 --- !u!114 &931750993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1834,6 +1839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 6
+  health: 0
 --- !u!1 &954779632
 GameObject:
   m_ObjectHideFlags: 0
