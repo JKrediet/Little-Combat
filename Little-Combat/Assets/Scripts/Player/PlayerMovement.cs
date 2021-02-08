@@ -100,41 +100,15 @@ public class PlayerMovement : MonoBehaviour
             //push object
             if (status_Push)
             {
+                speed = startSpeed / 2;
+
                 //recieve input for playerdirection
                 moveDir = new Vector3(0, 0, Input.GetAxisRaw("Vertical")).normalized;
                 moveDir *= speed;
                 moveDir = transform.TransformDirection(moveDir);
 
-                //rotation
-                //check if you may rotate/move in given direction and limit movement
-                if (push_forward)
-                {
-                    push_any = true;
-                    moveDir.x = Mathf.Clamp(moveDir.z, 0, -1);
-                }
-                if (push_right)
-                {
-                    push_any = true;
-                    float tempInput = Input.GetAxisRaw("Horizontal");
-                    tempInput = Mathf.Clamp(tempInput, -1, 0);
-                    transform.Rotate(0, tempInput, 0, Space.Self);
-                }
-                if (push_left)
-                {
-                    push_any = true;
-                    float tempInput = Input.GetAxisRaw("Horizontal");
-                    tempInput = Mathf.Clamp(tempInput, 0, 1);
-                    transform.Rotate(0, tempInput, 0, Space.Self);
-                }
-                //none are true
-                if (!push_forward && !push_left && !push_right)
-                {
-                    push_any = false;
-                }
-                if (!push_any)
-                {
-                    transform.Rotate(0, Input.GetAxisRaw("Horizontal"), 0, Space.Self);
-                }
+                
+                transform.Rotate(0, Input.GetAxisRaw("Horizontal"), 0, Space.Self);
 
                 //movement
                 controller.Move(moveDir / 2 * Time.deltaTime);

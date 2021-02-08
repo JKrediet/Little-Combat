@@ -6,6 +6,8 @@ public class PressurePlate : MonoBehaviour
 {
     public Transform useFunctionFromThis;
 
+    private GameObject test;
+
     protected float cooldown = 3, nextSpawn;
 
     protected MeshRenderer render;
@@ -19,15 +21,18 @@ public class PressurePlate : MonoBehaviour
     }
     protected virtual void OnCollisionEnter(Collision col)
     {
-        render.material.SetColor("_BaseColor", Color.green);
-        if (Time.time > nextSpawn)
+        if(col.gameObject != test)
         {
-            if(col.gameObject.tag != "Player")
+            render.material.SetColor("_BaseColor", Color.green);
+            if (Time.time > nextSpawn)
             {
-                if (useFunctionFromThis.GetComponent<SpawnObject>())
+                if (col.gameObject.tag != "Player")
                 {
-                    nextSpawn = cooldown + Time.time;
-                    useFunctionFromThis.GetComponent<SpawnObject>().SpawnObjectIn();
+                    if (useFunctionFromThis.GetComponent<SpawnObject>())
+                    {
+                        nextSpawn = cooldown + Time.time;
+                        test = useFunctionFromThis.GetComponent<SpawnObject>().SpawnObjectIn();
+                    }
                 }
             }
         }

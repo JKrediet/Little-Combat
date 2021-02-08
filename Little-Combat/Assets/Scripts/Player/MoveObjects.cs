@@ -60,11 +60,13 @@ public class MoveObjects : MonoBehaviour
             // if hits pushalbe object
             if (_hit_Object.transform.tag == "Pickup")
             {
+                StopMovingObjects();
+
                 GetComponent<PlayerMovement>().isHoldingPickup = true;
                 //make player parent of object
                 pushRef = _hit_Object.transform;
                 pushRef.SetParent(transform);
-                //pushRef.gameObject.layer = 11;
+                pushRef.gameObject.layer = 11;
 
                 //set object to position in front of player
                 if (!putObjectInPos)
@@ -76,15 +78,17 @@ public class MoveObjects : MonoBehaviour
                 pushRef.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 pushRef.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             }
-            if (_hit_Object.transform.tag == "Push")
+            else if (_hit_Object.transform.tag == "Push")
             {
+                StopMovingObjects();
+
                 //make player know it is pushing something
                 GetComponent<PlayerMovement>().status_Push = true;
 
                 //make player parent of object
                 pushRef = _hit_Object.transform;
                 pushRef.SetParent(transform);
-                //pushRef.gameObject.layer = 11;
+                pushRef.gameObject.layer = 11;
 
                 //set object to position in front of player
                 if (!putObjectInPos)
@@ -94,7 +98,7 @@ public class MoveObjects : MonoBehaviour
                     pushRef.GetComponent<Rigidbody>().useGravity = !putObjectInPos;
                 }
             }
-            if (_hit_Object.transform.tag == "Laser")
+            else if (_hit_Object.transform.tag == "Laser")
             {
                 //make player parent of object
                 pushRef = _hit_Object.transform;

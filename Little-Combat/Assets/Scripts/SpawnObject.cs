@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour
 {
-    public Transform spawnedObject;
+    public GameObject spawnedObject;
 
-    private Transform lastObject;
+    private GameObject lastObject;
 
-    public void SpawnObjectIn()
+    public GameObject SpawnObjectIn()
     {
         if(lastObject)
         {
             Destroy(lastObject.gameObject);
         }
         lastObject = Instantiate(spawnedObject, transform.position, transform.rotation);
+
+        return lastObject;
 
     }
 }
