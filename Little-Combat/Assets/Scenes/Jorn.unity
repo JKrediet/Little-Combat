@@ -1961,5 +1961,9 @@ PrefabInstance:
       propertyPath: mask.m_Bits
       value: 2048
       objectReference: {fileID: 0}
+    - target: {fileID: 8142035288146833456, guid: dbf724fd7cd53004eb4442a5854f7b7d, type: 3}
+      propertyPath: maskuuuuu.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbf724fd7cd53004eb4442a5854f7b7d, type: 3}

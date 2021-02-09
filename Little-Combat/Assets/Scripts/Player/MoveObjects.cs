@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class MoveObjects : MonoBehaviour
 {
-    public float lineLength;
+    public float lineLength, collisionOffset = 0.2f;
     //pushable object reference
     public Transform objectDump, objectLocation;
     private Transform pushRef;
     private CharacterController controller;
     public bool putObjectInPos, isHolding;
     private Vector3 pos;
+    public LayerMask maskuuuuu;
+
+    //playercollision
+    //privates
+    private Vector2 rotation;
+    private Vector3 defaultPos, directionNormalized, collisionPos;
+    private float defaultDistance;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        directionNormalized = defaultPos.normalized;
+        defaultDistance = Vector3.Distance(defaultPos, Vector3.zero);
     }
     void FixedUpdate()
     {
+        CollisionRaycast();
         if (!isHolding)
         {
             if (Input.GetButton("Fire2"))
@@ -35,12 +45,11 @@ public class MoveObjects : MonoBehaviour
             float distance = Vector3.Distance(pushRef.position, transform.position + transform.forward);
             if (distance > 1.1f)
             {
-
                 isHolding = true;
                 StopMovingObjects();
             }
         }
-
+        CheckPlayerCollision(); // shhhhhh
         //wall check for pushing/holding objects
         if (pushRef != null)
         {
@@ -135,7 +144,7 @@ public class MoveObjects : MonoBehaviour
             }
             //remove object as player child
             pushRef.SetParent(objectDump);
-            pushRef.gameObject.layer = 0;
+            //pushRef.gameObject.layer = 0;
             GetComponent<PlayerMovement>().status_Push = false;
             GetComponent<PlayerMovement>().isHoldingLaser = false;
             GetComponent<PlayerMovement>().isHoldingPickup = false;
@@ -151,6 +160,29 @@ public class MoveObjects : MonoBehaviour
         {
             GetComponent<PlayerMovement>().status_Push = false;
             pushRef.SetParent(objectDump);
+        }
+    }
+
+    private void CheckPlayerCollision()
+    {
+        if (collisionPos != Vector3.zero)
+        {
+            Vector3 currentPos = transform.position - transform.forward;
+
+            transform.localPosition = Vector3.Lerp(transform.position, currentPos, Time.deltaTime * 15f);
+        }
+    }
+    private void CollisionRaycast()
+    {
+        RaycastHit _hit;
+        if(Physics.Raycast(transform.position, transform.forward, out _hit, 1, maskuuuuu))
+        {
+            StopMovingObjects();
+            collisionPos = _hit.transform.position;
+        }
+        else
+        {
+            collisionPos = Vector3.zero; ;
         }
     }
 }
