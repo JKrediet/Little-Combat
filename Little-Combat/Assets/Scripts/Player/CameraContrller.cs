@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraContrller : MonoBehaviour
 {
-    public Transform cameraLookat;
+    public Transform cameraLookat, cameraLaserPosition;
     public float lookSpeed, maxLookAngle, collisionOffset = 0.2f;
+    public bool isHoldingLaser;
 
     //privates
     private Vector2 rotation;
@@ -27,7 +28,14 @@ public class CameraContrller : MonoBehaviour
     {
         rotation.y += Input.GetAxis("Mouse Y") * lookSpeed;
         rotation.x += Input.GetAxis("Mouse X") * lookSpeed;
-        rotation.y = Mathf.Clamp(rotation.y, -maxLookAngle, maxLookAngle);
+        if(isHoldingLaser)
+        {
+            rotation.y = Mathf.Clamp(rotation.y, -maxLookAngle, -maxLookAngle);
+        }
+        else
+        {
+            rotation.y = Mathf.Clamp(rotation.y, -maxLookAngle, maxLookAngle);
+        }
         cameraLookat.localRotation = Quaternion.Euler(-rotation.y, rotation.x, 0);
     }
     private void CameraPosCheck()
@@ -39,7 +47,13 @@ public class CameraContrller : MonoBehaviour
         {
             currentPos = (directionNormalized * (hit.distance - collisionOffset));
         }
-
-        transform.localPosition = Vector3.Lerp(transform.localPosition, currentPos, Time.deltaTime * 15f);
+        if (isHoldingLaser)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, cameraLaserPosition.localPosition, Time.deltaTime * 15f);
+        }
+        else
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, currentPos, Time.deltaTime * 15f);
+        }
     }
 }

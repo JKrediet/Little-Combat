@@ -49,7 +49,6 @@ public class MoveObjects : MonoBehaviour
                 StopMovingObjects();
             }
         }
-        CheckPlayerCollision(); // shhhhhh
         //wall check for pushing/holding objects
         if (pushRef != null)
         {
@@ -65,6 +64,7 @@ public class MoveObjects : MonoBehaviour
         // Shoot a raycast and check if it hit anything
         if (Physics.Raycast(transform.position, transform.forward, out _hit_Object, lineLength))
         {
+            CheckPlayerCollision();
             // if hits pushalbe object
             if (_hit_Object.transform.tag == "Pickup")
             {
@@ -118,6 +118,7 @@ public class MoveObjects : MonoBehaviour
                 pushRef.SetParent(transform);
                 pushRef.gameObject.layer = 11;
                 GetComponent<PlayerMovement>().isHoldingLaser = true;
+                FindObjectOfType<CameraContrller>().isHoldingLaser = true;
 
                 //set object to position in front of player
                 if (!putObjectInPos)
@@ -148,6 +149,7 @@ public class MoveObjects : MonoBehaviour
             GetComponent<PlayerMovement>().status_Push = false;
             GetComponent<PlayerMovement>().isHoldingLaser = false;
             GetComponent<PlayerMovement>().isHoldingPickup = false;
+            FindObjectOfType<CameraContrller>().isHoldingLaser = false;
             putObjectInPos = false;
             pushRef = null; // deze helemaal onderaan
         }
@@ -169,20 +171,20 @@ public class MoveObjects : MonoBehaviour
         {
             Vector3 currentPos = transform.position - transform.forward;
 
-            transform.localPosition = Vector3.Lerp(transform.position, currentPos, Time.deltaTime * 15f);
+            transform.localPosition = Vector3.Lerp(transform.position, currentPos, Time.deltaTime * 30);
         }
     }
     private void CollisionRaycast()
     {
         RaycastHit _hit;
-        if(Physics.Raycast(transform.position, transform.forward, out _hit, 1, maskuuuuu))
+        if(Physics.Raycast(transform.position, transform.forward, out _hit, 0.5f, maskuuuuu))
         {
             StopMovingObjects();
             collisionPos = _hit.transform.position;
         }
         else
         {
-            collisionPos = Vector3.zero; ;
+            collisionPos = Vector3.zero;
         }
     }
 }
