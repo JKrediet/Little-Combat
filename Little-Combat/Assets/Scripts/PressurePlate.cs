@@ -21,22 +21,31 @@ public class PressurePlate : MonoBehaviour
     }
     protected virtual void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject != test)
+        OnTrigger(col);
+    }
+
+    public virtual void OnTrigger(Collision col)
+    {
+        if (col.gameObject != test)
         {
             render.material.SetColor("_BaseColor", Color.green);
             if (Time.time > nextSpawn)
             {
                 if (col.gameObject.tag != "Player")
                 {
-                    if (useFunctionFromThis.GetComponent<SpawnObject>())
+                    if (useFunctionFromThis)
                     {
-                        nextSpawn = cooldown + Time.time;
-                        test = useFunctionFromThis.GetComponent<SpawnObject>().SpawnObjectIn();
+                        if (useFunctionFromThis.GetComponent<SpawnObject>())
+                        {
+                            nextSpawn = cooldown + Time.time;
+                            test = useFunctionFromThis.GetComponent<SpawnObject>().SpawnObjectIn();
+                        }
                     }
                 }
             }
         }
     }
+
     protected virtual void OnCollisionExit(Collision collision)
     {
         render.material.SetColor("_BaseColor", Color.red);

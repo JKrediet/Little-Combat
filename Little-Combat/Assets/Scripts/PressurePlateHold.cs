@@ -15,8 +15,11 @@ public class PressurePlateHold : PressurePlate
 
         moveObject.position = originHere.position;
     }
-    protected override void OnCollisionEnter(Collision col)
+
+    public override void OnTrigger(Collision col)
     {
+        base.OnTrigger(col);
+
         if (col.gameObject.tag != "Player")
         {
             render.material.SetColor("_BaseColor", Color.green);
@@ -25,6 +28,8 @@ public class PressurePlateHold : PressurePlate
             giveSignal = true;
         }
     }
+
+
     protected override void OnCollisionExit(Collision col)
     {
         if (col.gameObject.tag != "Player")

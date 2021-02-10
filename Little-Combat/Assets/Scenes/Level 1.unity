@@ -1775,10 +1775,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineLength: 5
+  collisionOffset: 0.2
   objectDump: {fileID: 539000991}
   objectLocation: {fileID: 0}
   putObjectInPos: 0
   isHolding: 0
+  maskuuuuu:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &931750991
 Transform:
   m_ObjectHideFlags: 0
@@ -1818,10 +1822,6 @@ MonoBehaviour:
   cameraReference: {fileID: 558796178}
   cameraFollow: {fileID: 632614434}
   status_Push: 0
-  push_forward: 0
-  push_right: 0
-  push_left: 0
-  push_any: 0
   isHoldingLaser: 0
   isHoldingPickup: 0
   controller: {fileID: 0}

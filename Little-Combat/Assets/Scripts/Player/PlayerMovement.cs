@@ -85,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
                         speed = 0;
                     }
                 }
-
                 //movement
                 movement = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 controller.Move(movement * speed * Time.deltaTime);

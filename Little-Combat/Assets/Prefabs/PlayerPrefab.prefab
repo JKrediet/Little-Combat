@@ -2633,7 +2633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8142035288146833461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.67, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8142035287502111689}
@@ -2696,10 +2696,6 @@ MonoBehaviour:
   cameraReference: {fileID: 8142035288444115436}
   cameraFollow: {fileID: 8142035288379783772}
   status_Push: 0
-  push_forward: 0
-  push_right: 0
-  push_left: 0
-  push_any: 0
   isHoldingLaser: 0
   isHoldingPickup: 0
   controller: {fileID: 0}
@@ -2716,11 +2712,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9b19c26230b3d4bb7cbf09b76bfaf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineLength: 5
+  lineLength: 2
+  collisionOffset: 0.2
   objectDump: {fileID: 8142035288454468833}
   objectLocation: {fileID: 8142035287727828965}
   putObjectInPos: 0
   isHolding: 0
+  maskuuuuu:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!54 &8142035288146833452
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2733,10 +2733,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!1 &8142035288379783775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,7 +2761,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8142035288379783775}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.67, y: 1.5999999, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8142035288444115436}
