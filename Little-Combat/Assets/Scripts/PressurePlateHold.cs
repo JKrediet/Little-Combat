@@ -6,12 +6,10 @@ public class PressurePlateHold : PressurePlate
 {
     public Transform moveObject, goHere, originHere;
     private bool giveSignal;
-    private GameObject thisOne;
 
-    void Start()
+    public override void OnStart()
     {
-        render = GetComponent<MeshRenderer>();
-        render.material.SetColor("_BaseColor", Color.red);
+        base.OnStart();
 
         moveObject.position = originHere.position;
     }
@@ -22,20 +20,23 @@ public class PressurePlateHold : PressurePlate
 
         if (col.gameObject.tag != "Player")
         {
-            render.material.SetColor("_BaseColor", Color.green);
             nextSpawn = cooldown + Time.time;
-            thisOne = col.gameObject;
             giveSignal = true;
         }
     }
 
-
-    protected override void OnCollisionExit(Collision col)
+    public override void OnTriggerEnd(Collision collision)
     {
-        if (col.gameObject.tag != "Player")
+        base.OnTriggerEnd(collision);
+
+        if (collision.gameObject.tag != "Player")
         {
             giveSignal = false;
-            render.material.SetColor("_BaseColor", Color.red);
+
+            if (tempSpawned != null)
+            {
+                Destroy(tempSpawned);
+            }
         }
     }
 

@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cameraReference, cameraFollow;
 
     //shitload aan testdingen, please no remove!
-    public bool status_Push, isHoldingLaser, isHoldingPickup;
+    public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup;
 
     //privates
     private Quaternion targetRotation;
@@ -46,11 +46,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (!status_Push)
                 {
-                    if (Time.time > nextAttack)
+                    if (!isHoldingPickup)
                     {
-                        nextAttack = Time.time + attackCooldown;
-                        FindObjectOfType<AnimationController>().Attack();
+                        if (Time.time > nextAttack)
+                        {
+                            nextAttack = Time.time + attackCooldown;
+                            FindObjectOfType<AnimationController>().Attack();
+                        }
                     }
+                    
                 }
             }
         }

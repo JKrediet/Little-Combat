@@ -6,6 +6,9 @@ public class AnimationController : MonoBehaviour
 {
     public bool attack;
     private Animator anim;
+
+    public GameObject moveTool;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -23,11 +26,13 @@ public class AnimationController : MonoBehaviour
                 //pickup
                 if (Input.GetButton("Fire2"))
                 {
+                    moveTool.SetActive(true);
                     anim.SetInteger("PlayerState", 2);
                 }
                 //walk
                 else
                 {
+                    moveTool.SetActive(false);
                     anim.SetInteger("PlayerState", 1);
                 }
             }
@@ -35,11 +40,13 @@ public class AnimationController : MonoBehaviour
             {
                 if (Input.GetButton("Fire2"))
                 {
+                    moveTool.SetActive(true);
                     anim.SetInteger("PlayerState", 3);
                 }
                 //walk
                 else
                 {
+                    moveTool.SetActive(false);
                     StopMoving();
                 }
             }
