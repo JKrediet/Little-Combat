@@ -1095,7 +1095,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6220935613727589221, guid: 26808de457857d34e83e73077512f04b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 26808de457857d34e83e73077512f04b, type: 3}
 --- !u!1 &1385689791
 GameObject:
@@ -1352,6 +1353,7 @@ GameObject:
   - component: {fileID: 1646622810}
   - component: {fileID: 1646622809}
   - component: {fileID: 1646622813}
+  - component: {fileID: 1646622814}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1391,7 +1393,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f124cae38f966a94f8d87134fba3f55e, type: 2}
+  - {fileID: 2100000, guid: 4bdd5685204db5943a5c16b72dbeea42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1449,6 +1451,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 6
   health: 0
+--- !u!114 &1646622814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646622808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0467e2da02a7d499309bc4980ee7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 4bdd5685204db5943a5c16b72dbeea42, type: 2}
+  speed: 1
 --- !u!1 &1846356461
 GameObject:
   m_ObjectHideFlags: 0

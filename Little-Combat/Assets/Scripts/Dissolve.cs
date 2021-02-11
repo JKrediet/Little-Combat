@@ -4,31 +4,30 @@ using UnityEngine;
 
 public class Dissolve : MonoBehaviour
 {
-    public Shader dissolve;
-    public Renderer rend;
-    private float timeToDissolve;
-    private bool dissolveTrue;
+    private bool dissolve;
+    public Material mat;
+    public float speed = 1;
+    private float amount;
 
     private void Start()
     {
-        rend = GetComponentInChildren<Renderer>();
-        rend.material.shader = dissolve;
+        amount = 1;
+        mat.SetFloat("_CutoffHeight", amount);
     }
-    public void DissolveObject()
-    {
-        dissolveTrue = true;
-    }
+
     private void Update()
     {
-        if (dissolveTrue)
+        if (dissolve)
         {
-            timeToDissolve -= 0.1f * Time.deltaTime;
-            rend.material.SetFloat("_CutoffHeight", timeToDissolve); // defaut 1, 1 = full, -1 = empty
+            if (amount > -1)
+            {
+                amount -= speed * Time.deltaTime;
+                mat.SetFloat("_CutoffHeight", amount);
+            }
         }
-
-        if(Input.GetKeyDown(KeyCode.J))
-        {
-            dissolveTrue = true;
-        }
+    }
+    public void ActivateDissolve()
+    {
+        dissolve = true;
     }
 }
