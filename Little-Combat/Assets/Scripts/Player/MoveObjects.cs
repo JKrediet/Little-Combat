@@ -64,7 +64,6 @@ public class MoveObjects : MonoBehaviour
         // Shoot a raycast and check if it hit anything
         if (Physics.Raycast(transform.position, transform.forward, out _hit_Object, lineLength))
         {
-            CheckPlayerCollision();
             // if hits pushalbe object
             if (_hit_Object.transform.tag == "Pickup")
             {
@@ -181,6 +180,7 @@ public class MoveObjects : MonoBehaviour
         {
             StopMovingObjects();
             collisionPos = _hit.transform.position;
+            CheckPlayerCollision();
         }
         else
         {
