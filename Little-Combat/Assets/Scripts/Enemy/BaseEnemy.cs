@@ -1,84 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BaseEnemy : MonoBehaviour
 {
-    public float speed, gravity, jumpForce;
+    public float attackRange = 1, attackCooldown = 1;
+    private float targetDistance, nextAttack;
 
-    //privates/protected
-    protected Transform Player;
-    private CharacterController enemyController;
-    private Vector3 movement;
-    private float downForce;
-
-    //attacks
-    public float attackDisntance, damage;
-    private bool isAttacking;
+    private NavMeshAgent target;
+    private GameObject player;
 
     private void Start()
     {
-        enemyController = GetComponent<CharacterController>();
+        target = GetComponent<NavMeshAgent>();
+        player = FindObjectOfType<PlayerMovement>().gameObject;
     }
     private void Update()
     {
-        if (Player)
+        CheckDistance();
+        Movement();
+    }
+    private void CheckDistance()
+    {
+        targetDistance = Vector3.Distance(transform.position, target.transform.position);
+    }
+    private void Movement()
+    {
+        if (attackRange >= targetDistance)
         {
-            if(!isAttacking)
+            if(Time.time >= nextAttack)
             {
-                GoToTarget();
+                nextAttack = Time.time + attackCooldown;
+                Attack();
             }
-        }
-        Gravity();
-    }
-    private void OnTriggerEnter(Collider _enter)
-    {
-        if (_enter.tag == "Player")
-        {
-            Player = _enter.transform;
-        }
-    }
-    private void OnTriggerExit(Collider _exit)
-    {
-        if (_exit.tag == "Player")
-        {
-            Player = null;
-        }
-    }
-    protected virtual void GoToTarget()
-    {
-        //give direction
-        Vector3 lookAt = new Vector3(Player.position.x, 1.1f, Player.position.z);
-        transform.LookAt(lookAt);
-        //give movement
-        movement = transform.forward.normalized;
-        movement *= speed;
-        //move
-        enemyController.Move(movement * Time.deltaTime);
-
-        //check if target is in range (attackDistance)
-        float dist = Vector3.Distance(transform.position, Player.position);
-        if (dist < 3)
-        {
-            StartCoroutine(Attack());
-        }
-    }
-    public void Gravity()
-    {
-        if (enemyController.isGrounded)
-        {
-            
         }
         else
         {
-            downForce -= gravity * Time.deltaTime;
-            enemyController.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
+            target.SetDestination(player.transform.position);
         }
     }
-    protected virtual IEnumerator Attack()
+    protected virtual void Attack()
     {
-        isAttacking = true;
-        yield return new WaitForSeconds(1);
-        isAttacking = false;
+        //does attack!
+        print("Slap");
     }
 }

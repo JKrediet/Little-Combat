@@ -11,6 +11,7 @@ public class Dissolve : MonoBehaviour
 
     private void Start()
     {
+        mat = GetComponent<Renderer>().material;
         amount = 1;
         mat.SetFloat("_CutoffHeight", amount);
     }

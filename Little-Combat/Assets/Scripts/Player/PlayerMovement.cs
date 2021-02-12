@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed, gravity, jumpForce, minCrouchHeight, maxCrouchHeight, CameraRotationSpeed, playerDamage;
+    public float speed, gravity, jumpForce, CameraRotationSpeed, playerDamage;
     public Transform cameraReference, cameraFollow;
 
     //shitload aan testdingen, please no remove!
@@ -21,9 +21,6 @@ public class PlayerMovement : MonoBehaviour
     //attack
     public bool isAttacking;
     private float nextAttack, attackCooldown;
-
-    //movement collision check
-    private bool mayNotMoveForward;
 
     private void Start()
     {
