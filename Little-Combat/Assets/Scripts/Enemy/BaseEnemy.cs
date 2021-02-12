@@ -5,44 +5,71 @@ using UnityEngine.AI;
 
 public class BaseEnemy : MonoBehaviour
 {
-    public float attackRange = 1, attackCooldown = 1;
+    public float attackDamage;
+    public float attackRange = 2, attackCooldown = 1;
     private float targetDistance, nextAttack;
+    
+    //animation purpose
+    protected bool playerInRange, isAttacking;
+    protected Animator anim;
 
-    private NavMeshAgent target;
+    private NavMeshAgent agent;
     private GameObject player;
+    private Vector3 faceThisDirection;
 
     private void Start()
     {
-        target = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerMovement>().gameObject;
+        if(GetComponent<Animator>())
+        {
+            anim = GetComponent<Animator>();
+        }
     }
     private void Update()
     {
         CheckDistance();
         Movement();
+        AnimationThings();
     }
     private void CheckDistance()
     {
-        targetDistance = Vector3.Distance(transform.position, target.transform.position);
+        targetDistance = Vector3.Distance(transform.position, player.transform.position);
     }
     private void Movement()
     {
-        if (attackRange >= targetDistance)
+        if (!isAttacking)
         {
-            if(Time.time >= nextAttack)
+            if (attackRange >= targetDistance)
             {
-                nextAttack = Time.time + attackCooldown;
-                Attack();
+                playerInRange = true;
+                if (Time.time >= nextAttack)
+                {
+                    nextAttack = Time.time + attackCooldown;
+                    Attack();
+                }
             }
-        }
-        else
-        {
-            target.SetDestination(player.transform.position);
+            else
+            {
+                playerInRange = false;
+                agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+            }
         }
     }
     protected virtual void Attack()
     {
+        isAttacking = true;
         //does attack!
         print("Slap");
+    }
+    protected virtual void AnimationThings()
+    {
+        //boss 1
+    }
+
+    //comes from animation
+    public void DoneAttacking()
+    {
+        isAttacking = false;
     }
 }
