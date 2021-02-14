@@ -142,16 +142,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    private void OnCollisionEnter(Collision hit)
-    {
-        if (hit.transform.tag == "Pickup")
-        {
-            if (Input.GetButton("Fire2"))
-            {
-                //wekrt neit
-            }
-        }
-    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -60,7 +60,6 @@ public class BaseEnemy : MonoBehaviour
     {
         isAttacking = true;
         //does attack!
-        print("Slap");
     }
     protected virtual void AnimationThings()
     {

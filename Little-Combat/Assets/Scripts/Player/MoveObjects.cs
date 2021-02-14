@@ -27,12 +27,12 @@ public class MoveObjects : MonoBehaviour
     }
     void FixedUpdate()
     {
-        CollisionRaycast();
         if (!isHolding)
         {
             if (Input.GetButton("Fire2"))
             {
                 MoveObject();
+                CollisionRaycast();
             }
             else
             {
@@ -170,7 +170,7 @@ public class MoveObjects : MonoBehaviour
         {
             Vector3 currentPos = transform.position - transform.forward;
 
-            transform.localPosition = Vector3.Lerp(transform.position, currentPos, Time.deltaTime * 30);
+            transform.position = Vector3.Lerp(transform.position, currentPos, Time.deltaTime * 15);
         }
     }
     private void CollisionRaycast()
@@ -178,7 +178,7 @@ public class MoveObjects : MonoBehaviour
         RaycastHit _hit;
         if(Physics.Raycast(transform.position, transform.forward, out _hit, 0.5f, maskuuuuu))
         {
-            StopMovingObjects();
+            Unparent();
             collisionPos = _hit.transform.position;
             CheckPlayerCollision();
         }
