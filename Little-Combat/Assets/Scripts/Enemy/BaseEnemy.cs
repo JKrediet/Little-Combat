@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class BaseEnemy : MonoBehaviour
 {
     public float attackDamage;
-    public float attackRange = 2, attackCooldown = 1;
+    public float attackRange = 2, attackCooldown = 1, playerDetectionRange = 100;
     private float targetDistance, nextAttack;
     
     //animation purpose
@@ -25,6 +25,7 @@ public class BaseEnemy : MonoBehaviour
         {
             anim = GetComponent<Animator>();
         }
+        agent.isStopped = true;
 
         CheckDistance();
     }
@@ -35,51 +36,55 @@ public class BaseEnemy : MonoBehaviour
         AnimationThings();
     }
 
-    private void LateUpdate()
-    {
-    }
-
     private void CheckDistance()
     {
         targetDistance = Vector3.Distance(transform.position, player.transform.position);
+        if(targetDistance < playerDetectionRange)
+        {
+            playerInRange = true;
+        }
     }
 
     private void Movement()
     {
-        if (!isAttacking)
+        if (playerInRange)
         {
-            if (targetDistance <= attackRange)
+            if (!isAttacking)
             {
-                playerInRange = true;
-                if (Time.time >= nextAttack)
+                if (targetDistance <= attackRange)
                 {
-                    idle = false;
-                    nextAttack = Time.time + attackCooldown;
-                    Attack();
+                    if (Time.time >= nextAttack)
+                    {
+                        idle = false;
+                        nextAttack = Time.time + attackCooldown;
+                        Attack();
+                    }
+                    else
+                    {
+                        idle = true;
+                    }
                 }
                 else
                 {
-                    idle = true;
-                }
-            }
-            else
-            {
-                if (Time.time >= nextAttack)
-                {
-                    idle = false;
-                }
-                else
-                {
-                    idle = true;
-                }
-
-                playerInRange = false;
-                if (!idle)
-                {
-                    agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+                    if (Time.time >= nextAttack)
+                    {
+                        idle = false;
+                    }
+                    else
+                    {
+                        idle = true;
+                    }
+                    if (!idle)
+                    {
+                        agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+                    }
                 }
             }
         }
+    }
+    public void StartMoving()
+    {
+        agent.isStopped = false;
     }
     protected virtual void Attack()
     {

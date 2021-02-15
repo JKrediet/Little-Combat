@@ -13,6 +13,7 @@ public class Boss1 : BaseEnemy
     {
         anim.SetBool("_attack", isAttacking);
         anim.SetBool("isIdle", idle);
+        anim.SetBool("startFlex", playerInRange);
     }
 
     public void AttackHitbox()
@@ -36,7 +37,6 @@ public class Boss1 : BaseEnemy
             }
         }
     }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
