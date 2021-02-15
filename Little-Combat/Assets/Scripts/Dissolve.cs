@@ -25,6 +25,10 @@ public class Dissolve : MonoBehaviour
                 amount -= speed * Time.deltaTime;
                 mat.SetFloat("_CutoffHeight", amount);
             }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
     public void ActivateDissolve()

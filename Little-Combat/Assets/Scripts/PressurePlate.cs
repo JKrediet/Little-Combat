@@ -8,7 +8,7 @@ public class PressurePlate : MonoBehaviour
 
     protected GameObject tempSpawned;
 
-    protected float cooldown = 3, nextSpawn;
+    protected float cooldown = 1, nextSpawn;
 
     protected MeshRenderer render;
 

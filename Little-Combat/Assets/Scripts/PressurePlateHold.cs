@@ -35,7 +35,7 @@ public class PressurePlateHold : PressurePlate
 
             if (tempSpawned != null)
             {
-                Destroy(tempSpawned);
+                tempSpawned.GetComponent<Dissolve>().ActivateDissolve();
             }
         }
     }

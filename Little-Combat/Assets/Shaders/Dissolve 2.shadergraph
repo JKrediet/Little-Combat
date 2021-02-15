@@ -22,7 +22,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"40b2caf6-8afd-4ec0-9aba-0e2479f4dce3\"\n    },\n    \"m_Name\": \"CutoffHeight\",\n    \"m_DefaultReferenceName\": \"Vector1_C1A83695\",\n    \"m_OverrideReferenceName\": \"_CutoffHeight\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 1,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 1.0,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": -1.0,\n        \"y\": 1.0\n    }\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"40b2caf6-8afd-4ec0-9aba-0e2479f4dce3\"\n    },\n    \"m_Name\": \"CutoffHeight\",\n    \"m_DefaultReferenceName\": \"Vector1_C1A83695\",\n    \"m_OverrideReferenceName\": \"_CutoffHeight\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 1,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 0.0,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": -1.0,\n        \"y\": 1.0\n    }\n}"
         },
         {
             "typeInfo": {
