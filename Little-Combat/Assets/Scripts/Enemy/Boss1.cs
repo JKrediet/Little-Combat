@@ -12,7 +12,9 @@ public class Boss1 : BaseEnemy
     protected override void AnimationThings()
     {
         anim.SetBool("_attack", isAttacking);
+        anim.SetBool("isIdle", idle);
     }
+
     public void AttackHitbox()
     {
         //actual attack
@@ -21,6 +23,8 @@ public class Boss1 : BaseEnemy
         {
             if (collider.gameObject != gameObject)
             {
+                //Debug.Log(collider.transform.name);
+
                 if (collider.GetComponent<PlayerHealth>())
                 {
                     collider.GetComponent<PlayerHealth>().GiveDamage(attackDamage);
@@ -32,9 +36,10 @@ public class Boss1 : BaseEnemy
             }
         }
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        //Gizmos.DrawCube(transform.position + transform.forward * 2, new Vector3(2, 15, 2));
+        Gizmos.DrawCube(transform.position + transform.forward * 2, new Vector3(2, 15, 2));
     }
 }

@@ -10,7 +10,7 @@ public class BaseEnemy : MonoBehaviour
     private float targetDistance, nextAttack;
     
     //animation purpose
-    protected bool playerInRange, isAttacking;
+    protected bool playerInRange, isAttacking, idle;
     protected Animator anim;
 
     private NavMeshAgent agent;
@@ -25,34 +25,59 @@ public class BaseEnemy : MonoBehaviour
         {
             anim = GetComponent<Animator>();
         }
+
+        CheckDistance();
     }
     private void Update()
     {
-        CheckDistance();
         Movement();
+        CheckDistance();    
         AnimationThings();
     }
+
+    private void LateUpdate()
+    {
+    }
+
     private void CheckDistance()
     {
         targetDistance = Vector3.Distance(transform.position, player.transform.position);
     }
+
     private void Movement()
     {
         if (!isAttacking)
         {
-            if (attackRange >= targetDistance)
+            if (targetDistance <= attackRange)
             {
                 playerInRange = true;
                 if (Time.time >= nextAttack)
                 {
+                    idle = false;
                     nextAttack = Time.time + attackCooldown;
                     Attack();
+                }
+                else
+                {
+                    idle = true;
                 }
             }
             else
             {
+                if (Time.time >= nextAttack)
+                {
+                    idle = false;
+                }
+                else
+                {
+                    idle = true;
+                }
+
                 playerInRange = false;
-                agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+                if (!idle)
+                {
+                    agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+                }
             }
         }
     }
