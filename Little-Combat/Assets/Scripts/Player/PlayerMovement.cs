@@ -126,6 +126,10 @@ public class PlayerMovement : MonoBehaviour
         {
             downForce -= gravity * Time.deltaTime;
         }
+        else
+        {
+            downForce = gravity;
+        }
     }
     public void BasicAttack()
     {
