@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            downForce = gravity;
+            downForce = -gravity;
         }
     }
     public void BasicAttack()
