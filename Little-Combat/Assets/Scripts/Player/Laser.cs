@@ -11,8 +11,6 @@ public class Laser : MonoBehaviour
 
     public float lineLength;
 
-    public bool isContinues;
-
     private Transform cam;
 
     // Start is called before the first frame update
@@ -24,24 +22,7 @@ public class Laser : MonoBehaviour
     // Update is called every frame after update
     void LateUpdate()
     {
-        if (!isContinues)
-        {
-            if (Input.GetButton("Fire1"))
-            {
-                transform.forward = new Vector3(cam.forward.x, transform.forward.y, cam.forward.z);
-
-                // Shoot the laser
-                ShootLaser();
-            }
-            else
-            {
-                StopLaser();
-            }
-        }
-        else
-        {
-            ShootLaser();
-        }
+        ShootLaser();
     }
 
     private void ShootLaser()
