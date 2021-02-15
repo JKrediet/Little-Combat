@@ -170,7 +170,7 @@ public class MoveObjects : MonoBehaviour
         {
             Vector3 currentPos = transform.position - transform.forward;
 
-            transform.position = Vector3.Lerp(transform.position, currentPos, Time.deltaTime * 15);
+            transform.position = Vector3.Lerp(transform.position, currentPos, Time.deltaTime * 1);
         }
     }
     private void CollisionRaycast()
