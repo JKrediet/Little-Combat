@@ -8,6 +8,7 @@ public class AnimationController : MonoBehaviour
     private Animator anim;
 
     public GameObject moveTool;
+    public GameObject gunno;
 
     private void Start()
     {
@@ -72,6 +73,7 @@ public class AnimationController : MonoBehaviour
             attack = true;
             FindObjectOfType<PlayerMovement>().isAttacking = attack;
             anim.SetBool("IsAttacking", attack);
+            gunno.SetActive(true);
         }
     }
     public void ActualAttack()
@@ -84,9 +86,14 @@ public class AnimationController : MonoBehaviour
         attack = false;
         FindObjectOfType<PlayerMovement>().isAttacking = attack;
         anim.SetBool("IsAttacking", attack);
+        gunno.SetActive(false);
     }
     public void StopMoving()
     {
         anim.SetInteger("PlayerState", 0);
+    }
+    public void AimToggle(bool _value)
+    {
+        anim.SetBool("isAiming", _value);
     }
 }

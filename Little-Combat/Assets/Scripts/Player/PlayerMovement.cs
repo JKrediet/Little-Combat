@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cameraReference, cameraFollow;
 
     //shitload aan testdingen, please no remove!
-    public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup;
+    public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup, status_gun;
 
     //privates
     private Quaternion targetRotation;
@@ -47,13 +47,26 @@ public class PlayerMovement : MonoBehaviour
                     {
                         if (Time.time > nextAttack)
                         {
-                            nextAttack = Time.time + attackCooldown;
-                            FindObjectOfType<AnimationController>().Attack();
+                            if (status_gun)
+                            {
+                                nextAttack = Time.time + attackCooldown;
+                                GetComponent<MoveObjects>().FireGun();
+                            }
+                            else
+                            {
+                                nextAttack = Time.time + attackCooldown;
+                                FindObjectOfType<AnimationController>().Attack();
+                            }
                         }
                     }
-                    
                 }
             }
+        }
+        if(Input.GetButtonDown("Aim"))
+        {
+            status_gun = !status_gun;
+            FindObjectOfType<AnimationController>().AimToggle(status_gun);
+            cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
         }
     }
 
@@ -61,61 +74,64 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAttacking)
         {
-            //if not pushing something, use these movement controls
-            if (!status_Push)
+            if (!status_gun)
             {
-                //recieve input for playerdirection
-                if (controller.isGrounded)
+                //if not pushing something, use these movement controls
+                if (!status_Push)
                 {
-                    moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-                    //moveDir = transform.TransformDirection(moveDir);
-                    //rotate player to camera forward on input
-                    if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+                    //recieve input for playerdirection
+                    if (controller.isGrounded)
                     {
-                        speed = startSpeed;
-                        if (Input.GetButton("Fire2"))
+                        moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+                        //moveDir = transform.TransformDirection(moveDir);
+                        //rotate player to camera forward on input
+                        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
                         {
-                            speed = startSpeed / 2;
+                            speed = startSpeed;
+                            if (Input.GetButton("Fire2"))
+                            {
+                                speed = startSpeed / 2;
+                            }
+                            targetAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg + cameraReference.eulerAngles.y;
+                            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothBelocity, 0.05f);
+                            transform.rotation = Quaternion.Euler(0f, angle, 0f);
                         }
-                        targetAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg + cameraReference.eulerAngles.y;
-                        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothBelocity, 0.05f);
-                        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                        else
+                        {
+                            speed = 0;
+                        }
                     }
-                    else
-                    {
-                        speed = 0;
-                    }
+                    //movement
+                    movement = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                    controller.Move(movement * speed * Time.deltaTime);
+                    controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
+                    cameraFollow.position = transform.position;
                 }
-                //movement
-                movement = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                controller.Move(movement * speed * Time.deltaTime);
-                controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
-                cameraFollow.position = transform.position;
-            }
-            //push object
-            if (status_Push)
-            {
-                speed = startSpeed / 2;
+                //push object
+                if (status_Push)
+                {
+                    speed = startSpeed / 2;
 
-                //recieve input for playerdirection
-                moveDir = new Vector3(0, 0, Input.GetAxisRaw("Vertical")).normalized;
-                moveDir *= speed;
-                moveDir = transform.TransformDirection(moveDir);
+                    //recieve input for playerdirection
+                    moveDir = new Vector3(0, 0, Input.GetAxisRaw("Vertical")).normalized;
+                    moveDir *= speed;
+                    moveDir = transform.TransformDirection(moveDir);
 
-                
-                transform.Rotate(0, Input.GetAxisRaw("Horizontal"), 0, Space.Self);
 
-                //movement
-                controller.Move(moveDir / 2 * Time.deltaTime);
-                controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
-                cameraFollow.position = transform.position;
+                    transform.Rotate(0, Input.GetAxisRaw("Horizontal"), 0, Space.Self);
+
+                    //movement
+                    controller.Move(moveDir / 2 * Time.deltaTime);
+                    controller.Move(new Vector3(0, downForce, 0) * Time.deltaTime);
+                    cameraFollow.position = transform.position;
+                }
             }
         }
     }
     private void LateUpdate()
     {
         //set to camera forward
-        if (isHoldingLaser)
+        if (isHoldingLaser || status_gun)
         {
             transform.forward = new Vector3(cameraReference.forward.x, transform.forward.y, cameraReference.forward.z);
         }

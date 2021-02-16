@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveObjects : MonoBehaviour
 {
-    public float lineLength, collisionOffset = 0.2f;
+    public float lineLength, collisionOffset = 0.2f, damage;
     //pushable object reference
     public Transform objectDump, objectLocation;
     private Transform pushRef;
@@ -55,7 +55,7 @@ public class MoveObjects : MonoBehaviour
             pushRef.rotation = transform.rotation;
         }
     }
-
+    #region objects
     private void MoveObject()
     {
         // Save raycast data here
@@ -186,5 +186,27 @@ public class MoveObjects : MonoBehaviour
         {
             collisionPos = Vector3.zero;
         }
+    }
+    #endregion
+    public void FireGun()
+    {
+        if(pushRef == null)
+        {
+            RaycastHit _hit;
+            if (Physics.Raycast(transform.position, transform.forward, out _hit))
+            {
+                if (_hit.transform.GetComponent<EnemyHealth>())
+                {
+                    _hit.transform.GetComponent<EnemyHealth>().GiveDamage(damage);
+                    print("uwuuu");
+                }
+                print("uwu");
+            }
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, transform.forward * 100);
     }
 }
