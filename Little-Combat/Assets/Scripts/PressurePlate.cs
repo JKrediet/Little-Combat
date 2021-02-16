@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PressurePlate : MonoBehaviour
 {
@@ -45,6 +46,9 @@ public class PressurePlate : MonoBehaviour
                         {
                             nextSpawn = cooldown + Time.time;
                             tempSpawned = useFunctionFromThis.GetComponent<SpawnObject>().SpawnObjectIn();
+                        }else if (useFunctionFromThis.GetComponent<PlayableDirector>())
+                        {
+                            useFunctionFromThis.GetComponent<PlayableDirector>().Play();
                         }
                     }
                 }

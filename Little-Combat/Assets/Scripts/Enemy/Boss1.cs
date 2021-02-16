@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Boss1 : BaseEnemy
-{   
+{
+    public bool canBeDamaged = false;
+
     protected override void Attack()
     {
         base.Attack();
