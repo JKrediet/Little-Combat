@@ -8,6 +8,7 @@ public class AnimationController : MonoBehaviour
     private Animator anim;
 
     public GameObject moveTool;
+    public GameObject sword;
     public GameObject gunno;
 
     private void Start()
@@ -73,7 +74,7 @@ public class AnimationController : MonoBehaviour
             attack = true;
             FindObjectOfType<PlayerMovement>().isAttacking = attack;
             anim.SetBool("IsAttacking", attack);
-            gunno.SetActive(true);
+            sword.SetActive(true);
         }
     }
     public void ActualAttack()
@@ -86,7 +87,7 @@ public class AnimationController : MonoBehaviour
         attack = false;
         FindObjectOfType<PlayerMovement>().isAttacking = attack;
         anim.SetBool("IsAttacking", attack);
-        gunno.SetActive(false);
+        sword.SetActive(false);
     }
     public void StopMoving()
     {
@@ -95,5 +96,14 @@ public class AnimationController : MonoBehaviour
     public void AimToggle(bool _value)
     {
         anim.SetBool("isAiming", _value);
+        gunno.SetActive(_value);
+    }
+    public void GunAttack()
+    {
+        anim.SetBool("IsAttacking", true);
+    }
+    public void StopGunAttack()
+    {
+        anim.SetBool("IsAttacking", false);
     }
 }

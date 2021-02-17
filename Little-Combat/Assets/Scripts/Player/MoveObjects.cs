@@ -198,9 +198,7 @@ public class MoveObjects : MonoBehaviour
                 if (_hit.transform.GetComponent<EnemyHealth>())
                 {
                     _hit.transform.GetComponent<EnemyHealth>().GiveDamage(damage);
-                    print("uwuuu");
                 }
-                print("uwu");
             }
         }
     }

@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 nextAttack = Time.time + attackCooldown;
                                 GetComponent<MoveObjects>().FireGun();
+                                FindObjectOfType<AnimationController>().GunAttack();
                             }
                             else
                             {
