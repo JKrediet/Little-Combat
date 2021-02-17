@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class BaseEnemy : MonoBehaviour
 {
+    public float maxHealth;
+
     public float attackDamage;
     public float attackRange = 2, attackCooldown = 1, playerDetectionRange = 100;
     private float targetDistance, nextAttack;
@@ -13,12 +15,15 @@ public class BaseEnemy : MonoBehaviour
     protected bool playerInRange, isAttacking, idle;
     protected Animator anim;
 
-    private NavMeshAgent agent;
+    protected NavMeshAgent agent;
     private GameObject player;
     private Vector3 faceThisDirection;
+    protected float health;
 
     private void Start()
     {
+        health = maxHealth;
+
         agent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerMovement>().gameObject;
         if(GetComponent<Animator>())
@@ -29,8 +34,14 @@ public class BaseEnemy : MonoBehaviour
 
         CheckDistance();
     }
+
     private void Update()
     {
+        if (Input.GetKeyDown("k"))
+        {
+            health = 0f;
+        }
+
         Movement();
         CheckDistance();    
         AnimationThings();

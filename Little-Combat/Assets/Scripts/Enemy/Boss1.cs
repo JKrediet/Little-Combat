@@ -16,6 +16,12 @@ public class Boss1 : BaseEnemy
         anim.SetBool("_attack", isAttacking);
         anim.SetBool("isIdle", idle);
         anim.SetBool("startFlex", playerInRange);
+
+        if (health <= 0f)
+        {
+            agent.isStopped = true;
+            anim.SetBool("isDead", true);
+        }
     }
 
     public void AttackHitbox()
