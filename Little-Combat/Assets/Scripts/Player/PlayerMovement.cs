@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed, gravity, jumpForce, CameraRotationSpeed, playerDamage;
+    public float speed, gravity, jumpForce, CameraRotationSpeed, playerDamage, attackCooldown;
     public Transform cameraReference, cameraFollow;
 
     //shitload aan testdingen, please no remove!
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     //attack
     public bool isAttacking;
-    private float nextAttack, attackCooldown;
+    private float nextAttack;
 
     private void Start()
     {
@@ -37,37 +37,44 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (!Input.GetButton("Fire2"))
         {
-            if (controller.isGrounded)
+            if (Input.GetButtonDown("Fire1"))
             {
-                if (!status_Push)
+                if (controller.isGrounded)
                 {
-                    if (!isHoldingPickup)
+                    if (!status_Push)
                     {
-                        if (Time.time > nextAttack)
+                        if (!isHoldingPickup)
                         {
-                            if (status_gun)
+                            if (Time.time > nextAttack)
                             {
-                                nextAttack = Time.time + attackCooldown;
-                                GetComponent<MoveObjects>().FireGun();
-                                FindObjectOfType<AnimationController>().GunAttack();
-                            }
-                            else
-                            {
-                                nextAttack = Time.time + attackCooldown;
-                                FindObjectOfType<AnimationController>().Attack();
+                                if (status_gun)
+                                {
+                                    nextAttack = Time.time + attackCooldown;
+                                    GetComponent<MoveObjects>().FireGun();
+                                    FindObjectOfType<AnimationController>().GunAttack();
+                                }
+                                else
+                                {
+                                    nextAttack = Time.time + attackCooldown;
+                                    FindObjectOfType<AnimationController>().Attack();
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        if(Input.GetButtonDown("Aim"))
-        {
-            status_gun = !status_gun;
-            FindObjectOfType<AnimationController>().AimToggle(status_gun);
-            cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
+            if (Input.GetButtonDown("Aim"))
+            {
+                if (!isAttacking)
+                {
+                    status_gun = !status_gun;
+                    FindObjectOfType<AnimationController>().AimToggle(status_gun);
+                    cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
+                    GetComponent<MoveObjects>().isHoldingGun = !status_gun;
+                }
+            }
         }
     }
 
@@ -162,13 +169,5 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * 0.6f;
-        Gizmos.DrawRay(transform.position, direction);
-
-        Gizmos.DrawSphere(transform.position + transform.forward, 0.5f);
     }
 }

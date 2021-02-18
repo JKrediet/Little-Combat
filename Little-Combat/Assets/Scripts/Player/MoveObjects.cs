@@ -6,12 +6,13 @@ public class MoveObjects : MonoBehaviour
 {
     public float lineLength, collisionOffset = 0.2f, damage;
     //pushable object reference
-    public Transform objectDump, objectLocation;
+    public Transform objectDump, objectLocation, gunReference;
     private Transform pushRef;
     private CharacterController controller;
-    public bool putObjectInPos, isHolding;
+    public bool putObjectInPos, isHolding, isHoldingGun;
     private Vector3 pos;
     public LayerMask maskuuuuu;
+    public LineRenderer line;
 
     //playercollision
     //privates
@@ -29,15 +30,18 @@ public class MoveObjects : MonoBehaviour
     {
         if (!isHolding)
         {
-            if (Input.GetButton("Fire2"))
+            if (!isHoldingGun)
             {
-                MoveObject();
-                CollisionRaycast();
-            }
-            else
-            {
-                isHolding = true;
-                StopMovingObjects();
+                if (Input.GetButton("Fire2"))
+                {
+                    MoveObject();
+                    CollisionRaycast();
+                }
+                else
+                {
+                    isHolding = true;
+                    StopMovingObjects();
+                }
             }
         }
         if (pushRef)
@@ -193,18 +197,17 @@ public class MoveObjects : MonoBehaviour
         if(pushRef == null)
         {
             RaycastHit _hit;
-            if (Physics.Raycast(transform.position, transform.forward, out _hit))
+            if (Physics.Raycast(gunReference.position, transform.forward, out _hit))
             {
+                LineRenderer tempLine = Instantiate(line);
+                tempLine.SetPosition(0, gunReference.position);
+                tempLine.SetPosition(1, _hit.point);
+                Destroy(tempLine, 0.1f);
                 if (_hit.transform.GetComponent<EnemyHealth>())
                 {
                     _hit.transform.GetComponent<EnemyHealth>().GiveDamage(damage);
                 }
             }
         }
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.forward * 100);
     }
 }
