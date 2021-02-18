@@ -1,0 +1,1765 @@
+{
+  "pack": {
+    "_id": "goddess-temple",
+    "name": "Goddess Temple"
+  },
+  "name": "Volcanic Dolerite Cliff",
+  "tags": [
+    "cliff",
+    "cracked",
+    "smooth",
+    "multicolor",
+    "rock",
+    "archviz"
+  ],
+  "brushes": [
+    {
+      "contentLength": 67134628,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_001.tif"
+    },
+    {
+      "contentLength": 67134380,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_0010.tif"
+    },
+    {
+      "contentLength": 67134716,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_0011.tif"
+    },
+    {
+      "contentLength": 67134312,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_0012.tif"
+    },
+    {
+      "contentLength": 67134584,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_002.tif"
+    },
+    {
+      "contentLength": 67134816,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_003.tif"
+    },
+    {
+      "contentLength": 67134456,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_004.tif"
+    },
+    {
+      "contentLength": 67134780,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_005.tif"
+    },
+    {
+      "contentLength": 67134960,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_006.tif"
+    },
+    {
+      "contentLength": 67134748,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_007.tif"
+    },
+    {
+      "contentLength": 67134604,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_008.tif"
+    },
+    {
+      "contentLength": 67134336,
+      "uri": "Aset_rock_volcanic_X_qkofQ_Brush_009.tif"
+    }
+  ],
+  "previews": {
+    "images": [
+      {
+        "contentLength": 1070047,
+        "resolution": "1185x400",
+        "uri": "qkofQ_Thumb_HighPoly.png",
+        "tags": [
+          "thumb",
+          "highpoly",
+          "highpoly"
+        ]
+      },
+      {
+        "contentLength": 3582462,
+        "resolution": "2370x800",
+        "uri": "qkofQ_Thumb_HighPoly_Retina.png",
+        "tags": [
+          "preview",
+          "retina"
+        ]
+      },
+      {
+        "contentLength": 1522,
+        "resolution": "71x24",
+        "uri": "i96nzNZe1dXueWpI4kC71d1SpumPa5tf79drf7xfj/fzyJ283O95mf533e889Pm838vyeX169CuiuY1r+Lo9jk3W97HLvu/r/vgLxPF47tu6ynVdc3iEFhdRLedZW3dVbS6lFG1aXZvE9Xm934/78ThYv+k913kOq1pMxA2M0NO1FjNwegRArZ6l1FJPXopV58BrrBKipS6/gN7SLGI4D3a3ctZamoZUjaFcojufay7gaitVzUyt2egh5kXXdVm3Y7oVDnTx5q2Hn6xEkkoJGl2lX+68hU81a7wz5WZppUtDvPlqQtHbtEAYoAhpMvwLU3VYEgBOOkW00sCCcEkupXip3s7vHd5N2ATn1jQlTBUUWZJQKRABTZOAmLRmnOQeVSUGBxao5x1gUYcDCA6Ek7jWRvHoAyPt3bISiIu0JMbtElGaWR9DeLb33oyToTdC6xOcoo4hWVvvAyXQMxleV4z0RVOc1gdUmvWe2qS8kHc5zybg9fU+3XLn60dWB9viI7I4cnINZEv5Wp6RpZBMM2wSa2lrOYmH9LFN0429yHBoT9e/X/D9ecrIhdCwMawEqimFjTDnr2UBV+sUrgqOdxkCbtHgu1ItSGz6Zlmm9KBKcLAO8wJBkAqBi1Gwzeaapy/gwAuXqbhf8zyr9tGvjtpqXr2TD8WAVuiaQZeAFaCeCU4SUQuRqj8mkUxEnuh9pKo4gtw1Y0XSsQdJWjpjo8E6NbcknMY2BQyC6tPa6Sys69/+8Yw9Dgvi1pq1WHBnPk1MR2Qg8Vuun6hZls6OPqcV9kFZ0cAv9JmF/MSnFCwidakvaSgg0s8F688C83SYncj/9D2dikGvgjNmzPVObIx4ZkTciYiiT/k24AhGwBiZRgRXnwefxMFZyathsGWPj3nGaEJ3cXDNN6gKQ5wAxzpx9gwGldNsTCh8Tz3XfdpEMx6D6juKBLdioDMBFGEYPwChl6bkWcRlJ5Xx6siQBUIo5g84iNVSvUjlajoHYSYSvvgA9kJ4QRCC9h1gJQ0d39CfZ/f0lX7f0lW0yJIZdtHQlVyeOUSxlWYf2WdzNsnAHrJFCNmYx7jWZdmXVnW7T89t25dbvW37/tper896E6aEZj6+k6N+ewrX6XD6J8fGza/P+nof95/hfH8+fg/pf8f1dD+O5/EE+7Zsy6Ic8Hzuubge+/54HNPjuP/31+cfUCpoHIgJrt0AAAAASUVORK5CYII=",
+        "tags": [
+          "thumb",
+          "highpoly",
+          "tiny"
+        ]
+      },
+      {
+        "contentLength": 196706,
+        "resolution": "1185x400",
+        "uri": "qkofQ_Thumb_HighPoly_thumb.jpg",
+        "tags": [
+          "thumb",
+          "highpoly",
+          "highpoly",
+          "jpeg"
+        ]
+      },
+      {
+        "contentLength": 584284,
+        "resolution": "2370x800",
+        "uri": "qkofQ_Thumb_HighPoly_Retina_preview.jpg",
+        "tags": [
+          "preview",
+          "retina",
+          "jpeg"
+        ]
+      },
+      {
+        "contentLength": 584100,
+        "resolution": "2370x800",
+        "uri": "qkofQ_Thumb_HighPoly_Retina_thumb_retina.jpg",
+        "tags": [
+          "thumb",
+          "retina",
+          "jpeg"
+        ]
+      },
+      {
+        "contentLength": 480132,
+        "resolution": "2133x720",
+        "uri": "qkofQ_Thumb_HighPoly_Retina_sp.jpg",
+        "tags": [
+          "jpeg",
+          "sidepanel"
+        ]
+      }
+    ],
+    "relativeSize": "2x1"
+  },
+  "environment": {
+    "biome": "temperate-forest",
+    "region": "Oceania"
+  },
+  "json": {
+    "contentLength": 40721,
+    "uri": "qkofQ.json"
+  },
+  "points": 4,
+  "meta": [
+    {
+      "key": "length",
+      "name": "Length",
+      "value": "11.04m"
+    },
+    {
+      "key": "width",
+      "name": "Width",
+      "value": "2.6m"
+    },
+    {
+      "key": "height",
+      "name": "Height",
+      "value": "3.76m"
+    },
+    {
+      "key": "texelDensity",
+      "name": "Texel Density",
+      "value": "0 px/m"
+    },
+    {
+      "key": "assembly",
+      "name": "Assembly",
+      "value": "False"
+    },
+    {
+      "key": "color",
+      "name": "Color",
+      "value": "Grey"
+    },
+    {
+      "key": "iteration",
+      "name": "Iteration Number",
+      "value": "%%iteration%%"
+    },
+    {
+      "key": "set",
+      "name": "Set Toggle",
+      "value": "True"
+    },
+    {
+      "key": "setname",
+      "name": "Set Name",
+      "value": "Lava Field"
+    },
+    {
+      "key": "points",
+      "name": "Points",
+      "value": 10
+    },
+    {
+      "key": "isScaleFixed",
+      "name": "Is scale fixed",
+      "value": "true"
+    }
+  ],
+  "categories": [
+    "3d",
+    "rock",
+    "volcanic"
+  ],
+  "components": [
+    {
+      "minIntensity": 49,
+      "name": "Normal",
+      "colorSpace": "Linear",
+      "maxIntensity": 222,
+      "type": "normal",
+      "uris": [
+        {
+          "physicalSize": "1x1",
+          "resolutions": [
+            {
+              "resolution": "8192x8192",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 207510387,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD0.exr",
+                  "lodType": "lod",
+                  "tris": 29027
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 86830677,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD0.jpg",
+                  "lodType": "lod",
+                  "tris": 29027
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 200552308,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD1.exr",
+                  "lodType": "lod",
+                  "tris": 14513
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 69067649,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD1.jpg",
+                  "lodType": "lod",
+                  "tris": 14513
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 201622814,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD2.exr",
+                  "lodType": "lod",
+                  "tris": 7256
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 69735885,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD2.jpg",
+                  "lodType": "lod",
+                  "tris": 7256
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 202217856,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD3.exr",
+                  "lodType": "lod",
+                  "tris": 5442
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 69840920,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD3.jpg",
+                  "lodType": "lod",
+                  "tris": 5442
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 202570557,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD4.exr",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 69936651,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD4.jpg",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 202873795,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD5.exr",
+                  "lodType": "lod",
+                  "tris": 3059
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 69907743,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Normal_LOD5.jpg",
+                  "lodType": "lod",
+                  "tris": 3059
+                }
+              ]
+            },
+            {
+              "resolution": "4096x4096",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 57442415,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD0.exr",
+                  "lodType": "lod",
+                  "tris": 29027
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 26225847,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD0.jpg",
+                  "lodType": "lod",
+                  "tris": 29027
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 57274814,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD1.exr",
+                  "lodType": "lod",
+                  "tris": 14513
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 24845080,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD1.jpg",
+                  "lodType": "lod",
+                  "tris": 14513
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 57538005,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD2.exr",
+                  "lodType": "lod",
+                  "tris": 7256
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 24745312,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD2.jpg",
+                  "lodType": "lod",
+                  "tris": 7256
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 57687058,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD3.exr",
+                  "lodType": "lod",
+                  "tris": 5442
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 24674421,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD3.jpg",
+                  "lodType": "lod",
+                  "tris": 5442
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 57763295,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD4.exr",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 24595504,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD4.jpg",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 57837791,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD5.exr",
+                  "lodType": "lod",
+                  "tris": 3059
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 24504923,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Normal_LOD5.jpg",
+                  "lodType": "lod",
+                  "tris": 3059
+                }
+              ]
+            },
+            {
+              "resolution": "2048x2048",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 15321653,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD0.exr",
+                  "lodType": "lod",
+                  "tris": 29027
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 7230619,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD0.jpg",
+                  "lodType": "lod",
+                  "tris": 29027
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 15470552,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD1.exr",
+                  "lodType": "lod",
+                  "tris": 14513
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 7149996,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD1.jpg",
+                  "lodType": "lod",
+                  "tris": 14513
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 15551525,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD2.exr",
+                  "lodType": "lod",
+                  "tris": 7256
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 7137579,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD2.jpg",
+                  "lodType": "lod",
+                  "tris": 7256
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 15594556,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD3.exr",
+                  "lodType": "lod",
+                  "tris": 5442
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 7117772,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD3.jpg",
+                  "lodType": "lod",
+                  "tris": 5442
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 15619497,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD4.exr",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 7100488,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD4.jpg",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 15641175,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD5.exr",
+                  "lodType": "lod",
+                  "tris": 3059
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 7079221,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Normal_LOD5.jpg",
+                  "lodType": "lod",
+                  "tris": 3059
+                }
+              ]
+            },
+            {
+              "resolution": "1024x1024",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 4035769,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD0.exr",
+                  "lodType": "lod",
+                  "tris": 29027
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 1975523,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD0.jpg",
+                  "lodType": "lod",
+                  "tris": 29027
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 4097579,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD1.exr",
+                  "lodType": "lod",
+                  "tris": 14513
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 1974159,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD1.jpg",
+                  "lodType": "lod",
+                  "tris": 14513
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 4120042,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD2.exr",
+                  "lodType": "lod",
+                  "tris": 7256
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 1976796,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD2.jpg",
+                  "lodType": "lod",
+                  "tris": 7256
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 4135529,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD3.exr",
+                  "lodType": "lod",
+                  "tris": 5442
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 1975828,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD3.jpg",
+                  "lodType": "lod",
+                  "tris": 5442
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 4140529,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD4.exr",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 1974070,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD4.jpg",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 4148481,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD5.exr",
+                  "lodType": "lod",
+                  "tris": 3059
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 1970093,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Normal_LOD5.jpg",
+                  "lodType": "lod",
+                  "tris": 3059
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "averageColor": "#8382F0"
+    },
+    {
+      "minIntensity": 0,
+      "name": "Bump",
+      "colorSpace": "Linear",
+      "maxIntensity": 255,
+      "type": "bump",
+      "uris": [
+        {
+          "physicalSize": "1x1",
+          "resolutions": [
+            {
+              "resolution": "8192x8192",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 104322988,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Bump.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 18326991,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Bump.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "4096x4096",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 55314682,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Bump.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 7046712,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Bump.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "2048x2048",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 15447435,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Bump.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 2487825,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Bump.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "1024x1024",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 4101963,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Bump.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 808290,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Bump.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "averageColor": "#808080"
+    },
+    {
+      "minIntensity": 0,
+      "name": "Gloss",
+      "colorSpace": "Linear",
+      "maxIntensity": 91,
+      "type": "gloss",
+      "uris": [
+        {
+          "physicalSize": "1x1",
+          "resolutions": [
+            {
+              "resolution": "8192x8192",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 113329555,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Gloss.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 35535499,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Gloss.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "4096x4096",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 57027703,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Gloss.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 8285642,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Gloss.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "2048x2048",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 15181227,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Gloss.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 1907623,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Gloss.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "1024x1024",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 4030957,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Gloss.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 483616,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Gloss.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "averageColor": "#383838"
+    },
+    {
+      "minIntensity": 66,
+      "name": "Displacement",
+      "colorSpace": "Linear",
+      "maxIntensity": 175,
+      "type": "displacement",
+      "uris": [
+        {
+          "physicalSize": "1x1",
+          "resolutions": [
+            {
+              "resolution": "8192x8192",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 78224581,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Displacement.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 15672495,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Displacement.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "4096x4096",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 27408177,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Displacement.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 4981072,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Displacement.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "2048x2048",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 8246065,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Displacement.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 1540244,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Displacement.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "1024x1024",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 2519994,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Displacement.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 501481,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Displacement.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "averageColor": "#818181"
+    },
+    {
+      "minIntensity": 163,
+      "name": "Roughness",
+      "colorSpace": "Linear",
+      "maxIntensity": 255,
+      "type": "roughness",
+      "uris": [
+        {
+          "physicalSize": "1x1",
+          "resolutions": [
+            {
+              "resolution": "8192x8192",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 90055809,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Roughness.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 34948580,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Roughness.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "4096x4096",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 53380889,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Roughness.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 8136773,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Roughness.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "2048x2048",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 14223006,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Roughness.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 1866254,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Roughness.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "1024x1024",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 3783768,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Roughness.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 474191,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Roughness.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "averageColor": "#C8C8C8"
+    },
+    {
+      "minIntensity": 0,
+      "name": "Cavity",
+      "colorSpace": "sRGB",
+      "maxIntensity": 255,
+      "type": "cavity",
+      "uris": [
+        {
+          "physicalSize": "1x1",
+          "resolutions": [
+            {
+              "resolution": "8192x8192",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 93400435,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Cavity.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 33094580,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Cavity.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "4096x4096",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 54590266,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Cavity.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 9162080,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Cavity.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "2048x2048",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 14697690,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Cavity.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 2299763,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Cavity.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "1024x1024",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 3913063,
+                  "bitDepth": 32,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Cavity.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 600584,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Cavity.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "averageColor": "#D8D8D8"
+    },
+    {
+      "minIntensity": 0,
+      "name": "Specular",
+      "colorSpace": "sRGB",
+      "maxIntensity": 6,
+      "type": "specular",
+      "uris": [
+        {
+          "physicalSize": "1x1",
+          "resolutions": [
+            {
+              "resolution": "8192x8192",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 198755912,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Specular.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 17893830,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Specular.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "4096x4096",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 53044765,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Specular.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 5181116,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Specular.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "2048x2048",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 13395113,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Specular.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 1286093,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Specular.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "1024x1024",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 3375092,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Specular.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 335372,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Specular.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "averageColor": "#030303"
+    },
+    {
+      "minIntensity": 48,
+      "name": "Normalbump",
+      "colorSpace": "sRGB",
+      "maxIntensity": 214,
+      "type": "normalbump",
+      "uris": [
+        {
+          "physicalSize": "1x1",
+          "resolutions": [
+            {
+              "resolution": "8192x8192",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 204163898,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_NormalBump.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 84415674,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_NormalBump.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "4096x4096",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 56802918,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_NormalBump.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 25574583,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_NormalBump.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "2048x2048",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 15143081,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_NormalBump.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 7023632,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_NormalBump.jpg"
+                }
+              ]
+            },
+            {
+              "resolution": "1024x1024",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 3947300,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_NormalBump.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 1870500,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_NormalBump.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "averageColor": "#8383F3"
+    },
+    {
+      "minIntensity": 0,
+      "name": "Albedo",
+      "colorSpace": "sRGB",
+      "maxIntensity": 64,
+      "type": "albedo",
+      "uris": [
+        {
+          "physicalSize": "1x1",
+          "resolutions": [
+            {
+              "resolution": "8192x8192",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 239596637,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Albedo.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 40724573,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Albedo.jpg"
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 227571782,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Albedo_LOD4.exr",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 33123788,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Albedo_LOD4.jpg",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 227148535,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Albedo_LOD5.exr",
+                  "lodType": "lod",
+                  "tris": 3059
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 33243186,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_8K_Albedo_LOD5.jpg",
+                  "lodType": "lod",
+                  "tris": 3059
+                }
+              ]
+            },
+            {
+              "resolution": "4096x4096",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 63931199,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Albedo.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 11951178,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Albedo.jpg"
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 63019435,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Albedo_LOD4.exr",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 11176528,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Albedo_LOD4.jpg",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 62898945,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Albedo_LOD5.exr",
+                  "lodType": "lod",
+                  "tris": 3059
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 11149823,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_4K_Albedo_LOD5.jpg",
+                  "lodType": "lod",
+                  "tris": 3059
+                }
+              ]
+            },
+            {
+              "resolution": "2048x2048",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 16433964,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Albedo.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 3296744,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Albedo.jpg"
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 16459489,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Albedo_LOD4.exr",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 3212415,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Albedo_LOD4.jpg",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 16435923,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Albedo_LOD5.exr",
+                  "lodType": "lod",
+                  "tris": 3059
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 3205862,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_2K_Albedo_LOD5.jpg",
+                  "lodType": "lod",
+                  "tris": 3059
+                }
+              ]
+            },
+            {
+              "resolution": "1024x1024",
+              "formats": [
+                {
+                  "mimeType": "image/x-exr",
+                  "contentLength": 4230063,
+                  "bitDepth": 16,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Albedo.exr"
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "contentLength": 931135,
+                  "bitDepth": 8,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Albedo.jpg"
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 4246265,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Albedo_LOD4.exr",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 916131,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Albedo_LOD4.jpg",
+                  "lodType": "lod",
+                  "tris": 4081
+                },
+                {
+                  "mimeType": "image/x-exr",
+                  "bitDepth": 16,
+                  "contentLength": 4240063,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Albedo_LOD5.exr",
+                  "lodType": "lod",
+                  "tris": 3059
+                },
+                {
+                  "mimeType": "image/jpeg",
+                  "bitDepth": 8,
+                  "contentLength": 914393,
+                  "uri": "Aset_rock_volcanic_X_qkofQ_1K_Albedo_LOD5.jpg",
+                  "lodType": "lod",
+                  "tris": 3059
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "averageColor": "#13100C"
+    }
+  ],
+  "references": [],
+  "referencePreviews": {
+    "models": [
+      {
+        "mimeType": "application/x-abc",
+        "contentLength": 2393847,
+        "type": "lod",
+        "uri": ""
+      },
+      {
+        "mimeType": "application/x-fbx",
+        "contentLength": 1553728,
+        "type": "lod",
+        "uri": ""
+      },
+      {
+        "mimeType": "application/x-obj",
+        "contentLength": 5935629,
+        "type": "lod",
+        "uri": ""
+      },
+      {
+        "mimeType": "application/x-abc",
+        "contentLength": 1200487,
+        "type": "lod",
+        "uri": ""
+      },
+      {
+        "mimeType": "application/x-fbx",
+        "contentLength": 836656,
+        "type": "lod",
+        "uri": ""
+      },
+      {
+        "mimeType": "application/x-obj",
+        "contentLength": 2932439,
+        "type": "lod",
+        "uri": ""
+      }
+    ],
+    "maps": [
+      {
+        "mimeType": "image/jpeg",
+        "resolution": "1024x1024",
+        "contentLength": 1975523,
+        "type": "normal",
+        "uri": ""
+      },
+      {
+        "mimeType": "image/jpeg",
+        "resolution": "1024x1024",
+        "contentLength": 1974159,
+        "type": "normal",
+        "uri": ""
+      },
+      {
+        "mimeType": "image/jpeg",
+        "resolution": "1024x1024",
+        "contentLength": 808290,
+        "type": "bump",
+        "uri": ""
+      },
+      {
+        "mimeType": "image/jpeg",
+        "resolution": "1024x1024",
+        "contentLength": 483616,
+        "type": "gloss",
+        "uri": ""
+      },
+      {
+        "mimeType": "image/jpeg",
+        "resolution": "1024x1024",
+        "contentLength": 501481,
+        "type": "displacement",
+        "uri": ""
+      },
+      {
+        "mimeType": "image/jpeg",
+        "resolution": "1024x1024",
+        "contentLength": 474191,
+        "type": "roughness",
+        "uri": ""
+      },
+      {
+        "mimeType": "image/jpeg",
+        "resolution": "1024x1024",
+        "contentLength": 600584,
+        "type": "cavity",
+        "uri": ""
+      },
+      {
+        "mimeType": "image/jpeg",
+        "resolution": "1024x1024",
+        "contentLength": 335372,
+        "type": "specular",
+        "uri": ""
+      },
+      {
+        "mimeType": "image/jpeg",
+        "resolution": "1024x1024",
+        "contentLength": 1870500,
+        "type": "normalbump",
+        "uri": ""
+      },
+      {
+        "mimeType": "image/jpeg",
+        "resolution": "1024x1024",
+        "contentLength": 931135,
+        "type": "albedo",
+        "uri": ""
+      }
+    ]
+  },
+  "properties": [
+    {
+      "key": "mesh type",
+      "value": "open"
+    },
+    {
+      "key": "size",
+      "value": "extraLarge"
+    }
+  ],
+  "averageColor": "#13100C",
+  "meshes": [
+    {
+      "type": "lod",
+      "uris": [
+        {
+          "mimeType": "application/x-abc",
+          "contentLength": 603087,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD2.abc"
+        },
+        {
+          "mimeType": "application/x-fbx",
+          "contentLength": 426064,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD2.fbx"
+        },
+        {
+          "mimeType": "application/x-obj",
+          "contentLength": 1458398,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD2.obj"
+        }
+      ],
+      "tris": 7256
+    },
+    {
+      "type": "lod",
+      "uris": [
+        {
+          "mimeType": "application/x-abc",
+          "contentLength": 453599,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD3.abc"
+        },
+        {
+          "mimeType": "application/x-fbx",
+          "contentLength": 316432,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD3.fbx"
+        },
+        {
+          "mimeType": "application/x-obj",
+          "contentLength": 1088858,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD3.obj"
+        }
+      ],
+      "tris": 5442
+    },
+    {
+      "type": "lod",
+      "uris": [
+        {
+          "mimeType": "application/x-abc",
+          "contentLength": 2393847,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD0.abc"
+        },
+        {
+          "mimeType": "application/x-fbx",
+          "contentLength": 1553728,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD0.fbx"
+        },
+        {
+          "mimeType": "application/x-obj",
+          "contentLength": 5935629,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD0.obj"
+        }
+      ],
+      "tris": 29027
+    },
+    {
+      "type": "lod",
+      "uris": [
+        {
+          "mimeType": "application/x-abc",
+          "contentLength": 1200487,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD1.abc"
+        },
+        {
+          "mimeType": "application/x-fbx",
+          "contentLength": 836656,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD1.fbx"
+        },
+        {
+          "mimeType": "application/x-obj",
+          "contentLength": 2932439,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD1.obj"
+        }
+      ],
+      "tris": 14513
+    },
+    {
+      "type": "original",
+      "uris": [
+        {
+          "mimeType": "application/x-abc",
+          "contentLength": 81936759,
+          "uri": "Aset_rock_volcanic_X_qkofQ_High.abc"
+        },
+        {
+          "mimeType": "application/x-fbx",
+          "contentLength": 58758864,
+          "uri": "Aset_rock_volcanic_X_qkofQ_High.fbx"
+        },
+        {
+          "mimeType": "application/x-obj",
+          "contentLength": 217606501,
+          "uri": "Aset_rock_volcanic_X_qkofQ_High.obj"
+        }
+      ]
+    },
+    {
+      "type": "lod",
+      "uris": [
+        {
+          "mimeType": "application/x-abc",
+          "contentLength": 341527,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD4.abc"
+        },
+        {
+          "mimeType": "application/x-fbx",
+          "contentLength": 233712,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD4.fbx"
+        },
+        {
+          "mimeType": "application/x-obj",
+          "contentLength": 813087,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD4.obj"
+        }
+      ],
+      "tris": 4081
+    },
+    {
+      "type": "lod",
+      "uris": [
+        {
+          "mimeType": "application/x-abc",
+          "contentLength": 257255,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD5.abc"
+        },
+        {
+          "mimeType": "application/x-fbx",
+          "contentLength": 171424,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD5.fbx"
+        },
+        {
+          "mimeType": "application/x-obj",
+          "contentLength": 606103,
+          "uri": "Aset_rock_volcanic_X_qkofQ_LOD5.obj"
+        }
+      ],
+      "tris": 3059
+    },
+    {
+      "type": "zbrush",
+      "uris": [
+        {
+          "mimeType": "application/x-ztl",
+          "contentLength": 270767470,
+          "uri": "Aset_rock_volcanic_X_qkofQ_ZTool.ztl"
+        }
+      ]
+    }
+  ],
+  "assetCategories": {
+    "3D asset": {
+      "Nature": {
+        "Rock": {
+          "cliff": {},
+          "volcanic": {}
+        }
+      }
+    }
+  },
+  "semanticTags": {
+    "subject_matter": "nature",
+    "name": "Volcanic Dolerite Cliff",
+    "asset_type": "3D asset",
+    "contains": [
+      "cliff"
+    ],
+    "theme": [
+      "rough",
+      " cracked",
+      " jagged",
+      " lava",
+      " volcanic",
+      "cliffs"
+    ],
+    "collection": [
+      "Lava Field"
+    ],
+    "environment": [
+      "taiga biome"
+    ],
+    "interior_exterior": [],
+    "orientation": [],
+    "architectural_style": {},
+    "state": [
+      "old"
+    ],
+    "country": "Iceland",
+    "region": "Europe",
+    "color": [
+      "gray",
+      " black"
+    ],
+    "industry": [
+      "archviz",
+      "games",
+      "VFX"
+    ],
+    "3d_mesh": "Open",
+    "resolution": 8192,
+    "locations": {
+      "Europe": {
+        "Iceland": {}
+      }
+    },
+    "maxSize": 11.04,
+    "minSize": 2.6
+  },
+  "id": "qkofQ",
+  "physicalSize": "1x1"
+}
