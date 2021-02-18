@@ -10,12 +10,17 @@ public class Reflective : MonoBehaviour
 
     private void Start()
     {
-        laserEffect.gameObject.SetActive(false);
+        OnStart();
     }
 
     private void Update()
     {
         OnEndReflect();
+    }
+
+    protected virtual void OnStart()
+    {
+        laserEffect.gameObject.SetActive(false);
     }
 
     public void OnReflection(Vector3 hitPoint, Vector3 direction, Vector3 normal)
@@ -64,10 +69,10 @@ public class Reflective : MonoBehaviour
     public void OnEndReflection()
     {
         lineRen.enabled = false;
+        laserEffect.gameObject.SetActive(false);
     }
 
-    protected virtual void OnReflect()
-    {   }
+    protected virtual void OnReflect() { }
 
     protected virtual void OnEndReflect()
     {
