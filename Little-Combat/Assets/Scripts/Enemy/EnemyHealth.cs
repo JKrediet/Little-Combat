@@ -16,7 +16,10 @@ public class EnemyHealth : MonoBehaviour
         health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
         if (health == 0)
         {
-            //enemy died
+            if(GetComponent<Dissolve>())
+            {
+                GetComponent<Dissolve>().ActivateDissolve();
+            }
         }
     }
 }

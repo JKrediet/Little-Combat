@@ -10,6 +10,7 @@ public class AnimationController : MonoBehaviour
     public GameObject moveTool;
     public GameObject sword;
     public GameObject gunno;
+    private bool isAiming;
 
     private void Start()
     {
@@ -23,38 +24,41 @@ public class AnimationController : MonoBehaviour
         //idle
         if (!attack)
         {
-            if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
+            if (!isAiming)
             {
-                //pickup
-                if (Input.GetButton("Fire2"))
+                if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
                 {
-                    moveTool.SetActive(true);
-                    anim.SetInteger("PlayerState", 2);
+                    //pickup
+                    if (Input.GetButton("Fire2"))
+                    {
+                        moveTool.SetActive(true);
+                        anim.SetInteger("PlayerState", 2);
+                    }
+                    //walk
+                    else
+                    {
+                        moveTool.SetActive(false);
+                        anim.SetInteger("PlayerState", 1);
+                    }
                 }
-                //walk
                 else
                 {
-                    moveTool.SetActive(false);
-                    anim.SetInteger("PlayerState", 1);
+                    if (Input.GetButton("Fire2"))
+                    {
+                        moveTool.SetActive(true);
+                        anim.SetInteger("PlayerState", 3);
+                    }
+                    //walk
+                    else
+                    {
+                        moveTool.SetActive(false);
+                        StopMoving();
+                    }
                 }
-            }
-            else
-            {
-                if (Input.GetButton("Fire2"))
+                if (!FindObjectOfType<PlayerMovement>().controller.isGrounded)
                 {
-                    moveTool.SetActive(true);
-                    anim.SetInteger("PlayerState", 3);
+                    anim.SetBool("Jump", true);
                 }
-                //walk
-                else
-                {
-                    moveTool.SetActive(false);
-                    StopMoving();
-                }
-            }
-            if (!FindObjectOfType<PlayerMovement>().controller.isGrounded)
-            {
-                anim.SetBool("Jump", true);
             }
         }
     }
@@ -97,6 +101,7 @@ public class AnimationController : MonoBehaviour
     {
         anim.SetBool("isAiming", _value);
         gunno.SetActive(_value);
+        isAiming = _value;
     }
     public void GunAttack()
     {
