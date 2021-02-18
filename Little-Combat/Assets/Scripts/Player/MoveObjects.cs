@@ -13,6 +13,7 @@ public class MoveObjects : MonoBehaviour
     private Vector3 pos;
     public LayerMask maskuuuuu;
     public LineRenderer line;
+    public GameObject bulletHole;
 
     //playercollision
     //privates
@@ -199,10 +200,18 @@ public class MoveObjects : MonoBehaviour
             RaycastHit _hit;
             if (Physics.Raycast(gunReference.position, transform.forward, out _hit))
             {
+                //line
                 LineRenderer tempLine = Instantiate(line);
                 tempLine.SetPosition(0, gunReference.position);
                 tempLine.SetPosition(1, _hit.point);
                 Destroy(tempLine, 0.1f);
+
+                //bullethole thingy
+                Vector3 holeAdjust = _hit.point + _hit.normal;
+                GameObject tempHole = Instantiate(bulletHole, _hit.point, Quaternion.FromToRotation(Vector3.forward, _hit.normal));
+                tempHole.transform.localPosition += tempHole.transform.forward * 0.01f;
+
+                //damage
                 if (_hit.transform.GetComponent<EnemyHealth>())
                 {
                     _hit.transform.GetComponent<EnemyHealth>().GiveDamage(damage);

@@ -442,7 +442,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3a567d0468f8a0b44b432b66065e58c9, type: 2}
+  - {fileID: 2100000, guid: a8210c02a408d394ba0dc19fb7cbde2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -659,7 +659,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f124cae38f966a94f8d87134fba3f55e, type: 2}
+  - {fileID: 2100000, guid: a8210c02a408d394ba0dc19fb7cbde2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2183,7 +2183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8142035288146833454, guid: dbf724fd7cd53004eb4442a5854f7b7d, type: 3}
       propertyPath: attackCooldown
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8142035288146833456, guid: dbf724fd7cd53004eb4442a5854f7b7d, type: 3}
       propertyPath: oriPos
@@ -2201,6 +2201,10 @@ PrefabInstance:
       propertyPath: gunReference
       value: 
       objectReference: {fileID: 1437534603}
+    - target: {fileID: 8142035288146833456, guid: dbf724fd7cd53004eb4442a5854f7b7d, type: 3}
+      propertyPath: bulletHole
+      value: 
+      objectReference: {fileID: 7505376279220949543, guid: d23b251f4ef3ba749b7e0d43b0357f9f, type: 3}
     - target: {fileID: 8142035288444115437, guid: dbf724fd7cd53004eb4442a5854f7b7d, type: 3}
       propertyPath: cameraAimPosition
       value: 
