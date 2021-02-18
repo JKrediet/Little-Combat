@@ -2847,6 +2847,7 @@ MonoBehaviour:
   objectLocation: {fileID: 8142035287727828965}
   putObjectInPos: 0
   isHolding: 0
+  isHoldingGun: 0
   maskuuuuu:
     serializedVersion: 2
     m_Bits: 2048
@@ -3103,7 +3104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraLookat: {fileID: 8142035288379783772}
   cameraLaserPosition: {fileID: 1855935672120282224}
-  cameraAimPosition: {fileID: 0}
+  cameraAimPosition: {fileID: 3467823874423759068}
   lookSpeed: 10
   maxLookAngle: 30
   collisionOffset: 0.2
