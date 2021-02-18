@@ -7,6 +7,8 @@ public class BaseEnemy : MonoBehaviour
 {
     public float maxHealth;
 
+    public bool canBeDamaged = false;
+
     public float attackDamage;
     public float attackRange = 2, attackCooldown = 1, playerDetectionRange = 100;
     private float targetDistance, nextAttack;
@@ -53,6 +55,14 @@ public class BaseEnemy : MonoBehaviour
         if(targetDistance < playerDetectionRange)
         {
             playerInRange = true;
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (canBeDamaged)
+        {
+            health -= damage;
         }
     }
 
