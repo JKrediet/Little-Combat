@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveObjects : MonoBehaviour
 {
-    public float lineLength, collisionOffset = 0.2f, damage;
+    public float lineLength, collisionOffset = 0.2f, damage, particleTime = 0.05f;
     //pushable object reference
     public Transform objectDump, objectLocation, gunReference;
     private Transform pushRef;
@@ -13,7 +13,7 @@ public class MoveObjects : MonoBehaviour
     private Vector3 pos;
     public LayerMask maskuuuuu;
     public LineRenderer line;
-    public GameObject bulletHole;
+    public GameObject bulletHole, muzzleFlash;
 
     //playercollision
     //privates
@@ -200,11 +200,18 @@ public class MoveObjects : MonoBehaviour
             RaycastHit _hit;
             if (Physics.Raycast(gunReference.position, transform.forward, out _hit))
             {
+                //muzzle flash
+                GameObject muzzle = Instantiate(muzzleFlash, gunReference.position, Quaternion.identity);
+                muzzle.transform.localPosition += muzzle.transform.up * 0.1f;
+                muzzle.GetComponent<ParticleSystem>().time = 0;
+                muzzle.GetComponent<ParticleSystem>().Play();
+                Destroy(muzzle, particleTime);
+
                 //line
                 LineRenderer tempLine = Instantiate(line);
                 tempLine.SetPosition(0, gunReference.position);
                 tempLine.SetPosition(1, _hit.point);
-                Destroy(tempLine, 0.1f);
+                Destroy(tempLine.gameObject, particleTime);
 
                 //bullethole thingy
                 Vector3 holeAdjust = _hit.point + _hit.normal;

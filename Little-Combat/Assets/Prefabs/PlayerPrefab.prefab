@@ -2850,7 +2850,7 @@ MonoBehaviour:
   jumpForce: 7
   CameraRotationSpeed: 2
   playerDamage: 1
-  attackCooldown: 0
+  attackCooldown: 0.5
   cameraReference: {fileID: 8142035288444115436}
   cameraFollow: {fileID: 8142035288379783772}
   status_Push: 0
@@ -2874,17 +2874,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineLength: 2
   collisionOffset: 0.2
-  damage: 0
+  damage: 1
+  particleTime: 0.05
   objectDump: {fileID: 8142035288454468833}
   objectLocation: {fileID: 8142035287727828965}
-  gunReference: {fileID: 0}
+  gunReference: {fileID: 7184013863408786356}
   putObjectInPos: 0
   isHolding: 0
   isHoldingGun: 0
   maskuuuuu:
     serializedVersion: 2
     m_Bits: 2048
-  line: {fileID: 0}
+  line: {fileID: 2464624987318033259, guid: 84d91cf4ebcfa8c468a230d98d440207, type: 3}
+  bulletHole: {fileID: 8014245839405050882, guid: a30e355a42b72334ea9caf7f12a9cdd3, type: 3}
+  muzzleFlash: {fileID: 4987619892430627690, guid: 85712af300650074494e94555d125a17, type: 3}
 --- !u!54 &8142035288146833452
 Rigidbody:
   m_ObjectHideFlags: 0
