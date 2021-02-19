@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
                     status_gun = !status_gun;
                     FindObjectOfType<AnimationController>().AimToggle(status_gun);
                     cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
-                    GetComponent<MoveObjects>().isHoldingGun = !status_gun;
+                    GetComponent<MoveObjects>().isHoldingGun = status_gun;
                 }
             }
         }
