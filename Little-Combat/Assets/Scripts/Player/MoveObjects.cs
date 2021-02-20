@@ -217,11 +217,14 @@ public class MoveObjects : MonoBehaviour
                 Vector3 holeAdjust = _hit.point + _hit.normal;
                 GameObject tempHole = Instantiate(bulletHole, _hit.point, Quaternion.FromToRotation(Vector3.forward, _hit.normal));
                 tempHole.transform.localPosition += tempHole.transform.forward * 0.01f;
-
-                //damage
-                if (_hit.transform.GetComponent<EnemyHealth>())
+                if (_hit.transform.GetComponent<BaseEnemy>())
                 {
-                    _hit.transform.GetComponent<EnemyHealth>().GiveDamage(damage);
+                    tempHole.GetComponent<SpriteRenderer>().enabled = false;
+                }
+                //damage
+                if (_hit.transform.GetComponent<BaseEnemy>())
+                {
+                    _hit.transform.GetComponent<BaseEnemy>().GiveDamage(damage);
                 }
             }
         }

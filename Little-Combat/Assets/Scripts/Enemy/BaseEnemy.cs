@@ -58,11 +58,22 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void GiveDamage(float _damageTaken)
     {
         if (canBeDamaged)
         {
-            health -= damage;
+            health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
+            if (health == 0)
+            {
+                if (GetComponent<Dissolve>())
+                {
+                    GetComponent<Dissolve>().ActivateDissolve();
+                }
+                if(anim != null)
+                {
+                    anim.enabled = false;
+                }
+            }
         }
     }
 
