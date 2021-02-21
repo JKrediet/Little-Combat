@@ -22,6 +22,8 @@ public class BaseEnemy : MonoBehaviour
     private Vector3 faceThisDirection;
     protected float health;
 
+    public List<GameObject> bodyparts;
+
     private void Start()
     {
         health = maxHealth;
@@ -65,9 +67,12 @@ public class BaseEnemy : MonoBehaviour
             health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
             if (health == 0)
             {
-                if (GetComponent<Dissolve>())
+                if (bodyparts.Count > 0)
                 {
-                    GetComponent<Dissolve>().ActivateDissolve();
+                    for(int i = 0; i < bodyparts.Count; i++)
+                    {
+                        bodyparts[i].GetComponent<Dissolve>().ActivateDissolve();
+                    }
                 }
                 if(anim != null)
                 {

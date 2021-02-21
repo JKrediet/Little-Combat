@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dissolve : MonoBehaviour
 {
     private bool dissolve;
-    public Material mat;
+    private Material mat;
     public float speed = 1;
     private float amount;
 

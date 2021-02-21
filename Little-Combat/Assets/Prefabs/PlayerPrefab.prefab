@@ -2874,7 +2874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineLength: 2
   collisionOffset: 0.2
-  damage: 1
+  rangedDamage: 1
   particleTime: 0.05
   objectDump: {fileID: 8142035288454468833}
   objectLocation: {fileID: 8142035287727828965}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveObjects : MonoBehaviour
 {
-    public float lineLength, collisionOffset = 0.2f, damage, particleTime = 0.05f;
+    public float lineLength, collisionOffset = 0.2f, rangedDamage, particleTime = 0.05f;
     //pushable object reference
     public Transform objectDump, objectLocation, gunReference;
     private Transform pushRef;
@@ -224,7 +224,8 @@ public class MoveObjects : MonoBehaviour
                 //damage
                 if (_hit.transform.GetComponent<BaseEnemy>())
                 {
-                    _hit.transform.GetComponent<BaseEnemy>().GiveDamage(damage);
+                    _hit.transform.GetComponent<BaseEnemy>().GiveDamage(rangedDamage);
+                    print(rangedDamage);
                 }
             }
         }
