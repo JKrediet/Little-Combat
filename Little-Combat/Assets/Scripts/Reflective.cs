@@ -6,6 +6,8 @@ public class Reflective : MonoBehaviour
 {
     public LineRenderer lineRen;
 
+    public LayerMask laserMask;
+
     public Transform laserEffect;
 
     private void Start()
@@ -20,10 +22,10 @@ public class Reflective : MonoBehaviour
 
     protected virtual void OnStart()
     {
-        laserEffect.gameObject.SetActive(false);
+        
     }
 
-    public void OnReflection(Vector3 hitPoint, Vector3 direction, Vector3 normal)
+    public void OnReflection(Vector3 hitPoint, Vector3 direction, Vector3 normal, Transform hitEffect)
     {
         OnReflect();
 
@@ -35,20 +37,22 @@ public class Reflective : MonoBehaviour
 
         RaycastHit _hit;
 
-        if(Physics.Raycast(ray, out _hit))
+        if(Physics.Raycast(ray, out _hit, 500f, laserMask))
         {
+
             lineRen.SetPosition(0, hitPoint);
             lineRen.SetPosition(1, _hit.point);
 
-            laserEffect.gameObject.SetActive(true);
-            laserEffect.position = _hit.point;
-
             if (_hit.transform.GetComponent<Reflective>())
             {
-                _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, reflect, _hit.normal);
+                _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, reflect, _hit.normal, hitEffect);
             }
             else
             {
+
+                hitEffect.gameObject.SetActive(true);
+                hitEffect.transform.position = _hit.point;
+
                 Interaction tempInt = _hit.transform.GetComponent<Interaction>();
 
                 if (tempInt)
@@ -59,17 +63,11 @@ public class Reflective : MonoBehaviour
         }
         else
         {
-            laserEffect.gameObject.SetActive(false);
+            hitEffect.gameObject.SetActive(false);
 
             lineRen.SetPosition(0, hitPoint);
             lineRen.SetPosition(1, transform.position + reflect * 1000f);
         }
-    }
-
-    public void OnEndReflection()
-    {
-        lineRen.enabled = false;
-        laserEffect.gameObject.SetActive(false);
     }
 
     protected virtual void OnReflect() { }
@@ -77,5 +75,6 @@ public class Reflective : MonoBehaviour
     protected virtual void OnEndReflect()
     {
         lineRen.enabled = false;
+        
     }
 }

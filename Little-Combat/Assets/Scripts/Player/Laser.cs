@@ -9,6 +9,8 @@ public class Laser : MonoBehaviour
 
     public Transform laserEffect;
 
+    public LayerMask laserMask;
+
     public float lineLength;
 
     private Transform cam;
@@ -32,20 +34,22 @@ public class Laser : MonoBehaviour
         Ray ray = new Ray(shootPoint.position, shootPoint.forward);
         RaycastHit _hit;
 
-        if(Physics.Raycast(ray, out _hit, lineLength))
+        if(Physics.Raycast(ray, out _hit, lineLength, laserMask))
         {
-            laserEffect.gameObject.SetActive(true);
-            laserEffect.position = _hit.point;
+            
 
             lineRen.SetPosition(0, shootPoint.position);
             lineRen.SetPosition(1, _hit.point);
 
             if (_hit.transform.GetComponent<Reflective>())
             {
-                _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, transform.forward, _hit.normal);
+                _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, transform.forward, _hit.normal, laserEffect) ;
             }
             else
             {
+                laserEffect.gameObject.SetActive(true);
+                laserEffect.position = _hit.point;
+
                 Interaction tempInt = _hit.transform.GetComponent<Interaction>();
                 if (tempInt)
                 {
