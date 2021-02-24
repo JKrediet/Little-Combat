@@ -13,7 +13,7 @@ public class BaseEnemy : MonoBehaviour
     public float attackRange = 2, attackCooldown = 1, playerDetectionRange = 100;
     private float targetDistance, nextAttack;
     
-    //animation purpose
+    //animation purposes
     protected bool playerInRange, isAttacking, idle;
     protected Animator anim;
 
@@ -23,6 +23,10 @@ public class BaseEnemy : MonoBehaviour
     protected float health;
 
     public List<GameObject> bodyparts;
+
+    //open gate
+    protected bool bossDead;
+    public Transform moveObject, originHere, goHere;
 
     private void Start()
     {
@@ -51,6 +55,11 @@ public class BaseEnemy : MonoBehaviour
         Movement();
         CheckDistance();    
         AnimationThings();
+
+        if(bossDead)
+        {
+            moveObject.position = new Vector3(originHere.position.x, Mathf.Lerp(moveObject.position.y, goHere.position.y, 0.1f), originHere.position.z);
+        }
     }
 
     private void CheckDistance()

@@ -3147,6 +3147,9 @@ MonoBehaviour:
   collisionOffset: 0.2
   isHoldingLaser: 0
   isAiming: 0
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 1335
 --- !u!1 &8142035288454468832
 GameObject:
   m_ObjectHideFlags: 0
