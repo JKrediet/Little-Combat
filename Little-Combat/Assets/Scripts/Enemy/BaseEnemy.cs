@@ -41,6 +41,8 @@ public class BaseEnemy : MonoBehaviour
 
     private void Update()
     {
+        GetComponent<Collider>().enabled = canBeDamaged;
+
         if (Input.GetKeyDown("k"))
         {
             health = 0f;
@@ -74,10 +76,10 @@ public class BaseEnemy : MonoBehaviour
                         bodyparts[i].GetComponent<Dissolve>().ActivateDissolve();
                     }
                 }
-                if(anim != null)
-                {
-                    anim.enabled = false;
-                }
+                //if(anim != null)
+                //{
+                //    anim.enabled = false;
+                //}
             }
         }
     }
