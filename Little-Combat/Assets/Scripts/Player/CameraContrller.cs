@@ -7,6 +7,7 @@ public class CameraContrller : MonoBehaviour
     public Transform cameraLookat, cameraLaserPosition, cameraAimPosition;
     public float lookSpeed, maxLookAngle, collisionOffset = 0.2f;
     public bool isHoldingLaser, isAiming;
+    public LayerMask ignoreLayer;
 
     //privates
     private Vector2 rotation;
@@ -52,7 +53,7 @@ public class CameraContrller : MonoBehaviour
         Vector3 currentPos = defaultPos;
         RaycastHit hit;
         Vector3 dirTmp = cameraLookat.TransformPoint(defaultPos) - cameraLookat.position;
-        if (Physics.SphereCast(cameraLookat.position, collisionOffset, dirTmp, out hit, defaultDistance))
+        if (Physics.SphereCast(cameraLookat.position, collisionOffset, dirTmp, out hit, defaultDistance, ignoreLayer))
         {
             currentPos = (directionNormalized * (hit.distance - collisionOffset));
         }
