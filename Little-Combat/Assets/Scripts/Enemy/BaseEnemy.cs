@@ -22,8 +22,6 @@ public class BaseEnemy : MonoBehaviour
     private Vector3 faceThisDirection;
     protected float health;
 
-    public List<GameObject> bodyparts;
-
     //open gate
     protected bool bossDead;
     public Transform moveObject, originHere, goHere;
@@ -50,6 +48,10 @@ public class BaseEnemy : MonoBehaviour
         if (Input.GetKeyDown("k"))
         {
             health = 0f;
+        }
+        if (Input.GetKeyDown("j"))
+        {
+            StartMoving();
         }
 
         Movement();
@@ -78,17 +80,7 @@ public class BaseEnemy : MonoBehaviour
             health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
             if (health == 0)
             {
-                if (bodyparts.Count > 0)
-                {
-                    for(int i = 0; i < bodyparts.Count; i++)
-                    {
-                        bodyparts[i].GetComponent<Dissolve>().ActivateDissolve();
-                    }
-                }
-                //if(anim != null)
-                //{
-                //    anim.enabled = false;
-                //}
+
             }
         }
     }
