@@ -10,15 +10,15 @@ public class BaseEnemy : MonoBehaviour
     public bool canBeDamaged = false;
 
     public float attackDamage;
-    public float attackRange = 2, attackCooldown = 1, playerDetectionRange = 100;
-    private float targetDistance, nextAttack;
+    public float attackRange = 2, attackCooldown = 1, playerDetectionRange = 100, rangedAttackRange = 10;
+    protected float targetDistance, nextAttack;
     
     //animation purposes
     protected bool playerInRange, isAttacking, idle;
     protected Animator anim;
 
     protected NavMeshAgent agent;
-    private GameObject player;
+    protected GameObject player;
     private Vector3 faceThisDirection;
     protected float health;
 
@@ -26,7 +26,7 @@ public class BaseEnemy : MonoBehaviour
     protected bool bossDead;
     public Transform moveObject, originHere, goHere;
 
-    private void Start()
+    protected virtual void Start()
     {
         health = maxHealth;
 
@@ -85,7 +85,7 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-    private void Movement()
+    protected virtual void Movement()
     {
         if (playerInRange)
         {
@@ -134,10 +134,11 @@ public class BaseEnemy : MonoBehaviour
     protected virtual void AnimationThings()
     {
         //boss 1
+        //boss 2
     }
 
     //comes from animation
-    public void DoneAttacking()
+    public virtual void DoneAttacking()
     {
         isAttacking = false;
     }
