@@ -78,10 +78,6 @@ public class BaseEnemy : MonoBehaviour
         if (canBeDamaged)
         {
             health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
-            if (health == 0)
-            {
-
-            }
         }
     }
 
