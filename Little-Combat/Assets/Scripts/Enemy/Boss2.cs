@@ -5,16 +5,11 @@ using UnityEngine.AI;
 
 public class Boss2 : BaseEnemy
 {
+    public LayerMask playerMask;
     public int currentAttack;
     public Rigidbody fireBall;
     public float projectileSpeed;
 
-    protected override void Start()
-    {
-        base.Start();
-        //roll the attack thats gonne be used
-        currentAttack = Random.Range(1, 3);
-    }
     protected override void Attack()
     {
         base.Attack();
@@ -23,15 +18,13 @@ public class Boss2 : BaseEnemy
     }
     public override void DoneAttacking()
     {
-        base.DoneAttacking();
         anim.SetInteger("currentAttack", 0);
-        currentAttack = Random.Range(1, 3);
-        agent.isStopped = false;
+        base.DoneAttacking();
+        currentAttack = 0;
     }
     protected override void AnimationThings()
     {
         anim.SetBool("isIdle", idle);
-        anim.SetBool("startFlex", playerInRange);
 
         if (health <= 0f)
         {
@@ -46,6 +39,11 @@ public class Boss2 : BaseEnemy
         {
             if (!isAttacking)
             {
+                if(currentAttack == 0)
+                {
+                    agent.isStopped = false;
+                    currentAttack = Random.Range(1, 3);
+                }
                 if (currentAttack == 1)
                 {
                     if (targetDistance <= attackRange)
@@ -91,6 +89,10 @@ public class Boss2 : BaseEnemy
                         {
                             idle = true;
                         }
+                        if (!idle)
+                        {
+                            agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+                        }
                     }
                     else
                     {
@@ -108,6 +110,11 @@ public class Boss2 : BaseEnemy
                         }
                     }
                 }
+            }
+            else
+            {
+                Vector3 direction = (player.transform.position - transform.position).normalized;
+                transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0 , direction.z));
             }
         }
     }
@@ -134,6 +141,7 @@ public class Boss2 : BaseEnemy
     }
     public void FireBall()
     {
+        anim.SetInteger("currentAttack", currentAttack);
         Rigidbody fire = Instantiate(fireBall, transform.position + transform.up, transform.rotation);
         fire.velocity = fire.transform.forward * projectileSpeed;
     }

@@ -44,9 +44,4 @@ public class Boss1 : BaseEnemy
             }
         }
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(transform.position + transform.forward * 2, new Vector3(2, 15, 2));
-    }
 }
