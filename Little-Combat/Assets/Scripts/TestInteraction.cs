@@ -6,6 +6,12 @@ public class TestInteraction : Interaction // This is an interaction. It can be 
 {
     private MeshRenderer render;
 
+    public AudioSource source;
+    public Collider trigger;
+    public GameObject portalEffect;
+
+    private bool isPlaying = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +25,15 @@ public class TestInteraction : Interaction // This is an interaction. It can be 
 
         // Call OnInteraction default functionality
         base.OnInteraction();
+
+        if (!isPlaying)
+        {
+            source.Play();
+            trigger.enabled = true;
+            portalEffect.SetActive(true);
+
+            isPlaying = true;
+        }
 
         // Turn the color of the cube green
         render.material.SetColor("_BaseColor", Color.green);
