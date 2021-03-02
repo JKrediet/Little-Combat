@@ -11,7 +11,7 @@ public class Boss2 : BaseEnemy
     public float projectileSpeed, timeBeforeFireBall, shieldHealh;
     private float countDown;
     private bool inThirdStage, inSecondStage;
-    public Transform aim2, aim3;
+    public Transform aim2, aim3, bzoop;
 
     protected override void Start()
     {
@@ -200,7 +200,7 @@ public class Boss2 : BaseEnemy
     {
         anim.SetInteger("currentPhase", 1);
         shieldHealh = 2;
-        agent.speed = 2;
+        agent.speed = 2.5f;
         inSecondStage = true;
         agent.isStopped = true;
     }
@@ -211,7 +211,7 @@ public class Boss2 : BaseEnemy
         agent.speed = 5;
         agent.isStopped = true;
         inThirdStage = true;
-        projectileSpeed *= 2;
+        projectileSpeed *= 1.5f;
     }
     public void TakeDamageToShield()
     {
@@ -220,5 +220,9 @@ public class Boss2 : BaseEnemy
     public void MayMoveAgain()
     {
         agent.isStopped = false;
+    }
+    public void RandomFunctie()
+    {
+        bzoop.gameObject.SetActive(true);
     }
 }
