@@ -13,10 +13,14 @@ public class PlayerHealth : MonoBehaviour
     }
     public void GiveDamage(float _damageTaken)
     {
-        health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
-        if (health == 0)
+        if (health != 0)
         {
-            //player died
+            health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
+            if (health == 0)
+            {
+                FindObjectOfType<PlayerMovement>().isDead = true;
+                FindObjectOfType<AnimationController>().Death();
+            }
         }
     }
     public void GiveHealth(int _healthRestored)

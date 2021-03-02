@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cameraReference, cameraFollow;
 
     //shitload aan testdingen, please no remove!
-    public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup, status_gun;
+    public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup, status_gun, isDead;
 
     //privates
     private Quaternion targetRotation;
@@ -32,8 +32,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement();
-        Gravity();
+        if (!isDead)
+        {
+            Movement();
+            Gravity();
+        }
     }
     private void Update()
     {

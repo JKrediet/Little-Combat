@@ -175,6 +175,16 @@ public class Boss2 : BaseEnemy
         anim.SetInteger("currentAttack", currentAttack);
         Rigidbody fire = Instantiate(fireBall, transform.position + transform.up, transform.rotation);
         fire.velocity = fire.transform.forward * projectileSpeed;
+        if(inSecondStage)
+        {
+            Vector3 direction4 = (aim2.transform.position - transform.position).normalized;
+            Rigidbody fire4 = Instantiate(fireBall, transform.position + transform.up, Quaternion.LookRotation(new Vector3(direction4.x, 0, direction4.z)));
+            fire4.velocity = fire4.transform.forward * projectileSpeed;
+
+            Vector3 direction5 = (aim3.transform.position - transform.position).normalized;
+            Rigidbody fire5 = Instantiate(fireBall, transform.position + transform.up, Quaternion.LookRotation(new Vector3(direction5.x, 0, direction5.z)));
+            fire5.velocity = fire5.transform.forward * projectileSpeed;
+        }
         if(inThirdStage)
         {
             Vector3 direction2 = (aim2.transform.position - transform.position).normalized;

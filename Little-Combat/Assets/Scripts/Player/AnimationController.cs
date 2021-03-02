@@ -111,4 +111,12 @@ public class AnimationController : MonoBehaviour
     {
         anim.SetBool("IsAttacking", false);
     }
+    public void Death()
+    {
+        anim.SetBool("isDood", true);
+    }
+    public void Shush()
+    {
+        anim.SetBool("isDood", false);
+    }
 }
