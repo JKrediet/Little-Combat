@@ -213,15 +213,24 @@ public class MoveObjects : MonoBehaviour
                 tempLine.SetPosition(1, _hit.point);
                 Destroy(tempLine.gameObject, particleTime);
 
+                GameObject tempHole = null;
+
                 //bullethole thingy
-                Vector3 holeAdjust = _hit.point + _hit.normal;
-                GameObject tempHole = Instantiate(bulletHole, _hit.point, Quaternion.FromToRotation(Vector3.forward, _hit.normal));
-                tempHole.transform.localPosition += tempHole.transform.forward * 0.01f;
-                print(_hit.transform.name);
-                if (_hit.transform.GetComponent<BaseEnemy>())
+                if(_hit.transform.tag == "Boss")
                 {
-                    tempHole.GetComponent<SpriteRenderer>().enabled = false;
+                    Vector3 holeAdjust = _hit.point + _hit.normal;
+                    tempHole = Instantiate(_hit.transform.GetComponent<BaseEnemy>().hitParticle, _hit.point, Quaternion.FromToRotation(Vector3.forward, _hit.normal));
+                    tempHole.transform.localPosition += tempHole.transform.forward * 0.01f;
                 }
+                else
+                {
+                    Vector3 holeAdjust = _hit.point + _hit.normal;
+                    tempHole = Instantiate(bulletHole, _hit.point, Quaternion.FromToRotation(Vector3.forward, _hit.normal));
+                    tempHole.transform.localPosition += tempHole.transform.forward * 0.01f;
+                }
+
+                print(_hit.transform.name);
+                
                 //damage
                 if (_hit.transform.GetComponent<BaseEnemy>())
                 {

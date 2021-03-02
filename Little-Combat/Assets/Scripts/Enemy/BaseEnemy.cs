@@ -11,6 +11,8 @@ public class BaseEnemy : MonoBehaviour
 
     public float attackDamage;
     public float attackRange = 2, attackCooldown = 1, playerDetectionRange = 100, rangedAttackRange = 10;
+    public GameObject hitParticle;
+    
     protected float targetDistance, nextAttack;
     
     //animation purposes
@@ -60,6 +62,7 @@ public class BaseEnemy : MonoBehaviour
 
         if(bossDead)
         {
+            GetComponent<Collider>().enabled = false;
             moveObject.position = new Vector3(originHere.position.x, Mathf.Lerp(moveObject.position.y, goHere.position.y, 0.1f), originHere.position.z);
         }
     }

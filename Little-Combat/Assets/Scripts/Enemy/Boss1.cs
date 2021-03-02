@@ -20,6 +20,7 @@ public class Boss1 : BaseEnemy
             agent.isStopped = true;
             anim.SetBool("isDead", true);
             bossDead = true;
+            
         }
     }
 

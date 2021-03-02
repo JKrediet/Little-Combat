@@ -11,7 +11,7 @@ public class PressurePlate : MonoBehaviour
 
     protected float cooldown = 1, nextSpawn;
 
-    protected MeshRenderer render;
+    public MeshRenderer render;
 
     // Start is called before the first frame update
     private void Start()
@@ -23,7 +23,7 @@ public class PressurePlate : MonoBehaviour
     {
         render = GetComponent<MeshRenderer>();
 
-        render.material.SetColor("_BaseColor", Color.red);
+        //render.material.SetColor("_EmissiveColor", Color.white * 10);
     }
 
     protected virtual void OnCollisionEnter(Collision col)
@@ -35,7 +35,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (col.gameObject != tempSpawned)
         {
-            render.material.SetColor("_BaseColor", Color.green);
+            //render.material.SetColor("_EmissiveColor", Color.green * 10);
             if (Time.time > nextSpawn)
             {
                 if (col.gameObject.tag != "Player")
