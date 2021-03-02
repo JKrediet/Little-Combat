@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2f7d1632a0eb246b9d856ce561f0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boem: {fileID: 125850, guid: 8eb5abb1a159af749ba72aabe6962b9b, type: 3}
 --- !u!1001 &1493185988914456937
 PrefabInstance:
   m_ObjectHideFlags: 0
