@@ -2895,9 +2895,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8446134752937123488, guid: 6a4e474adf0b7284b97567f87a1cfea9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446134752937123489, guid: 6a4e474adf0b7284b97567f87a1cfea9, type: 3}
+      propertyPath: hitParticle
+      value: 
+      objectReference: {fileID: 100002, guid: 899ebc225e5d6424aa57974097ea965d, type: 3}
     - target: {fileID: 8446134752937123490, guid: 6a4e474adf0b7284b97567f87a1cfea9, type: 3}
       propertyPath: m_Name
       value: Boss2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446134752937123490, guid: 6a4e474adf0b7284b97567f87a1cfea9, type: 3}
+      propertyPath: m_TagString
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 9114549395849102360, guid: 6a4e474adf0b7284b97567f87a1cfea9, type: 3}
       propertyPath: m_LocalPosition.x
