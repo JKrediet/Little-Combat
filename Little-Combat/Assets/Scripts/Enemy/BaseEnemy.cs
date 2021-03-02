@@ -51,10 +51,6 @@ public class BaseEnemy : MonoBehaviour
         {
             health = 0f;
         }
-        if (Input.GetKeyDown("j"))
-        {
-            StartMoving();
-        }
 
         Movement();
         CheckDistance();    

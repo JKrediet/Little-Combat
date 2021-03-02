@@ -8,8 +8,17 @@ public class Boss2 : BaseEnemy
     public LayerMask playerMask;
     public int currentAttack;
     public Rigidbody fireBall;
-    public float projectileSpeed;
+    public float projectileSpeed, timeBeforeFireBall, shieldHealh;
+    private float countDown;
+    private bool inThirdStage, inSecondStage;
+    public Transform aim2, aim3;
 
+    protected override void Start()
+    {
+        base.Start();
+        countDown = timeBeforeFireBall;
+        shieldHealh = 1;
+    }
     protected override void Attack()
     {
         base.Attack();
@@ -21,6 +30,7 @@ public class Boss2 : BaseEnemy
         anim.SetInteger("currentAttack", 0);
         base.DoneAttacking();
         currentAttack = 0;
+        countDown = timeBeforeFireBall;
     }
     protected override void AnimationThings()
     {
@@ -35,6 +45,23 @@ public class Boss2 : BaseEnemy
     }
     protected override void Movement()
     {
+        //test
+        if (Input.GetKeyDown("j"))
+        {
+            ToSecondStage();
+        }
+        if (Input.GetKeyDown("h"))
+        {
+            ToThirdStage();
+        }
+        if (countDown > 0)
+        {
+            countDown -= Time.deltaTime;
+        }
+        else
+        {
+            currentAttack = 2;
+        }
         if (playerInRange)
         {
             if (!isAttacking)
@@ -46,6 +73,10 @@ public class Boss2 : BaseEnemy
                 }
                 if (currentAttack == 1)
                 {
+                    if (inThirdStage)
+                    {
+                        currentAttack = 2;
+                    }
                     if (targetDistance <= attackRange)
                     {
                         if (Time.time >= nextAttack)
@@ -144,10 +175,40 @@ public class Boss2 : BaseEnemy
         anim.SetInteger("currentAttack", currentAttack);
         Rigidbody fire = Instantiate(fireBall, transform.position + transform.up, transform.rotation);
         fire.velocity = fire.transform.forward * projectileSpeed;
+        if(inThirdStage)
+        {
+            Vector3 direction2 = (aim2.transform.position - transform.position).normalized;
+            Rigidbody fire2 = Instantiate(fireBall, transform.position + transform.up, Quaternion.LookRotation(new Vector3(direction2.x, 0, direction2.z)));
+            fire2.velocity = fire2.transform.forward * projectileSpeed;
+
+            Vector3 direction3 = (aim3.transform.position - transform.position).normalized;
+            Rigidbody fire3 = Instantiate(fireBall, transform.position + transform.up, Quaternion.LookRotation(new Vector3(direction3.x, 0, direction3.z)));
+            fire3.velocity = fire3.transform.forward * projectileSpeed;
+        }
     }
-    private void OnDrawGizmos()
+    public void ToSecondStage()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(transform.position + transform.forward, new Vector3(1, 3, 1));
+        anim.SetInteger("currentPhase", 1);
+        shieldHealh = 2;
+        agent.speed = 2;
+        inSecondStage = true;
+        agent.isStopped = true;
+    }
+    public void ToThirdStage()
+    {
+        anim.SetInteger("currentPhase", 2);
+        shieldHealh = 3;
+        agent.speed = 5;
+        agent.isStopped = true;
+        inThirdStage = true;
+        projectileSpeed *= 2;
+    }
+    public void TakeDamageToShield()
+    {
+        shieldHealh--;
+    }
+    public void MayMoveAgain()
+    {
+        agent.isStopped = false;
     }
 }
