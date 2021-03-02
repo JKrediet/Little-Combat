@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraContrller : MonoBehaviour
 {
-    public Transform cameraLookat, cameraLaserPosition, cameraAimPosition;
+    public Transform cameraLookat, cameraLaserPosition, cameraAimPosition, cameraShieldPosition;
     public float lookSpeed, maxLookAngle, collisionOffset = 0.2f;
-    public bool isHoldingLaser, isAiming;
+    public bool isHoldingLaser, isAiming, isShielding;
     public LayerMask ignoreLayer;
 
     //privates
@@ -28,6 +28,10 @@ public class CameraContrller : MonoBehaviour
     public void AimToggle(bool _value)
     {
         isAiming = _value;
+    }
+    public void ShieldToggle(bool _value)
+    {
+        isShielding = _value;
     }
     private void CameraMovement()
     {
@@ -64,6 +68,10 @@ public class CameraContrller : MonoBehaviour
         else if(isAiming)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, cameraAimPosition.localPosition, Time.deltaTime * 15f);
+        }
+        else if(isShielding)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, cameraShieldPosition.localPosition, Time.deltaTime * 15f);
         }
         else
         {

@@ -97,6 +97,14 @@ public class AnimationController : MonoBehaviour
     {
         anim.SetInteger("PlayerState", 0);
     }
+    public void ShieldToggle(bool _value)
+    {
+        anim.SetBool("isShielding", _value);
+    }
+    public void ShieldWalking(bool _value)
+    {
+        anim.SetBool("isShieldMoving", _value);
+    }
     public void AimToggle(bool _value)
     {
         anim.SetBool("isAiming", _value);

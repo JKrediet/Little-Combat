@@ -13,6 +13,10 @@ public class PlayerHealth : MonoBehaviour
     }
     public void GiveDamage(float _damageTaken)
     {
+        if (!GetComponent<PlayerMovement>().shieldMoving)
+        {
+            _damageTaken = 0;
+        }
         if (health != 0)
         {
             health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);

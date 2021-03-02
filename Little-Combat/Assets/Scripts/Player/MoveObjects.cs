@@ -9,7 +9,7 @@ public class MoveObjects : MonoBehaviour
     public Transform objectDump, objectLocation, gunReference;
     private Transform pushRef;
     private CharacterController controller;
-    public bool putObjectInPos, isHolding, isHoldingGun;
+    public bool putObjectInPos, isHolding, isHoldingGun, isShielding;
     private Vector3 pos;
     public LayerMask maskuuuuu;
     public LineRenderer line;
@@ -33,15 +33,18 @@ public class MoveObjects : MonoBehaviour
         {
             if (!isHoldingGun)
             {
-                if (Input.GetButton("Fire2"))
+                if (isShielding)
                 {
-                    MoveObject();
-                    CollisionRaycast();
-                }
-                else
-                {
-                    isHolding = true;
-                    StopMovingObjects();
+                    if (Input.GetButton("Fire2"))
+                    {
+                        MoveObject();
+                        CollisionRaycast();
+                    }
+                    else
+                    {
+                        isHolding = true;
+                        StopMovingObjects();
+                    }
                 }
             }
         }

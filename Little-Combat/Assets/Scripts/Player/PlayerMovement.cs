@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed, gravity, jumpForce, CameraRotationSpeed, playerDamage, attackCooldown;
-    public Transform cameraReference, cameraFollow;
+    public Transform cameraReference, cameraFollow, shield;
 
     //shitload aan testdingen, please no remove!
-    public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup, status_gun, isDead;
+    public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup, status_gun, isDead, status_shield, shieldMoving;
 
     //privates
     private Quaternion targetRotation;
@@ -50,18 +50,21 @@ public class PlayerMovement : MonoBehaviour
                     {
                         if (!isHoldingPickup)
                         {
-                            if (Time.time > nextAttack)
+                            if (!status_shield)
                             {
-                                if (status_gun)
+                                if (Time.time > nextAttack)
                                 {
-                                    nextAttack = Time.time + attackCooldown;
-                                    GetComponent<MoveObjects>().FireGun();
-                                    FindObjectOfType<AnimationController>().GunAttack();
-                                }
-                                else
-                                {
-                                    nextAttack = Time.time + attackCooldown;
-                                    FindObjectOfType<AnimationController>().Attack();
+                                    if (status_gun)
+                                    {
+                                        nextAttack = Time.time + attackCooldown;
+                                        GetComponent<MoveObjects>().FireGun();
+                                        FindObjectOfType<AnimationController>().GunAttack();
+                                    }
+                                    else
+                                    {
+                                        nextAttack = Time.time + attackCooldown;
+                                        FindObjectOfType<AnimationController>().Attack();
+                                    }
                                 }
                             }
                         }
@@ -72,10 +75,27 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (!isAttacking)
                 {
-                    status_gun = !status_gun;
-                    FindObjectOfType<AnimationController>().AimToggle(status_gun);
-                    cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
-                    GetComponent<MoveObjects>().isHoldingGun = status_gun;
+                    if (!status_shield)
+                    {
+                        status_gun = !status_gun;
+                        FindObjectOfType<AnimationController>().AimToggle(status_gun);
+                        cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
+                        GetComponent<MoveObjects>().isHoldingGun = status_gun;
+                    }
+                }
+            }
+            if (Input.GetButtonDown("Shield"))
+            {
+                if (!isAttacking)
+                {
+                    if (!status_gun)
+                    {
+                        status_shield = !status_shield;
+                        shield.gameObject.SetActive(status_shield);
+                        FindObjectOfType<AnimationController>().ShieldToggle(status_shield);
+                        cameraReference.GetComponent<CameraContrller>().ShieldToggle(status_shield);
+                        GetComponent<MoveObjects>().isShielding = status_shield;
+                    }
                 }
             }
         }
@@ -111,6 +131,16 @@ public class PlayerMovement : MonoBehaviour
                         {
                             speed = 0;
                         }
+                    }
+                    if(moveDir.magnitude > 0)
+                    {
+                        shieldMoving = true;
+                        FindObjectOfType<AnimationController>().ShieldWalking(shieldMoving);
+                    }
+                    else
+                    {
+                        shieldMoving = false;
+                        FindObjectOfType<AnimationController>().ShieldWalking(shieldMoving);
                     }
                     //movement
                     movement = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
