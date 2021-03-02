@@ -228,8 +228,6 @@ public class MoveObjects : MonoBehaviour
                     tempHole = Instantiate(bulletHole, _hit.point, Quaternion.FromToRotation(Vector3.forward, _hit.normal));
                     tempHole.transform.localPosition += tempHole.transform.forward * 0.01f;
                 }
-
-                print(_hit.transform.name);
                 
                 //damage
                 if (_hit.transform.GetComponent<BaseEnemy>())
@@ -238,5 +236,10 @@ public class MoveObjects : MonoBehaviour
                 }
             }
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(gunReference.position, transform.forward);
     }
 }

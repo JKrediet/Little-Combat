@@ -11,7 +11,7 @@ public class Boss2 : BaseEnemy
     public float projectileSpeed, timeBeforeFireBall, shieldHealh;
     private float countDown;
     private bool inThirdStage, inSecondStage;
-    public Transform aim2, aim3, bzoop;
+    public Transform aim2, aim3, bzoop, aura;
 
     protected override void Start()
     {
@@ -224,5 +224,6 @@ public class Boss2 : BaseEnemy
     public void RandomFunctie()
     {
         bzoop.gameObject.SetActive(true);
+        aura.gameObject.SetActive(true);
     }
 }

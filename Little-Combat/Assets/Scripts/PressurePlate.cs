@@ -23,7 +23,7 @@ public class PressurePlate : MonoBehaviour
     {
         render = GetComponent<MeshRenderer>();
 
-        //render.material.SetColor("_EmissiveColor", Color.white * 10);
+        render.material.SetColor("_EmissiveColor", Color.white * 1000);
     }
 
     protected virtual void OnCollisionEnter(Collision col)
@@ -35,7 +35,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (col.gameObject != tempSpawned)
         {
-            //render.material.SetColor("_EmissiveColor", Color.green * 10);
+            render.material.SetColor("_EmissiveColor", Color.green * 1000);
             if (Time.time > nextSpawn)
             {
                 if (col.gameObject.tag != "Player")
