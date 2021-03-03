@@ -10,7 +10,7 @@ public class Boss2 : BaseEnemy
     public Rigidbody fireBall;
     public float projectileSpeed, timeBeforeFireBall, shieldHealh;
     private float countDown;
-    private bool inThirdStage, inSecondStage;
+    private bool inThirdStage, inSecondStage, isChangingStance;
     public Transform aim2, aim3, bzoop, aura;
 
     protected override void Start()
@@ -18,6 +18,7 @@ public class Boss2 : BaseEnemy
         base.Start();
         countDown = timeBeforeFireBall;
         shieldHealh = 1;
+        aura.gameObject.SetActive(true);
     }
     protected override void Attack()
     {
@@ -64,88 +65,95 @@ public class Boss2 : BaseEnemy
         }
         if (playerInRange)
         {
-            if (!isAttacking)
+            if (!isChangingStance)
             {
-                if(currentAttack == 0)
+                if(isAttacking)
                 {
-                    agent.isStopped = false;
-                    currentAttack = Random.Range(1, 3);
+                    agent.SetDestination(transform.position);
                 }
-                if (currentAttack == 1)
+                if (!isAttacking)
                 {
-                    if (inThirdStage)
+                    if (currentAttack == 0)
                     {
-                        currentAttack = 2;
+                        agent.isStopped = false;
+                        currentAttack = Random.Range(1, 3);
                     }
-                    if (targetDistance <= attackRange)
+                    if (currentAttack == 1)
                     {
-                        if (Time.time >= nextAttack)
+                        if (inThirdStage)
                         {
-                            idle = false;
-                            nextAttack = Time.time + attackCooldown;
-                            Attack();
+                            currentAttack = 2;
+                        }
+                        if (targetDistance <= attackRange)
+                        {
+                            if (Time.time >= nextAttack)
+                            {
+                                idle = false;
+                                nextAttack = Time.time + attackCooldown;
+                                Attack();
+                            }
+                            else
+                            {
+                                idle = true;
+                            }
                         }
                         else
                         {
-                            idle = true;
+                            if (Time.time >= nextAttack)
+                            {
+                                idle = false;
+                            }
+                            else
+                            {
+                                idle = true;
+                            }
+                            if (!idle)
+                            {
+                                agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+                            }
                         }
                     }
-                    else
+                    if (currentAttack == 2)
                     {
-                        if (Time.time >= nextAttack)
+                        if (targetDistance <= rangedAttackRange)
                         {
-                            idle = false;
+                            if (Time.time >= nextAttack)
+                            {
+                                idle = false;
+                                nextAttack = Time.time + attackCooldown;
+                                Attack();
+                            }
+                            else
+                            {
+                                idle = true;
+                            }
+                            if (!idle)
+                            {
+                                agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+                            }
                         }
                         else
                         {
-                            idle = true;
-                        }
-                        if (!idle)
-                        {
-                            agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+                            if (Time.time >= nextAttack)
+                            {
+                                idle = false;
+                            }
+                            else
+                            {
+                                idle = true;
+                            }
+                            if (!idle)
+                            {
+                                agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+                            }
                         }
                     }
                 }
-                if(currentAttack == 2)
+                else
                 {
-                    if (targetDistance <= rangedAttackRange)
-                    {
-                        if (Time.time >= nextAttack)
-                        {
-                            idle = false;
-                            nextAttack = Time.time + attackCooldown;
-                            Attack();
-                        }
-                        else
-                        {
-                            idle = true;
-                        }
-                        if (!idle)
-                        {
-                            agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
-                        }
-                    }
-                    else
-                    {
-                        if (Time.time >= nextAttack)
-                        {
-                            idle = false;
-                        }
-                        else
-                        {
-                            idle = true;
-                        }
-                        if (!idle)
-                        {
-                            agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
-                        }
-                    }
+                    Vector3 direction = (player.transform.position - transform.position).normalized;
+                    transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
                 }
-            }
-            else
-            {
-                Vector3 direction = (player.transform.position - transform.position).normalized;
-                transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0 , direction.z));
             }
         }
     }
@@ -198,24 +206,50 @@ public class Boss2 : BaseEnemy
     }
     public void ToSecondStage()
     {
+        DoneAttacking();
         anim.SetInteger("currentPhase", 1);
-        shieldHealh = 2;
+        shieldHealh = 4;
         agent.speed = 2.5f;
         inSecondStage = true;
         agent.isStopped = true;
     }
     public void ToThirdStage()
     {
+        DoneAttacking();
         anim.SetInteger("currentPhase", 2);
-        shieldHealh = 3;
+        shieldHealh = 4;
         agent.speed = 5;
         agent.isStopped = true;
         inThirdStage = true;
         projectileSpeed *= 1.5f;
     }
+
+    //hier shield damage 
     public void TakeDamageToShield()
     {
         shieldHealh--;
+        if(shieldHealh == 0)
+        {
+            isChangingStance = true;
+            agent.SetDestination(transform.position);
+            aura.gameObject.SetActive(false);
+            bzoop.gameObject.SetActive(false);
+            if (inSecondStage)
+            {
+                if (!inThirdStage)
+                {
+                    ToThirdStage();
+                }
+            }
+            else
+            {
+                ToSecondStage();
+            }
+            if(inThirdStage)
+            {
+                canBeDamaged = true;
+            }
+        }
     }
     public void MayMoveAgain()
     {
@@ -223,6 +257,7 @@ public class Boss2 : BaseEnemy
     }
     public void RandomFunctie()
     {
+        isChangingStance = false;
         bzoop.gameObject.SetActive(true);
         aura.gameObject.SetActive(true);
     }

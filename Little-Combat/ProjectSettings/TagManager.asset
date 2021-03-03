@@ -10,6 +10,7 @@ TagManager:
   - Interactive
   - Laser
   - Boss
+  - Charge
   layers:
   - Default
   - TransparentFX

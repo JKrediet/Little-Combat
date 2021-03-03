@@ -37,7 +37,10 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void Start()
     {
-        healthSlider.maxValue = maxHealth;
+        if(healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+        }
 
         health = maxHealth;
 
@@ -65,8 +68,6 @@ public class BaseEnemy : MonoBehaviour
             healthText.text = bossName + " | " + health.ToString() + "/" + maxHealth.ToString();
         }
 
-        GetComponent<Collider>().enabled = canBeDamaged;
-
         if (Input.GetKeyDown("k"))
         {
             health = 0f;
@@ -79,7 +80,10 @@ public class BaseEnemy : MonoBehaviour
         if(bossDead)
         {
             GetComponent<Collider>().enabled = false;
-            moveObject.position = new Vector3(originHere.position.x, Mathf.Lerp(moveObject.position.y, goHere.position.y, 0.1f), originHere.position.z);
+            if (GetComponent<Boss1>())
+            {
+                moveObject.position = new Vector3(originHere.position.x, Mathf.Lerp(moveObject.position.y, goHere.position.y, 0.1f), originHere.position.z);
+            }
         }
     }
 
@@ -113,6 +117,7 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void Movement()
     {
+        GetComponent<Collider>().enabled = canBeDamaged;
         if (playerInRange)
         {
             if (!isAttacking)

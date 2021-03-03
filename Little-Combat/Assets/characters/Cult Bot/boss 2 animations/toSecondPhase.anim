@@ -62879,6 +62879,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 2.3
+    functionName: RandomFunctie
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 80e3e2db25fba47429dc33fa8e37a761, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 2.6666667
     functionName: MayMoveAgain
     data: 
