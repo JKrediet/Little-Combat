@@ -7,6 +7,7 @@ public class FireBall : MonoBehaviour
     public GameObject boem;
     private Rigidbody rb;
     private bool isOnShield;
+    public LayerMask shield;
 
     private void Start()
     {
@@ -16,16 +17,13 @@ public class FireBall : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            if(!FindObjectOfType<PlayerMovement>().shieldMoving)
+            if(CheckForShield() == true)
             {
-                if (FindObjectOfType<PlayerMovement>().status_shield)
-                {
-                    rb.velocity = Vector3.zero;
-                    transform.localPosition -= transform.forward * 0.5f;
-                    transform.SetParent(other.transform);
-                    transform.rotation = other.transform.rotation;
-                    isOnShield = true;
-                }
+                rb.velocity = Vector3.zero;
+                transform.localPosition -= transform.forward * 0.5f;
+                transform.SetParent(other.transform);
+                transform.rotation = other.transform.rotation;
+                isOnShield = true;
             }
             else
             {
@@ -47,6 +45,19 @@ public class FireBall : MonoBehaviour
             Explode();
         }
     }
+
+    private bool CheckForShield()
+    {
+        if(Physics.Linecast(transform.position, FindObjectOfType<Boss2>().transform.position, shield))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private void Explode()
     {
         GameObject UwU = Instantiate(boem, transform.position, transform.rotation);

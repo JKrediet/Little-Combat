@@ -127,6 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boem: {fileID: 125850, guid: 8eb5abb1a159af749ba72aabe6962b9b, type: 3}
+  shield:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1001 &1493185988914456937
 PrefabInstance:
   m_ObjectHideFlags: 0

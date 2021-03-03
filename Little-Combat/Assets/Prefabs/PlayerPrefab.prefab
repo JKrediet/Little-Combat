@@ -2980,7 +2980,7 @@ MonoBehaviour:
   attackCooldown: 0.5
   cameraReference: {fileID: 8142035288444115436}
   cameraFollow: {fileID: 8142035288379783772}
-  shield: {fileID: 0}
+  shield: {fileID: 7131103271892259159}
   status_Push: 0
   status_pickup: 0
   isHoldingLaser: 0
