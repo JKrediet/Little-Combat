@@ -12,7 +12,7 @@ public class CannonBall : MonoBehaviour
             FindObjectOfType<Boss2>().TakeDamageToShield();
             GameObject hit = Instantiate(Inpactparticle, transform.position, Quaternion.identity);
             Destroy(hit, 0.2f);
-            Destroy(gameObject, 1);
+            Destroy(gameObject);
         }
     }
 }

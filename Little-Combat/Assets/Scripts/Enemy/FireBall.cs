@@ -19,6 +19,7 @@ public class FireBall : MonoBehaviour
         {
             if(CheckForShield() == true)
             {
+                FindObjectOfType<PlayerMovement>().FireBallHit();
                 rb.velocity = Vector3.zero;
                 transform.localPosition -= transform.forward * 0.5f;
                 transform.SetParent(other.transform);

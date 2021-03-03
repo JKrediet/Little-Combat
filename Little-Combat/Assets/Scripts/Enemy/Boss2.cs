@@ -46,15 +46,6 @@ public class Boss2 : BaseEnemy
     }
     protected override void Movement()
     {
-        //test
-        if (Input.GetKeyDown("j"))
-        {
-            ToSecondStage();
-        }
-        if (Input.GetKeyDown("h"))
-        {
-            ToThirdStage();
-        }
         if (countDown > 0)
         {
             countDown -= Time.deltaTime;
@@ -230,6 +221,7 @@ public class Boss2 : BaseEnemy
         shieldHealh--;
         if(shieldHealh == 0)
         {
+            canBeDamaged = true;
             isChangingStance = true;
             agent.SetDestination(transform.position);
             aura.gameObject.SetActive(false);
@@ -245,10 +237,6 @@ public class Boss2 : BaseEnemy
             {
                 ToSecondStage();
             }
-            if(inThirdStage)
-            {
-                canBeDamaged = true;
-            }
         }
     }
     public void MayMoveAgain()
@@ -257,6 +245,7 @@ public class Boss2 : BaseEnemy
     }
     public void RandomFunctie()
     {
+        canBeDamaged = false;
         isChangingStance = false;
         bzoop.gameObject.SetActive(true);
         aura.gameObject.SetActive(true);
