@@ -20,7 +20,17 @@ public class Boss1 : BaseEnemy
             agent.isStopped = true;
             anim.SetBool("isDead", true);
             bossDead = true;
-            
+
+            if(healthSlider != null)
+            {
+                healthSlider.gameObject.SetActive(false);
+                
+            }
+
+            if(healthText != null)
+            {
+                healthText.gameObject.SetActive(false);
+            }
         }
     }
 

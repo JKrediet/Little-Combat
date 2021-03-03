@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using TMPro;
 
 public class BaseEnemy : MonoBehaviour
 {
+    public string bossName;
+
     public float maxHealth;
+
+    public Slider healthSlider;
+    public TMP_Text healthText;
 
     public bool canBeDamaged = false;
 
@@ -30,6 +37,8 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void Start()
     {
+        healthSlider.maxValue = maxHealth;
+
         health = maxHealth;
 
         agent = GetComponent<NavMeshAgent>();
@@ -45,6 +54,17 @@ public class BaseEnemy : MonoBehaviour
 
     private void Update()
     {
+        if(healthSlider != null)
+        {
+            healthSlider.value = health;
+            
+        }
+
+        if(healthText != null)
+        {
+            healthText.text = bossName + " | " + health.ToString() + "/" + maxHealth.ToString();
+        }
+
         GetComponent<Collider>().enabled = canBeDamaged;
 
         if (Input.GetKeyDown("k"))
@@ -69,6 +89,17 @@ public class BaseEnemy : MonoBehaviour
         if(targetDistance < playerDetectionRange)
         {
             playerInRange = true;
+
+            if(healthSlider != null)
+            {
+                healthSlider.gameObject.SetActive(true);
+                
+            }
+
+            if(healthText != null)
+            {
+                healthText.gameObject.SetActive(true);
+            }
         }
     }
 
