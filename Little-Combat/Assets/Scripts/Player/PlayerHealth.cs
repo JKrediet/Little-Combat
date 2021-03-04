@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerHealth : MonoBehaviour
@@ -19,10 +20,6 @@ public class PlayerHealth : MonoBehaviour
     }
     public void GiveDamage(float _damageTaken)
     {
-        if(health == 1)
-        {
-            _damageTaken = 0;
-        }
         FindObjectOfType<AnimationController>().IsTakingDamage();
         FindObjectOfType<PlayerMovement>().isTakingDamage = true;
         if (health != 0)
@@ -31,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
             slider.value = health;
             if (health == 0)
             {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 FindObjectOfType<PlayerMovement>().isDead = true;
                 FindObjectOfType<AnimationController>().Death();
             }
