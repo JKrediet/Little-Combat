@@ -208,9 +208,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (collider.gameObject != gameObject)
             {
-                if (collider.GetComponent<EnemyHealth>())
+                if (collider.GetComponent<BaseEnemy>())
                 {
-                    collider.GetComponent<EnemyHealth>().GiveDamage(playerDamage);
+                    collider.GetComponent<BaseEnemy>().GiveDamage(playerDamage);
                 }
             }
         }
