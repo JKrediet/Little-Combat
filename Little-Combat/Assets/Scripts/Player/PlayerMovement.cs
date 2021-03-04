@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cameraReference, cameraFollow, shield;
 
     //shitload aan testdingen, please no remove!
-    public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup, status_gun, isDead, status_shield, shieldMoving, blocking; //love em!
+    public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup, status_gun, isDead, status_shield, shieldMoving, blocking, isTakingDamage; //love em!
 
     //privates
     private Quaternion targetRotation;
@@ -36,8 +36,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!blocking)
             {
-                Movement();
-                Gravity();
+                if (!isTakingDamage)
+                {
+                    Movement();
+                    Gravity();
+                }
             }
         }
     }
@@ -45,61 +48,64 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!blocking)
         {
-            if (!Input.GetButton("Fire2"))
+            if (!isTakingDamage)
             {
-                if (Input.GetButtonDown("Fire1"))
+                if (!Input.GetButton("Fire2"))
                 {
-                    if (controller.isGrounded)
+                    if (Input.GetButtonDown("Fire1"))
                     {
-                        if (!status_Push)
+                        if (controller.isGrounded)
                         {
-                            if (!isHoldingPickup)
+                            if (!status_Push)
                             {
-                                if (!status_shield)
+                                if (!isHoldingPickup)
                                 {
-                                    if (Time.time > nextAttack)
+                                    if (!status_shield)
                                     {
-                                        if (status_gun)
+                                        if (Time.time > nextAttack)
                                         {
-                                            nextAttack = Time.time + attackCooldown;
-                                            GetComponent<MoveObjects>().FireGun();
-                                            FindObjectOfType<AnimationController>().GunAttack();
-                                        }
-                                        else
-                                        {
-                                            nextAttack = Time.time + attackCooldown;
-                                            FindObjectOfType<AnimationController>().Attack();
+                                            if (status_gun)
+                                            {
+                                                nextAttack = Time.time + attackCooldown;
+                                                GetComponent<MoveObjects>().FireGun();
+                                                FindObjectOfType<AnimationController>().GunAttack();
+                                            }
+                                            else
+                                            {
+                                                nextAttack = Time.time + attackCooldown;
+                                                FindObjectOfType<AnimationController>().Attack();
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                }
-                if (Input.GetButtonDown("Aim"))
-                {
-                    if (!isAttacking)
+                    if (Input.GetButtonDown("Aim"))
                     {
-                        if (!status_shield)
+                        if (!isAttacking)
                         {
-                            status_gun = !status_gun;
-                            FindObjectOfType<AnimationController>().AimToggle(status_gun);
-                            cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
-                            GetComponent<MoveObjects>().isHoldingGun = status_gun;
+                            if (!status_shield)
+                            {
+                                status_gun = !status_gun;
+                                FindObjectOfType<AnimationController>().AimToggle(status_gun);
+                                cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
+                                GetComponent<MoveObjects>().isHoldingGun = status_gun;
+                            }
                         }
                     }
-                }
-                if (Input.GetButtonDown("Shield"))
-                {
-                    if (!isAttacking)
+                    if (Input.GetButtonDown("Shield"))
                     {
-                        if (!status_gun)
+                        if (!isAttacking)
                         {
-                            status_shield = !status_shield;
-                            shield.gameObject.SetActive(status_shield);
-                            FindObjectOfType<AnimationController>().ShieldToggle(status_shield);
-                            cameraReference.GetComponent<CameraContrller>().ShieldToggle(status_shield);
-                            GetComponent<MoveObjects>().isShielding = status_shield;
+                            if (!status_gun)
+                            {
+                                status_shield = !status_shield;
+                                shield.gameObject.SetActive(status_shield);
+                                FindObjectOfType<AnimationController>().ShieldToggle(status_shield);
+                                cameraReference.GetComponent<CameraContrller>().ShieldToggle(status_shield);
+                                GetComponent<MoveObjects>().isShielding = status_shield;
+                            }
                         }
                     }
                 }
@@ -212,10 +218,14 @@ public class PlayerMovement : MonoBehaviour
     public void FireBallHit()
     {
         blocking = true;
-        FindObjectOfType<AnimationController>().IsTakingDamage();
+        FindObjectOfType<AnimationController>().IsTakingShieldDamage();
     }
     public void StopBlocking()
     {
         blocking = false;
+    }
+    public void StopTakingDamage()
+    {
+        isTakingDamage = false;
     }
 }

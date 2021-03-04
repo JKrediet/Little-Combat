@@ -199,7 +199,7 @@ public class Boss2 : BaseEnemy
     {
         DoneAttacking();
         anim.SetInteger("currentPhase", 1);
-        shieldHealh = 4;
+        shieldHealh = 2;
         agent.speed = 2.5f;
         inSecondStage = true;
         agent.isStopped = true;
@@ -208,7 +208,7 @@ public class Boss2 : BaseEnemy
     {
         DoneAttacking();
         anim.SetInteger("currentPhase", 2);
-        shieldHealh = 4;
+        shieldHealh = 2;
         agent.speed = 5;
         agent.isStopped = true;
         inThirdStage = true;
@@ -231,6 +231,10 @@ public class Boss2 : BaseEnemy
                 if (!inThirdStage)
                 {
                     ToThirdStage();
+                }
+                else
+                {
+                    isChangingStance = false;
                 }
             }
             else

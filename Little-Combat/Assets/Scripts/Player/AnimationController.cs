@@ -127,13 +127,22 @@ public class AnimationController : MonoBehaviour
     {
         anim.SetBool("isDood", false);
     }
-    public void NotTakingDamageAnymore()
+    public void NotTakingShieldDamageAnymore()
     {
-        anim.SetBool("isTakingDamage", false);
+        anim.SetBool("isTakingShieldDamage", false);
         FindObjectOfType<PlayerMovement>().StopBlocking();
+    }
+    public void IsTakingShieldDamage()
+    {
+        anim.SetBool("isTakingShieldDamage", true);
     }
     public void IsTakingDamage()
     {
         anim.SetBool("isTakingDamage", true);
+    }
+    public void NotTakingDamageAnymore()
+    {
+        anim.SetBool("isTakingDamage", false);
+        FindObjectOfType<PlayerMovement>().StopTakingDamage();
     }
 }

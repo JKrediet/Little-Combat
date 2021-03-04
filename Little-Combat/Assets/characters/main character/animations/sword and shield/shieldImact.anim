@@ -37356,7 +37356,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.7
-    functionName: NotTakingDamageAnymore
+    functionName: NotTakingShieldDamageAnymore
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: c045d13197ac5034a8c940ec91f24357, type: 3}
     floatParameter: 0
