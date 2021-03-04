@@ -3506,6 +3506,10 @@ PrefabInstance:
       propertyPath: bulletHole
       value: 
       objectReference: {fileID: 8014245839405050882, guid: a30e355a42b72334ea9caf7f12a9cdd3, type: 3}
+    - target: {fileID: 8142035288146833456, guid: dbf724fd7cd53004eb4442a5854f7b7d, type: 3}
+      propertyPath: rangedDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8142035288444115436, guid: dbf724fd7cd53004eb4442a5854f7b7d, type: 3}
       propertyPath: m_LocalPosition.z
       value: -3.675
