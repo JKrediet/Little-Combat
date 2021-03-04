@@ -73,9 +73,12 @@ public class BaseEnemy : MonoBehaviour
             health = 0f;
         }
 
-        Movement();
-        CheckDistance();    
-        AnimationThings();
+        if (!bossDead)
+        {
+            Movement();
+            CheckDistance();
+            AnimationThings();
+        }
 
         if(bossDead)
         {
