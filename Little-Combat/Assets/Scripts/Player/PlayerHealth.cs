@@ -19,6 +19,10 @@ public class PlayerHealth : MonoBehaviour
     }
     public void GiveDamage(float _damageTaken)
     {
+        if(health == 1)
+        {
+            _damageTaken = 0;
+        }
         FindObjectOfType<AnimationController>().IsTakingDamage();
         FindObjectOfType<PlayerMovement>().isTakingDamage = true;
         if (health != 0)
