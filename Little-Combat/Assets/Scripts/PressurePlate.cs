@@ -63,6 +63,7 @@ public class PressurePlate : MonoBehaviour
 
     public virtual void OnTriggerEnd(Collision collision)
     {
-        render.material.SetColor("_BaseColor", Color.red);
+        render.material.SetColor("_EmissiveColor", Color.white * 1000);
+
     }
 }
