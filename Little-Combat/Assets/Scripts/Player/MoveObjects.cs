@@ -33,7 +33,7 @@ public class MoveObjects : MonoBehaviour
         {
             if (!isHoldingGun)
             {
-                if (isShielding)
+                if (!isShielding)
                 {
                     if (Input.GetButton("Fire2"))
                     {
