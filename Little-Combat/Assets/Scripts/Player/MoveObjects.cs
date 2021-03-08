@@ -200,7 +200,6 @@ public class MoveObjects : MonoBehaviour
     {
         if(pushRef == null)
         {
-            gunReference.forward = new Vector3(transform.forward.x, cameraReference.forward.y, transform.forward.z);
             RaycastHit _hit;
             if (Physics.Raycast(cameraReference.position, cameraReference.forward, out _hit))
             {
