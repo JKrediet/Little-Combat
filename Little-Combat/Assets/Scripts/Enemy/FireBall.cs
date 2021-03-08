@@ -48,7 +48,6 @@ public class FireBall : MonoBehaviour
         if(Physics.Linecast(transform.position, FindObjectOfType<Boss2>().transform.position, out hit, shield))
         {
             Transform shield = hit.transform.GetComponent<PlayerMovement>().shield;
-            print(shield.name);
             FindObjectOfType<PlayerMovement>().FireBallHit();
             rb.velocity = Vector3.zero;
             transform.SetParent(shield);

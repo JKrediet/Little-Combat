@@ -11,6 +11,7 @@ TagManager:
   - Laser
   - Boss
   - Charge
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

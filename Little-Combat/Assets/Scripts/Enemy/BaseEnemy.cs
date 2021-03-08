@@ -140,8 +140,6 @@ public class BaseEnemy : MonoBehaviour
                 }
                 else
                 {
-                    Vector3 direction = (player.transform.position - transform.position).normalized;
-                    transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
                     if (Time.time >= nextAttack)
                     {
                         idle = false;
@@ -156,6 +154,11 @@ public class BaseEnemy : MonoBehaviour
                     }
                 }
             }
+        }
+        if(idle)
+        {
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)), 0.1f);
         }
     }
     public void StartMoving()

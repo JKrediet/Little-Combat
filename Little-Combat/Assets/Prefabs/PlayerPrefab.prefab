@@ -3378,7 +3378,7 @@ MonoBehaviour:
   isShielding: 0
   ignoreLayer:
     serializedVersion: 2
-    m_Bits: 9527
+    m_Bits: 9523
 --- !u!1 &8142035288454468832
 GameObject:
   m_ObjectHideFlags: 0
