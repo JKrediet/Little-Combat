@@ -131,6 +131,16 @@ public class PlayerMovement : MonoBehaviour
                         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
                         {
                             speed = startSpeed;
+                            //shhhh het ging me te sloom      <------
+                            if (Input.GetButton("Running"))
+                            {
+                                speed = startSpeed * 3;
+                            }
+                            else
+                            {
+                                speed = startSpeed;
+                            }
+                            //dit haal ik later weg hiertussen <------
                             if (Input.GetButton("Fire2"))
                             {
                                 speed = startSpeed / 2;

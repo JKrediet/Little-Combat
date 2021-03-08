@@ -3095,6 +3095,7 @@ MonoBehaviour:
   objectDump: {fileID: 8142035288454468833}
   objectLocation: {fileID: 8142035287727828965}
   gunReference: {fileID: 7184013863408786356}
+  cameraReference: {fileID: 8142035288444115436}
   putObjectInPos: 0
   isHolding: 0
   isHoldingGun: 0
