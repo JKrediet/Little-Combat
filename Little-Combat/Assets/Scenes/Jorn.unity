@@ -641,6 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useFunctionFromThis: {fileID: 7351740}
+  render: {fileID: 0}
 --- !u!65 &702966188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1799,13 +1800,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7408f5e3bc4c545a047768e175865b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossName: 
   maxHealth: 0
+  healthSlider: {fileID: 0}
+  healthText: {fileID: 0}
   canBeDamaged: 0
   attackDamage: 0
   attackRange: 1
   attackCooldown: 1
   playerDetectionRange: 100
   rangedAttackRange: 10
+  hitParticle: {fileID: 0}
   moveObject: {fileID: 0}
   originHere: {fileID: 0}
   goHere: {fileID: 0}
@@ -2602,13 +2607,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e4f596bb40cf74abfea0f985d6b951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossName: 
   maxHealth: 10
+  healthSlider: {fileID: 0}
+  healthText: {fileID: 0}
   canBeDamaged: 0
   attackDamage: 1
   attackRange: 3
   attackCooldown: 7
   playerDetectionRange: 30
   rangedAttackRange: 10
+  hitParticle: {fileID: 0}
   moveObject: {fileID: 0}
   originHere: {fileID: 0}
   goHere: {fileID: 0}
@@ -3134,6 +3143,10 @@ PrefabInstance:
     - target: {fileID: 8446134752937123490, guid: 6a4e474adf0b7284b97567f87a1cfea9, type: 3}
       propertyPath: m_Name
       value: Boss2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446134752937123490, guid: 6a4e474adf0b7284b97567f87a1cfea9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9114549395849102360, guid: 6a4e474adf0b7284b97567f87a1cfea9, type: 3}
       propertyPath: m_LocalPosition.x

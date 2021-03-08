@@ -200,8 +200,9 @@ public class MoveObjects : MonoBehaviour
     {
         if(pushRef == null)
         {
+            gunReference.forward = new Vector3(transform.forward.x, cameraReference.forward.y, transform.forward.z);
             RaycastHit _hit;
-            if (Physics.Raycast(gunReference.position, cameraReference.forward, out _hit))
+            if (Physics.Raycast(gunReference.position, gunReference.forward, out _hit))
             {
                 //muzzle flash
                 GameObject muzzle = Instantiate(muzzleFlash, gunReference.position, Quaternion.identity);
