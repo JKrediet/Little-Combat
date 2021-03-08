@@ -6,7 +6,7 @@ public class MoveObjects : MonoBehaviour
 {
     public float lineLength, collisionOffset = 0.2f, rangedDamage, particleTime = 0.05f;
     //pushable object reference
-    public Transform objectDump, objectLocation, gunReference;
+    public Transform objectDump, objectLocation, gunReference, cameraReference;
     private Transform pushRef;
     private CharacterController controller;
     public bool putObjectInPos, isHolding, isHoldingGun, isShielding;
@@ -201,7 +201,7 @@ public class MoveObjects : MonoBehaviour
         if(pushRef == null)
         {
             RaycastHit _hit;
-            if (Physics.Raycast(gunReference.position, transform.forward, out _hit))
+            if (Physics.Raycast(cameraReference.position, cameraReference.forward, out _hit))
             {
                 //muzzle flash
                 GameObject muzzle = Instantiate(muzzleFlash, gunReference.position, Quaternion.identity);
@@ -242,7 +242,6 @@ public class MoveObjects : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
         Gizmos.DrawRay(gunReference.position, transform.forward);
     }
 }

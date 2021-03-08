@@ -208,6 +208,7 @@ public class Boss2 : BaseEnemy
     {
         DoneAttacking();
         anim.SetInteger("currentPhase", 2);
+        attackRange = 4;
         shieldHealh = 2;
         agent.speed = 5;
         agent.isStopped = true;

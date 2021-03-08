@@ -15,8 +15,11 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
-        slider.maxValue = maxHealth;
-        slider.value = maxHealth;
+        if (slider != null)
+        {
+            slider.maxValue = maxHealth;
+            slider.value = maxHealth;
+        }
     }
     public void GiveDamage(float _damageTaken)
     {
@@ -37,5 +40,21 @@ public class PlayerHealth : MonoBehaviour
     public void GiveHealth(int _healthRestored)
     {
         health = Mathf.Clamp(health + _healthRestored, 0, maxHealth);
+    }
+    private void Update()
+    {
+        HealthRegen();
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GiveDamage(1);
+        }
+    }
+    public void HealthRegen()
+    {
+        if(health < maxHealth)
+        {
+            health = Mathf.Clamp(health += 0.1f * Time.deltaTime, 0, maxHealth);
+            slider.value = health;
+        }
     }
 }
