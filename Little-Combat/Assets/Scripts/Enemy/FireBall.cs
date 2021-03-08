@@ -19,12 +19,7 @@ public class FireBall : MonoBehaviour
         {
             if(CheckForShield() == true)
             {
-                FindObjectOfType<PlayerMovement>().FireBallHit();
-                rb.velocity = Vector3.zero;
-                transform.localPosition -= transform.forward * 0.5f;
-                transform.SetParent(other.transform);
-                transform.rotation = other.transform.rotation;
-                isOnShield = true;
+                //ooga verplaatst
             }
             else
             {
@@ -49,8 +44,18 @@ public class FireBall : MonoBehaviour
 
     private bool CheckForShield()
     {
-        if(Physics.Linecast(transform.position, FindObjectOfType<Boss2>().transform.position, shield))
+        RaycastHit hit;
+        if(Physics.Linecast(transform.position, FindObjectOfType<Boss2>().transform.position, out hit, shield))
         {
+            Transform shield = hit.transform.GetComponent<PlayerMovement>().shield;
+            print(shield.name);
+            FindObjectOfType<PlayerMovement>().FireBallHit();
+            rb.velocity = Vector3.zero;
+            transform.SetParent(shield);
+            transform.rotation = shield.transform.rotation;
+            transform.position = shield.transform.position;
+            transform.localPosition += transform.forward * 0.5f;
+            isOnShield = true;
             return true;
         }
         else
@@ -72,7 +77,7 @@ public class FireBall : MonoBehaviour
             if(Input.GetButtonDown("Shield") || Input.GetButtonDown("Fire1"))
             {
                 transform.SetParent(null);
-                rb.velocity = transform.forward * 20;
+                rb.velocity = -transform.up * 20;
             }
         }
     }

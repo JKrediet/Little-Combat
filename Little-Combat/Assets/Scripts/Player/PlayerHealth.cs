@@ -41,4 +41,20 @@ public class PlayerHealth : MonoBehaviour
     {
         health = Mathf.Clamp(health + _healthRestored, 0, maxHealth);
     }
+    private void Update()
+    {
+        HealthRegen();
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GiveDamage(1);
+        }
+    }
+    public void HealthRegen()
+    {
+        if(health < maxHealth)
+        {
+            health = Mathf.Clamp(health += 0.1f * Time.deltaTime, 0, maxHealth);
+            slider.value = health;
+        }
+    }
 }
