@@ -44,7 +44,7 @@ public class CameraContrller : MonoBehaviour
         else if(isAiming)
         {
             //shhhhh dont mind the hardcode, imma but lazy om extra variable aan te maken...
-            rotation.y = Mathf.Clamp(rotation.y, maxLookAngle - 40, maxLookAngle - 40);
+            rotation.y = Mathf.Clamp(rotation.y, -maxLookAngle, maxLookAngle);
         }
         else
         {

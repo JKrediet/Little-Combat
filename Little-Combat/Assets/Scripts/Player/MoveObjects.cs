@@ -202,7 +202,7 @@ public class MoveObjects : MonoBehaviour
         {
             gunReference.forward = new Vector3(transform.forward.x, cameraReference.forward.y, transform.forward.z);
             RaycastHit _hit;
-            if (Physics.Raycast(gunReference.position, gunReference.forward, out _hit))
+            if (Physics.Raycast(cameraReference.position, cameraReference.forward, out _hit))
             {
                 //muzzle flash
                 GameObject muzzle = Instantiate(muzzleFlash, gunReference.position, Quaternion.identity);
@@ -243,7 +243,6 @@ public class MoveObjects : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
         Gizmos.DrawRay(gunReference.position, transform.forward);
     }
 }
