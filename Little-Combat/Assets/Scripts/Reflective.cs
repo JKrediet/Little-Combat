@@ -10,25 +10,14 @@ public class Reflective : MonoBehaviour
 
     public Transform laserEffect;
 
-    private void Start()
-    {
-        OnStart();
-    }
 
     private void Update()
     {
-        OnEndReflect();
-    }
-
-    protected virtual void OnStart()
-    {
-        
+        lineRen.enabled = false;
     }
 
     public void OnReflection(Vector3 hitPoint, Vector3 direction, Vector3 normal, Transform hitEffect)
     {
-        OnReflect();
-
         lineRen.enabled = true;
 
         Vector3 reflect = Vector3.Reflect(direction, normal);
@@ -68,13 +57,5 @@ public class Reflective : MonoBehaviour
             lineRen.SetPosition(0, hitPoint);
             lineRen.SetPosition(1, transform.position + reflect * 1000f);
         }
-    }
-
-    protected virtual void OnReflect() { }
-
-    protected virtual void OnEndReflect()
-    {
-        lineRen.enabled = false;
-        
     }
 }

@@ -10,13 +10,18 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 6;
     public float health;
 
+    public RectTransform fillBar;
+
     public Slider slider;
 
     private void Start()
     {
         health = maxHealth;
-        slider.maxValue = maxHealth;
-        slider.value = maxHealth;
+        if (slider != null)
+        {
+            slider.maxValue = maxHealth;
+            slider.value = maxHealth;
+        }
     }
     public void GiveDamage(float _damageTaken)
     {
@@ -26,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
             slider.value = health;
+
             if (health == 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -37,5 +43,21 @@ public class PlayerHealth : MonoBehaviour
     public void GiveHealth(int _healthRestored)
     {
         health = Mathf.Clamp(health + _healthRestored, 0, maxHealth);
+    }
+    private void Update()
+    {
+        HealthRegen();
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GiveDamage(1);
+        }
+    }
+    public void HealthRegen()
+    {
+        if(health < maxHealth)
+        {
+            health = Mathf.Clamp(health += 0.1f * Time.deltaTime, 0, maxHealth);
+            slider.value = health;
+        }
     }
 }
