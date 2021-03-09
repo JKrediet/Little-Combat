@@ -3042,6 +3042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 6
   health: 0
+  fillBar: {fileID: 0}
   slider: {fileID: 0}
 --- !u!114 &8142035288146833454
 MonoBehaviour:
