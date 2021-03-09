@@ -10,7 +10,18 @@ public class GameManager : MonoBehaviour
     private Vector3 spawnPosition;
     private List<GameObject> checkPoints;
 
+    //areas cleared
+    public bool tutorial_puzzle1, tutorial_boss1, neptune_boss2;
+    //levels cleared
+    public bool tutorial_level, neptune_level;
+
     private void Awake()
+    {
+        ClearedStages();
+        BuildStages();
+        SpawnPlayerAtCheckpoint();
+    }
+    private void SpawnPlayerAtCheckpoint()
     {
         currentCheckPoint = PlayerPrefs.GetInt("LastCheckPoint", 0);
         GameObject[] tempList = GameObject.FindGameObjectsWithTag("CheckPoint");
@@ -21,5 +32,22 @@ public class GameManager : MonoBehaviour
         }
         spawnPosition = checkPoints[currentCheckPoint].GetComponent<CheckPoints>().spawnPoint.position;
         Instantiate(playerPrefab, spawnPosition, checkPoints[currentCheckPoint].GetComponent<CheckPoints>().spawnPoint.rotation);
+    }
+
+    private void ClearedStages()
+    {
+        //tutorial
+        PlayerPrefs.GetInt("tutorial_puzzle1", 0);
+        PlayerPrefs.GetInt("tutorial_boss1", 0);
+        PlayerPrefs.GetInt("tutorial_level", 0);
+
+        //neptune
+        PlayerPrefs.GetInt("neptune_boss2", 0);
+        PlayerPrefs.GetInt("neptune_level", 0);
+    }
+
+    private void BuildStages()
+    {
+
     }
 }
