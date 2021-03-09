@@ -15,6 +15,7 @@ public class SpawnObject : MonoBehaviour
             Destroy(lastObject.gameObject);
         }
         lastObject = Instantiate(spawnedObject, transform.position, transform.rotation);
+        FindObjectOfType<BuildStage>().stone2 = lastObject;
 
         return lastObject;
 

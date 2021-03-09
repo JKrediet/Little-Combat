@@ -9,6 +9,9 @@ public class CheckPoints : MonoBehaviour
 
     private void OnTriggerEnter(Collider player)
     {
-        PlayerPrefs.SetInt("LastCheckPoint", checkPointsNumber);
+        if (player.tag == "Player")
+        {
+            PlayerPrefs.SetInt("LastCheckPoint", checkPointsNumber);
+        }
     }
 }

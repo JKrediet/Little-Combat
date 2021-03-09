@@ -15,6 +15,7 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         loadingScreen.SetActive(true);
+        PlayerPrefs.SetInt("tutorial_level", 1);
 
         StartCoroutine(LoadAsychronounsly());
         Debug.Log("Teleport");

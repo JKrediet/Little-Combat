@@ -40,13 +40,15 @@ public class PressurePlate : MonoBehaviour
             {
                 if (col.gameObject.tag != "Player")
                 {
+                    FindObjectOfType<GameManager>().tutorial_puzzle1_1++;
                     if (useFunctionFromThis)
                     {
                         if (useFunctionFromThis.GetComponent<SpawnObject>())
                         {
                             nextSpawn = cooldown + Time.time;
                             tempSpawned = useFunctionFromThis.GetComponent<SpawnObject>().SpawnObjectIn();
-                        }else if (useFunctionFromThis.GetComponent<PlayableDirector>())
+                        }
+                        else if (useFunctionFromThis.GetComponent<PlayableDirector>())
                         {
                             useFunctionFromThis.GetComponent<PlayableDirector>().Play();
                         }
@@ -59,6 +61,7 @@ public class PressurePlate : MonoBehaviour
     protected virtual void OnCollisionExit(Collision collision)
     {
         OnTriggerEnd(collision);
+        FindObjectOfType<GameManager>().tutorial_puzzle1_1--;
     }
 
     public virtual void OnTriggerEnd(Collision collision)

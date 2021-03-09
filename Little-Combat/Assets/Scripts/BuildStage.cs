@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class BuildStage : MonoBehaviour
 {
+    [Header("TUTORIAL")]
     //Tutorial_puzzle1
-    public GameObject stone1, stone1Pos, stone2, stone2Pos;
-
+    public GameObject stone1;
+    public GameObject stone1Pos;
+    public GameObject stone2;
+    public GameObject stone2Pos;
     //Tutorial_boss1
     public GameObject boss1;
 
@@ -14,12 +17,19 @@ public class BuildStage : MonoBehaviour
     public void Tutorial_puzzle1()
     {
         stone1.transform.position = stone1Pos.transform.position;
-        //moet maybe invoke bij
+        Invoke("Tutorial_puzzle12", 0.4f);
+    }
+    private void Tutorial_puzzle12()
+    {
         stone2.transform.position = stone2Pos.transform.position;
     }
     public void Tutorial_boss1()
     {
-        //boss meot dood zijn at arrival
+        Invoke("Tutorial_boss12", 1);
+    }
+    public void Tutorial_boss12()
+    {
+        boss1.GetComponent<Boss1>().KillBoss();
     }
 
 

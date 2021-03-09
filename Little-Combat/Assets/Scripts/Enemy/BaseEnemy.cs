@@ -89,6 +89,10 @@ public class BaseEnemy : MonoBehaviour
             }
         }
     }
+    public void KillBoss()
+    {
+        health = 0;
+    }
 
     private void CheckDistance()
     {
