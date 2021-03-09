@@ -42,19 +42,23 @@ public class NinjaVrouw : MonoBehaviour
                     {
                         agent.SetDestination(player.position);
                         agent.updateRotation = true;
-                        transform.rotation = Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z));
+                        
+                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z)), 0.2f);
                         anim.SetInteger("State", 1);
                         if (targetDistance < 6)
                         {
                             if (!retreat)
                             {
                                 dash = true;
+                                agent.isStopped = true;
+                                agent.SetDestination(player.position - transform.forward);
+                                transform.position = player.position - transform.forward;
                             }
                         }
                     }
                     else
                     {
-                        transform.rotation = Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z));
+                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z)), 0.2f);
                         agent.SetDestination(transform.position - transform.forward);
                         if (targetDistance > retreatRange)
                         {
@@ -65,10 +69,6 @@ public class NinjaVrouw : MonoBehaviour
             }
             else
             {
-                agent.SetDestination(player.position);
-                transform.rotation = Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z));
-                agent.speed = 10;
-                agent.stoppingDistance = 2;
                 DashToPlayer();
             }
         }
@@ -106,7 +106,6 @@ public class NinjaVrouw : MonoBehaviour
         if (targetDistance < 3)
         {
             agent.updateRotation = false;
-            agent.isStopped = true;
             Attack();
         }
     }
