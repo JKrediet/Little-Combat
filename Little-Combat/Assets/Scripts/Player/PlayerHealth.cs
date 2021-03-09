@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 6;
     public float health;
 
+    public RectTransform fillBar;
+
     public Slider slider;
 
     private void Start()
@@ -29,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
             slider.value = health;
+
             if (health == 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

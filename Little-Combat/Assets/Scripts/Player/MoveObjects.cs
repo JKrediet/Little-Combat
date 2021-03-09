@@ -123,7 +123,7 @@ public class MoveObjects : MonoBehaviour
                 //make player parent of object
                 pushRef = _hit_Object.transform;
                 pushRef.SetParent(transform);
-                pushRef.gameObject.layer = 11;
+                //pushRef.gameObject.layer = 11;
                 GetComponent<PlayerMovement>().isHoldingLaser = true;
                 FindObjectOfType<CameraContrller>().isHoldingLaser = true;
 
@@ -138,7 +138,6 @@ public class MoveObjects : MonoBehaviour
         else
         {
             GetComponent<PlayerMovement>().status_Push = false;
-
         }
     }
     private void StopMovingObjects()

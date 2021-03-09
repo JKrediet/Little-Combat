@@ -72,8 +72,6 @@ public class MainMenu : MonoBehaviour
 
             progressText.text = progress * 100f + "%";
 
-            // Do progress text
-
             yield return null;
         }
     }

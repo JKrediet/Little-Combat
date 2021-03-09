@@ -36,8 +36,6 @@ public class Laser : MonoBehaviour
 
         if(Physics.Raycast(ray, out _hit, lineLength, laserMask))
         {
-            
-
             lineRen.SetPosition(0, shootPoint.position);
             lineRen.SetPosition(1, _hit.point);
 
