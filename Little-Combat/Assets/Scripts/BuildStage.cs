@@ -16,16 +16,25 @@ public class BuildStage : MonoBehaviour
     //tutorial
     public void Tutorial_puzzle1()
     {
-        stone1.transform.position = stone1Pos.transform.position;
-        Invoke("Tutorial_puzzle12", 0.4f);
+        if(stone1 != null)
+        {
+            stone1.transform.position = stone1Pos.transform.position;
+            Invoke("Tutorial_puzzle12", 0.4f);
+        }
     }
     private void Tutorial_puzzle12()
     {
-        stone2.transform.position = stone2Pos.transform.position;
+        if (stone2 != null)
+        {
+            stone2.transform.position = stone2Pos.transform.position;
+        }
     }
     public void Tutorial_boss1()
     {
-        Invoke("Tutorial_boss12", 1);
+        if(boss1 != null)
+        {
+            Invoke("Tutorial_boss12", 1);
+        }
     }
     public void Tutorial_boss12()
     {

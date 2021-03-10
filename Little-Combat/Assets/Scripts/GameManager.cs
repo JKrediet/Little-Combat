@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             checkPoints[check.GetComponent<CheckPoints>().checkPointsNumber] = check;
         }
         spawnPosition = checkPoints[currentCheckPoint].GetComponent<CheckPoints>().spawnPoint.position;
-        if(currentCheckPoint > checkPoints.Count)
+        if(currentCheckPoint >= checkPoints.Count)
         {
             currentCheckPoint = 0;
         }
