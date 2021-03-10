@@ -41,7 +41,7 @@ public class Laser : MonoBehaviour
 
             if (_hit.transform.GetComponent<Reflective>())
             {
-                _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, transform.forward, _hit.normal, laserEffect) ;
+                _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, transform.forward, _hit.normal, laserEffect);
             }
             else
             {

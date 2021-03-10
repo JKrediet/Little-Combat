@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     //shitload aan testdingen, please no remove!
     public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup, status_gun, isDead, status_shield, shieldMoving, blocking, isTakingDamage; //love em!
+    public Image crosshair;
 
     //privates
     private Quaternion targetRotation;
@@ -25,8 +27,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         startSpeed = speed;
     }
 
@@ -87,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
                         {
                             if (!status_shield)
                             {
+                                crosshair.gameObject.SetActive(!crosshair.gameObject.activeSelf);
                                 status_gun = !status_gun;
                                 FindObjectOfType<AnimationController>().AimToggle(status_gun);
                                 cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
