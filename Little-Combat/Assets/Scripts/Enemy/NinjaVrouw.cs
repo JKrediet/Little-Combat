@@ -50,6 +50,8 @@ public class NinjaVrouw : MonoBehaviour
                             if (!retreat)
                             {
                                 dash = true;
+                                Attack();
+                                Invoke("DashToPlayer", 0.5f);
                             }
                         }
                     }
@@ -66,7 +68,7 @@ public class NinjaVrouw : MonoBehaviour
             }
             else
             {
-                DashToPlayer();
+                
             }
         }
         else
@@ -103,12 +105,8 @@ public class NinjaVrouw : MonoBehaviour
         agent.isStopped = true;
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z)), 1);
         agent.SetDestination(player.position - transform.forward);
-        transform.position = player.position - transform.forward;
-        if (targetDistance < 3)
-        {
-            agent.updateRotation = false;
-            Attack();
-        }
+        transform.position = new Vector3(player.position.x - transform.forward.x, 0, player.position.z - transform.forward.z);
+        agent.updateRotation = false;
     }
     private void Attack()
     {
@@ -123,14 +121,7 @@ public class NinjaVrouw : MonoBehaviour
         agent.speed = 3.5f;
         agent.isStopped = false;
         float roll = Random.Range(0, 2);
-        if (roll > 0)
-        {
-            DashToPlayer();
-        }
-        else
-        {
-            Retreat();
-        }
+        Retreat();
     }
     private void Retreat()
     {
