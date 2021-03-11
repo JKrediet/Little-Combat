@@ -601,13 +601,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e4f596bb40cf74abfea0f985d6b951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  bossName: 
+  maxHealth: 100
+  healthSlider: {fileID: 0}
+  healthText: {fileID: 0}
   canBeDamaged: 0
   attackDamage: 1
   attackRange: 3
   attackCooldown: 7
   playerDetectionRange: 30
-  bodyparts: []
+  rangedAttackRange: 10
+  hitParticle: {fileID: 0}
   moveObject: {fileID: 0}
   originHere: {fileID: 0}
   goHere: {fileID: 0}

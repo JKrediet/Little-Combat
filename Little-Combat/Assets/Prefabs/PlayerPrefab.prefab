@@ -906,7 +906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507029557
@@ -6320,7 +6320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 68.8, y: 60.2}
+  m_AnchoredPosition: {x: 68.80005, y: 60.19995}
   m_SizeDelta: {x: 106.78195, y: 107.83208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4051590471811430919
@@ -9043,7 +9043,7 @@ MonoBehaviour:
   gravity: 20
   jumpForce: 7
   CameraRotationSpeed: 2
-  playerDamage: 1
+  playerDamage: 15
   attackCooldown: 0.5
   cameraReference: {fileID: 8142035288444115436}
   cameraFollow: {fileID: 8142035288379783772}

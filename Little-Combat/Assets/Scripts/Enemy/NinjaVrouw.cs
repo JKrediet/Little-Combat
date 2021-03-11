@@ -121,12 +121,19 @@ public class NinjaVrouw : MonoBehaviour
         agent.speed = 3.5f;
         agent.isStopped = false;
         float roll = Random.Range(0, 2);
-        Retreat();
+        if(roll > 0)
+        {
+            Attack();
+            Invoke("DashToPlayer", 0.5f);
+        }
+        else
+        {
+            Retreat();
+        }
     }
     private void Retreat()
     {
         retreat = true;
-        agent.speed = 7;
         agent.stoppingDistance = 0;
         anim.SetInteger("State", 3);
     }
@@ -134,7 +141,6 @@ public class NinjaVrouw : MonoBehaviour
     {
         retreat = false;
         agent.stoppingDistance = 5;
-        agent.speed = 3.5f;
         anim.SetInteger("State", 0);
     }
 }
