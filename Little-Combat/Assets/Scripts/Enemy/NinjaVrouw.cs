@@ -12,9 +12,10 @@ public class NinjaVrouw : MonoBehaviour
     private Transform player;
     //state: state0 = idle /state1 = run/ state2 = attack/ state3 = retreat
 
-    public float playerDetectionRange, retreatRange;
-    private float targetDistance;
-    private bool playerInRange, isAttacking, retreat, dash;
+    public float playerDetectionRange, retreatRange, attackDamage, maxHealth;
+    public bool canBeDamaged, bossDead;
+    private float targetDistance, health;
+    private bool playerInRange, isAttacking, retreat, dash, idle;
 
     public Slider healthSlider;
     public TMP_Text healthText;
@@ -24,59 +25,78 @@ public class NinjaVrouw : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerMovement>().transform;
         anim = GetComponent<Animator>();
+
+        health = maxHealth;
     }
     private void Update()
     {
         CheckDistance();
         Movement();
+
+        if (health <= 0f)
+        {
+            agent.isStopped = true;
+            anim.SetBool("isDead", true);
+            bossDead = true;
+            PlayerPrefs.SetInt("tutorial_boss1", 1);
+        }
+    }
+    public void GiveDamage(float _damageTaken)
+    {
+        if (canBeDamaged)
+        {
+            health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
+        }
     }
     private void Movement()
     {
-        if(playerInRange)
+        if (!bossDead)
         {
-            if(!dash)
+            if (playerInRange)
             {
-                if (!isAttacking)
+                if (!idle)
                 {
-                    if (!retreat)
+                    if (!dash)
                     {
-                        agent.SetDestination(player.position);
-                        agent.updateRotation = true;
-                        
-                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z)), 0.2f);
-                        anim.SetInteger("State", 1);
-                        if (targetDistance < 6)
+                        if (!isAttacking)
                         {
                             if (!retreat)
                             {
-                                dash = true;
-                                Attack();
-                                Invoke("DashToPlayer", 0.5f);
+                                agent.SetDestination(player.position);
+                                agent.updateRotation = true;
+
+                                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z)), 0.2f);
+                                anim.SetInteger("State", 1);
+                                if (targetDistance < 6)
+                                {
+                                    if (!retreat)
+                                    {
+                                        dash = true;
+                                        Attack();
+                                        Invoke("DashToPlayer", 0.5f);
+                                    }
+                                }
                             }
-                        }
-                    }
-                    else
-                    {
-                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z)), 0.2f);
-                        agent.SetDestination(transform.position - transform.forward);
-                        if (targetDistance > retreatRange)
-                        {
-                            StopRetreat();
+                            else
+                            {
+                                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z)), 0.2f);
+                                agent.SetDestination(transform.position - transform.forward);
+                                if (targetDistance > retreatRange)
+                                {
+                                    StopRetreat();
+                                }
+                            }
                         }
                     }
                 }
             }
             else
             {
-                
-            }
-        }
-        else
-        {
-            if (!isAttacking)
-            {
-                agent.SetDestination(transform.position);
-                anim.SetInteger("State", 0);
+                if (!isAttacking)
+                {
+                    agent.SetDestination(transform.position);
+                    anim.SetInteger("State", 0);
+                }
             }
         }
     }
@@ -136,11 +156,39 @@ public class NinjaVrouw : MonoBehaviour
         retreat = true;
         agent.stoppingDistance = 0;
         anim.SetInteger("State", 3);
+        Invoke("StopRetreat", 2);
     }
     public void StopRetreat()
     {
         retreat = false;
         agent.stoppingDistance = 5;
         anim.SetInteger("State", 0);
+        IdleToggle();
+        Invoke("IdleToggle", 1);
+    }
+    private void IdleToggle()
+    {
+        idle = !idle;
+    }
+    public void DamageAttack()
+    {
+        //actual attack
+        Collider[] colliders = Physics.OverlapBox(transform.position + transform.forward * 2, new Vector3(1, 2, 1));
+        foreach (Collider collider in colliders)
+        {
+            if (collider.gameObject != gameObject)
+            {
+                //Debug.Log(collider.transform.name);
+
+                if (collider.GetComponent<PlayerHealth>())
+                {
+                    collider.GetComponent<PlayerHealth>().GiveDamage(attackDamage);
+                }
+                else if (collider.GetComponent<ObjectHealth>())
+                {
+                    collider.GetComponent<ObjectHealth>().DoDamage();
+                }
+            }
+        }
     }
 }

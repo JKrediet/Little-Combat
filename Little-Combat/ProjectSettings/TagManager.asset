@@ -12,6 +12,7 @@ TagManager:
   - Boss
   - Charge
   - CheckPoint
+  - Ninja
   layers:
   - Default
   - TransparentFX

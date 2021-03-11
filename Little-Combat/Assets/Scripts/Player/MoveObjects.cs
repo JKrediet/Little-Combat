@@ -218,11 +218,15 @@ public class MoveObjects : MonoBehaviour
                 GameObject tempHole = null;
 
                 //bullethole thingy
-                if(_hit.transform.tag == "Boss")
+                if (_hit.transform.tag == "Boss")
                 {
                     Vector3 holeAdjust = _hit.point + _hit.normal;
                     tempHole = Instantiate(_hit.transform.GetComponent<BaseEnemy>().hitParticle, _hit.point, Quaternion.FromToRotation(Vector3.forward, _hit.normal));
                     tempHole.transform.localPosition += tempHole.transform.forward * 0.01f;
+                }
+                else if (_hit.transform.tag == "Ninja")
+                {
+
                 }
                 else
                 {
@@ -236,11 +240,11 @@ public class MoveObjects : MonoBehaviour
                 {
                     _hit.transform.GetComponent<BaseEnemy>().GiveDamage(rangedDamage);
                 }
+                else if(_hit.transform.GetComponent<NinjaVrouw>())
+                {
+                    _hit.transform.GetComponent<NinjaVrouw>().GiveDamage(rangedDamage);
+                }
             }
         }
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawRay(gunReference.position, transform.forward);
     }
 }
