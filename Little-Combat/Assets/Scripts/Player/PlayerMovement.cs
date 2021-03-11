@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed, gravity, jumpForce, CameraRotationSpeed, playerDamage, attackCooldown;
     public Transform cameraReference, cameraFollow, shield;
+    public AudioSource source;
+    public AudioClip swordSoundClip;
+    public AudioClip foot1, foot2;
 
     //shitload aan testdingen, please no remove!
     public bool status_Push, status_pickup, isHoldingLaser, isHoldingPickup, status_gun, isDead, status_shield, shieldMoving, blocking, isTakingDamage; //love em!
@@ -155,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
                             speed = 0;
                         }
                     }
-                    if(moveDir.magnitude > 0)
+                    if (moveDir.magnitude > 0)
                     {
                         shieldMoving = true;
                         FindObjectOfType<AnimationController>().ShieldWalking(shieldMoving);
@@ -202,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Gravity()
     {
-        if(!controller.isGrounded)
+        if (!controller.isGrounded)
         {
             downForce -= gravity * Time.deltaTime;
         }
@@ -213,6 +216,10 @@ public class PlayerMovement : MonoBehaviour
     }
     public void BasicAttack()
     {
+        source.Stop();
+        source.clip = swordSoundClip;
+        source.Play();
+
         //actual attack
         Collider[] colliders = Physics.OverlapSphere(transform.position + transform.forward, 1);
         foreach (Collider collider in colliders)
@@ -239,4 +246,5 @@ public class PlayerMovement : MonoBehaviour
     {
         isTakingDamage = false;
     }
+
 }

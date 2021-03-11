@@ -1,0 +1,3 @@
+﻿#0 This is the first totem you find
+#1 This is the second totem you find
+#2 This is the third totem you find

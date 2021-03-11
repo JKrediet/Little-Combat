@@ -5,6 +5,9 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     public bool attack;
+    public AudioSource source;
+    public AudioClip foot1, foot2;
+
     private Animator anim;
 
     public GameObject moveTool;
@@ -93,6 +96,21 @@ public class AnimationController : MonoBehaviour
         anim.SetBool("IsAttacking", attack);
         sword.SetActive(false);
     }
+
+    public void FootOne()
+    {
+        //source.Stop();
+        source.clip = foot1;
+        source.Play();
+    }
+
+    public void FootTwo()
+    {
+        //source.Stop();
+        source.clip = foot2;
+        source.Play();
+    }
+
     public void StopMoving()
     {
         anim.SetInteger("PlayerState", 0);
