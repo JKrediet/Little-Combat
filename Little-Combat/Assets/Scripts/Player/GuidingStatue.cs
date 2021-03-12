@@ -16,13 +16,18 @@ public class GuidingStatue : MonoBehaviour
     {
         totem = GetComponent<CheckPoints>().checkPointsNumber;
 
+        
+    }
+
+    public string GetInfo()
+    {
         StreamReader reader = new StreamReader("Assets/Files/GuidingTotem.txt");
 
         guiding = reader.ReadToEnd().Split('\n');
 
         for (int i = 0; i < guiding.Length; i++)
         {
-            if(guiding[i].StartsWith("#" + totem))
+            if (guiding[i].StartsWith("#" + totem))
             {
                 string[] line = guiding[i].Split(' ');
 
@@ -36,14 +41,16 @@ public class GuidingStatue : MonoBehaviour
                     {
                         sentence = sentence + line[a];
                     }
-
                 }
             }
         }
+
+
+        return sentence;
     }
-    
-    public void ReadTotem()
+
+    public void ResetInfo()
     {
-        print(sentence);
+        sentence = "";
     }
 }

@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     public GameObject loadingScreen;
     public GameObject settingsScreen;
 
-
+    public Button continueButton;
     public Button quitButton;
 
     public GameObject quitMessage;
@@ -21,6 +21,11 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.GetInt("NewGameStarted") == 1)
+        {
+            continueButton.interactable = true;
+        }
+
         mainMenu.SetActive(true);
         settingsScreen.SetActive(false);
         loadingScreen.SetActive(false);
@@ -34,6 +39,11 @@ public class MainMenu : MonoBehaviour
         settingsScreen.SetActive(true);
     }
 
+    public void OnContinue()
+    {
+        StartCoroutine(LoadAsychronounsly(PlayerPrefs.GetInt("CurrentSavedLevel")));
+    }
+
     public void OpenMainMenu()
     {
         mainMenu.SetActive(true);
@@ -43,10 +53,15 @@ public class MainMenu : MonoBehaviour
 
     public void OnNewGame()
     {
+
         mainMenu.SetActive(false);
         loadingScreen.SetActive(true);
 
-        StartCoroutine(LoadAsychronounsly());
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("NewGameStarted", 1);
+        PlayerPrefs.SetInt("CurrentSavedLevel", 1);
+
+        StartCoroutine(LoadAsychronounsly(PlayerPrefs.GetInt("CurrentSavedLevel")));
     }
 
     public void ToggleQuit()
@@ -61,9 +76,9 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    IEnumerator LoadAsychronounsly()
+    IEnumerator LoadAsychronounsly(int level)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(level);
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);

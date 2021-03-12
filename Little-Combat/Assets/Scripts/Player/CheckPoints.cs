@@ -9,6 +9,9 @@ public class CheckPoints : MonoBehaviour
 
     public GameObject canvas;
 
+    public GameObject panel;
+    public TMPro.TMP_Text text;
+
     private bool canOpen;
 
     private void OnTriggerEnter(Collider player)
@@ -30,6 +33,19 @@ public class CheckPoints : MonoBehaviour
             canOpen = false;
 
             canvas.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (canOpen)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                GetComponent<GuidingStatue>().ResetInfo();
+                panel.SetActive(!panel.activeSelf);
+                text.text = GetComponent<GuidingStatue>().GetInfo();
+            }
         }
     }
 }
