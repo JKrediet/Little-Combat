@@ -43,15 +43,18 @@ public class Boss1 : BaseEnemy
         {
             if (collider.gameObject != gameObject)
             {
-                //Debug.Log(collider.transform.name);
+                if (CheckForShield(collider.transform.position))
+                {
+                    //Debug.Log(collider.transform.name);
 
-                if (collider.GetComponent<PlayerHealth>())
-                {
-                    collider.GetComponent<PlayerHealth>().GiveDamage(attackDamage);
-                }
-                else if(collider.GetComponent<ObjectHealth>())
-                {
-                    collider.GetComponent<ObjectHealth>().DoDamage();
+                    if (collider.GetComponent<PlayerHealth>())
+                    {
+                        collider.GetComponent<PlayerHealth>().GiveDamage(attackDamage);
+                    }
+                    else if (collider.GetComponent<ObjectHealth>())
+                    {
+                        collider.GetComponent<ObjectHealth>().DoDamage();
+                    }
                 }
             }
         }

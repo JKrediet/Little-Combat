@@ -615,6 +615,9 @@ MonoBehaviour:
   moveObject: {fileID: 0}
   originHere: {fileID: 0}
   goHere: {fileID: 0}
+  shield:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!95 &2988843562007588327
 Animator:
   serializedVersion: 3

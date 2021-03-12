@@ -19,6 +19,7 @@ public class NinjaVrouw : MonoBehaviour
 
     public Slider healthSlider;
     public TMP_Text healthText;
+    public LayerMask shield;
 
     private void Start()
     {
@@ -141,7 +142,7 @@ public class NinjaVrouw : MonoBehaviour
         agent.speed = 3.5f;
         agent.isStopped = false;
         float roll = Random.Range(0, 2);
-        if(roll > 0)
+        if (roll > 0)
         {
             Attack();
             Invoke("DashToPlayer", 0.5f);
@@ -178,17 +179,33 @@ public class NinjaVrouw : MonoBehaviour
         {
             if (collider.gameObject != gameObject)
             {
-                //Debug.Log(collider.transform.name);
+                if (CheckForShield(collider.transform.position))
+                {
+                    //Debug.Log(collider.transform.name);
 
-                if (collider.GetComponent<PlayerHealth>())
-                {
-                    collider.GetComponent<PlayerHealth>().GiveDamage(attackDamage);
-                }
-                else if (collider.GetComponent<ObjectHealth>())
-                {
-                    collider.GetComponent<ObjectHealth>().DoDamage();
+                    if (collider.GetComponent<PlayerHealth>())
+                    {
+                        collider.GetComponent<PlayerHealth>().GiveDamage(attackDamage);
+                    }
+                    else if (collider.GetComponent<ObjectHealth>())
+                    {
+                        collider.GetComponent<ObjectHealth>().DoDamage();
+                    }
                 }
             }
+        }
+    }
+    private bool CheckForShield(Vector3 target)
+    {
+        RaycastHit hit;
+        if (Physics.Linecast(transform.position + transform.up, target, out hit, shield))
+        {
+            FindObjectOfType<PlayerMovement>().FireBallHit();
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 }

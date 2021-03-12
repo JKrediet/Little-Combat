@@ -34,6 +34,7 @@ public class BaseEnemy : MonoBehaviour
     //open gate
     protected bool bossDead;
     public Transform moveObject, originHere, goHere;
+    public LayerMask shield;
 
     protected virtual void Start()
     {
@@ -184,5 +185,19 @@ public class BaseEnemy : MonoBehaviour
     public virtual void DoneAttacking()
     {
         isAttacking = false;
+    }
+    protected bool CheckForShield(Vector3 target)
+    {
+        RaycastHit hit;
+        if (Physics.Linecast(transform.position + transform.up, target, out hit, shield))
+        {
+            FindObjectOfType<PlayerMovement>().FireBallHit();
+            return false;
+        }
+        else
+        {
+            return true;
+
+        }
     }
 }

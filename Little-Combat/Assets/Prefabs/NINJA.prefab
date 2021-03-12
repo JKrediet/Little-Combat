@@ -623,6 +623,9 @@ MonoBehaviour:
   bossDead: 0
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
+  shield:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!136 &117537612632993554
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -1587,6 +1587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkPointsNumber: 1
   spawnPoint: {fileID: 557099392}
+  canvas: {fileID: 1080697789}
 --- !u!135 &1625842281
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1939,6 +1940,9 @@ MonoBehaviour:
   moveObject: {fileID: 0}
   originHere: {fileID: 0}
   goHere: {fileID: 0}
+  shield:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!135 &1923563378
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2068,6 +2072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkPointsNumber: 2
   spawnPoint: {fileID: 876667233}
+  canvas: {fileID: 1080697789}
 --- !u!135 &1970627619
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2848,6 +2853,9 @@ MonoBehaviour:
   moveObject: {fileID: 0}
   originHere: {fileID: 0}
   goHere: {fileID: 0}
+  shield:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3080154485247950145
 GameObject:
   m_ObjectHideFlags: 0
