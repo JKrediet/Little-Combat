@@ -29,27 +29,21 @@ public class Laser : MonoBehaviour
 
     private void ShootLaser()
     {
-        lineRen.enabled = true;
-
-        Ray ray = new Ray(shootPoint.position, shootPoint.forward);
         RaycastHit _hit;
 
-        if(Physics.Raycast(ray, out _hit, lineLength, laserMask))
+        if(Physics.Raycast(shootPoint.position, shootPoint.forward, out _hit, lineLength, laserMask))
         {
-            lineRen.SetPosition(0, shootPoint.position);
+            lineRen.SetPosition(0, transform.position);
             lineRen.SetPosition(1, _hit.point);
 
             if (_hit.transform.GetComponent<Reflective>())
             {
-                _hit.transform.GetComponent<Reflective>().OnReflection(_hit.point, transform.forward, _hit.normal, laserEffect);
+                _hit.transform.GetComponent<Reflective>().OnReflection();
             }
             else
             {
-                laserEffect.gameObject.SetActive(true);
-                laserEffect.position = _hit.point;
-
                 Interaction tempInt = _hit.transform.GetComponent<Interaction>();
-                if (tempInt)
+                if (tempInt != null)
                 {
                     tempInt.OnInteraction();
                 }
@@ -57,12 +51,9 @@ public class Laser : MonoBehaviour
         }
         else
         {
-            laserEffect.gameObject.SetActive(false);
-
-            lineRen.SetPosition(0, shootPoint.position);
-            lineRen.SetPosition(1, transform.position + shootPoint.forward * lineLength);
+            lineRen.SetPosition(0, transform.position);
+            lineRen.SetPosition(1, transform.position + transform.forward * lineLength);
         }
-
     }
 
 
