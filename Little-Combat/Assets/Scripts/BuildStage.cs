@@ -12,6 +12,12 @@ public class BuildStage : MonoBehaviour
     public GameObject stone2Pos;
     //Tutorial_boss1
     public GameObject boss1;
+    public GameObject pillar1;
+    public GameObject pillar1Pos;
+    public GameObject pillar2;
+    public GameObject pillar2Pos;
+    public GameObject pillar3;
+    public GameObject pillar3Pos;
 
     //tutorial
     public void Tutorial_puzzle1()

@@ -234,15 +234,19 @@ public class MoveObjects : MonoBehaviour
                     tempHole = Instantiate(bulletHole, _hit.point, Quaternion.FromToRotation(Vector3.forward, _hit.normal));
                     tempHole.transform.localPosition += tempHole.transform.forward * 0.01f;
                 }
-                
+
                 //damage
                 if (_hit.transform.GetComponent<BaseEnemy>())
                 {
                     _hit.transform.GetComponent<BaseEnemy>().GiveDamage(rangedDamage);
                 }
-                else if(_hit.transform.GetComponent<NinjaVrouw>())
+                else if (_hit.transform.GetComponent<NinjaVrouw>())
                 {
                     _hit.transform.GetComponent<NinjaVrouw>().GiveDamage(rangedDamage);
+                }
+                else if (_hit.transform.GetComponent<DraaiTotem>())
+                {
+                    _hit.transform.GetComponent<DraaiTotem>().Rotate();
                 }
             }
         }

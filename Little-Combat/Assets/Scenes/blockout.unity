@@ -26321,6 +26321,18 @@ PrefabInstance:
       propertyPath: boss1
       value: 
       objectReference: {fileID: 1972337077}
+    - target: {fileID: 9204325263328348107, guid: b6c2a64678bb67240824463c991d4121, type: 3}
+      propertyPath: pillar2
+      value: 
+      objectReference: {fileID: 845563332}
+    - target: {fileID: 9204325263328348107, guid: b6c2a64678bb67240824463c991d4121, type: 3}
+      propertyPath: pillar1
+      value: 
+      objectReference: {fileID: 920229026}
+    - target: {fileID: 9204325263328348107, guid: b6c2a64678bb67240824463c991d4121, type: 3}
+      propertyPath: pillar3
+      value: 
+      objectReference: {fileID: 2010976872}
     - target: {fileID: 9204325263328348118, guid: b6c2a64678bb67240824463c991d4121, type: 3}
       propertyPath: m_Name
       value: GameManager
