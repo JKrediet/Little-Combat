@@ -46,16 +46,16 @@ public class Boss2 : BaseEnemy
     }
     protected override void Movement()
     {
-        if (countDown > 0)
-        {
-            countDown -= Time.deltaTime;
-        }
-        else
-        {
-            currentAttack = 2;
-        }
         if (playerInRange)
         {
+            if (countDown > 0)
+            {
+                countDown -= Time.deltaTime;
+            }
+            else
+            {
+                currentAttack = 2;
+            }
             if (!isChangingStance)
             {
                 if(isAttacking)
@@ -69,7 +69,7 @@ public class Boss2 : BaseEnemy
                         agent.isStopped = false;
                         currentAttack = Random.Range(1, 3);
                     }
-                    if (currentAttack == 1)
+                    else if (currentAttack == 1)
                     {
                         if (inThirdStage)
                         {
@@ -100,11 +100,11 @@ public class Boss2 : BaseEnemy
                             }
                             if (!idle)
                             {
-                                agent.SetDestination(player.transform.position - transform.forward * (attackRange / 2));
+                                agent.SetDestination(player.transform.position - transform.forward);
                             }
                         }
                     }
-                    if (currentAttack == 2)
+                    else if (currentAttack == 2)
                     {
                         if (targetDistance <= rangedAttackRange)
                         {

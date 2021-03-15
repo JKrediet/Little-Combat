@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     //areas cleared
     public int tutorial_puzzle1, tutorial_boss1, neptune_boss2;
     public int tutorial_puzzle1_1;
-    //levels cleared
-    public int tutorial_level, neptune_level;
 
     private void Awake()
     {
@@ -44,11 +42,9 @@ public class GameManager : MonoBehaviour
         //tutorial
         tutorial_puzzle1 = PlayerPrefs.GetInt("tutorial_puzzle1", 0);
         tutorial_boss1 = PlayerPrefs.GetInt("tutorial_boss1", 0);
-        tutorial_level = PlayerPrefs.GetInt("tutorial_level", 0);
 
         //neptune
         neptune_boss2 = PlayerPrefs.GetInt("neptune_boss2", 0);
-        neptune_level = PlayerPrefs.GetInt("neptune_level", 0);
     }
 
     private void BuildStages()
