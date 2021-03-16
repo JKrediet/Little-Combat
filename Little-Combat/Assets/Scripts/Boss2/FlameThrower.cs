@@ -11,6 +11,8 @@ public class FlameThrower : MonoBehaviour
     public Rigidbody stroomBall;
     public float stroomBallSpeed;
 
+    public AudioSource source;
+
     private void Start()
     {
         baseRotation = transform.rotation;
@@ -34,6 +36,8 @@ public class FlameThrower : MonoBehaviour
     }
     private void ShootCannon()
     {
+        source.Play();
+
         Rigidbody ball = Instantiate(stroomBall, transform.position, transform.rotation);
         ball.velocity = ball.transform.forward * stroomBallSpeed;
     }

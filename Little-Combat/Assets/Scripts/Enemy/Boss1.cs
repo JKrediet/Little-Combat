@@ -5,6 +5,13 @@ using UnityEngine.AI;
 
 public class Boss1 : BaseEnemy
 {
+    public AudioClip footOne;
+    public AudioClip footTwo;
+
+    public AudioClip attackSound;
+
+    public AudioSource source;
+
     protected override void Attack()
     {
         base.Attack();
@@ -33,6 +40,27 @@ public class Boss1 : BaseEnemy
                 healthText.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void FootOne()
+    {
+        source.Stop();
+        source.clip = footOne;
+        source.Play();
+    }
+
+    public void FootTwo()
+    {
+        source.Stop();
+        source.clip = footTwo;
+        source.Play();
+    }
+
+    public void AttackSound()
+    {
+        source.Stop();
+        source.clip = attackSound;
+        source.Play();
     }
 
     public void AttackHitbox()

@@ -15,6 +15,9 @@ public class MoveObjects : MonoBehaviour
     public LineRenderer line;
     public GameObject bulletHole, muzzleFlash;
 
+    public AudioClip shootSound;
+    public AudioSource source;
+
     //playercollision
     //privates
     private Vector2 rotation;
@@ -199,6 +202,10 @@ public class MoveObjects : MonoBehaviour
     {
         if(pushRef == null)
         {
+            source.Stop();
+            source.clip = shootSound;
+            source.Play();
+
             RaycastHit _hit;
             if (Physics.Raycast(cameraReference.position, cameraReference.forward, out _hit))
             {
