@@ -9,6 +9,7 @@ public class Puzzle : MonoBehaviour
 
     public void Awake()
     {
+        //give all in list own number
         for (int i = 0; i < draaiDingetjes.Count; i++)
         {
             draaiDingetjes[i].GetComponent<DraaiTotem>().totemNumber = i;
@@ -16,6 +17,7 @@ public class Puzzle : MonoBehaviour
     }
     public void MayNotRotate()
     {
+        //make sure nothing can rotate if one is
         somethingIsRotating = true;
         for (int i = 0; i < draaiDingetjes.Count; i++)
         {
@@ -24,6 +26,7 @@ public class Puzzle : MonoBehaviour
     }
     public void MayRotate()
     {
+        //done rotating
         somethingIsRotating = false;
         for (int i = 0; i < draaiDingetjes.Count; i++)
         {
@@ -33,6 +36,7 @@ public class Puzzle : MonoBehaviour
     }
     public bool CheckIfAllAreTrue()
     {
+        //check if all are on
         for (int i = 0; i < draaiDingetjes.Count; i++)
         {
             if (draaiDingetjes[i].GetComponent<PuzzleLaser>().isHitByLaser == false)

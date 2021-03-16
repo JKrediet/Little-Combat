@@ -12,12 +12,14 @@ public class PuzzleLaser : MonoBehaviour
 
     void Update()
     {
+        //base
         if(mayNotChange)
         {
             isHitByLaser = true;
         }
         if(isHitByLaser)
         {
+            //for last in line
             if (!dontDoLaser)
             {
                 RaycastHit _hit;
@@ -25,6 +27,7 @@ public class PuzzleLaser : MonoBehaviour
                 {
                     line.SetPosition(0, transform.position);
                     line.SetPosition(1, _hit.point);
+                    //turn on hit laser
                     if (_hit.transform.GetComponent<PuzzleLaser>())
                     {
                         if (_hit.transform.GetComponent<PuzzleLaser>().isHitByLaser == false)
@@ -36,6 +39,7 @@ public class PuzzleLaser : MonoBehaviour
                 }
                 else
                 {
+                    //turn off when nothing is hitting
                     if (laser != null)
                     {
                         laser.isHitByLaser = false;
@@ -48,6 +52,7 @@ public class PuzzleLaser : MonoBehaviour
         }
         else
         {
+            //turn off when nothing is hitting
             if (laser != null)
             {
                 laser.isHitByLaser = false;
