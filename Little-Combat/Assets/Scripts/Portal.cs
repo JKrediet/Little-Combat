@@ -16,7 +16,8 @@ public class Portal : MonoBehaviour
     {
         loadingScreen.SetActive(true);
         PlayerPrefs.SetInt("tutorial_level", 1);
-        PlayerPrefs.SetInt("CurrentSavedLevel", 2); 
+        PlayerPrefs.SetInt("CurrentSavedLevel", 2);
+        PlayerPrefs.SetInt("LastCheckPoint", 0);
 
         StartCoroutine(LoadAsychronounsly());
         Debug.Log("Teleport");
