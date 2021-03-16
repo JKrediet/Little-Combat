@@ -5,11 +5,11 @@ using UnityEngine;
 public class Puzzle : MonoBehaviour
 {
     public List<Transform> draaiDingetjes;
-    public bool somethingIsRotating;
-    
+    public bool somethingIsRotating, done;
+
     public void Awake()
     {
-        for(int i = 0; i < draaiDingetjes.Count; i++)
+        for (int i = 0; i < draaiDingetjes.Count; i++)
         {
             draaiDingetjes[i].GetComponent<DraaiTotem>().totemNumber = i;
         }
@@ -29,5 +29,17 @@ public class Puzzle : MonoBehaviour
         {
             draaiDingetjes[i].GetComponent<DraaiTotem>().needToRotate = somethingIsRotating;
         }
+        done = CheckIfAllAreTrue();
+    }
+    public bool CheckIfAllAreTrue()
+    {
+        for (int i = 0; i < draaiDingetjes.Count; i++)
+        {
+            if (draaiDingetjes[i].GetComponent<PuzzleLaser>().isHitByLaser == false)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
