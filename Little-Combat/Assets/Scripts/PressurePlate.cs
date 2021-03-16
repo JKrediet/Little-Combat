@@ -11,6 +11,8 @@ public class PressurePlate : MonoBehaviour
 
     protected float cooldown = 1, nextSpawn;
 
+    public AudioSource source;
+
     public MeshRenderer render;
 
     // Start is called before the first frame update
@@ -41,6 +43,11 @@ public class PressurePlate : MonoBehaviour
                 if (col.gameObject.tag != "Player")
                 {
                     FindObjectOfType<GameManager>().tutorial_puzzle1_1++;
+                    if(source != null)
+                    {
+                        source.Play();
+                    }
+
                     if (useFunctionFromThis)
                     {
                         if (useFunctionFromThis.GetComponent<SpawnObject>())

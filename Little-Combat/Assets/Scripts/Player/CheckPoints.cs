@@ -11,6 +11,8 @@ public class CheckPoints : MonoBehaviour
 
     public GameObject panel;
     public TMPro.TMP_Text text;
+    public AudioSource activationSound;
+
 
     private bool canOpen;
 
@@ -20,6 +22,8 @@ public class CheckPoints : MonoBehaviour
     {
         if (player.tag == "Player")
         {
+            activationSound.Play();
+
             canOpen = true;
 
             canvas.SetActive(true);

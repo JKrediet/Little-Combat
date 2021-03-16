@@ -83,7 +83,7 @@ public class BaseEnemy : MonoBehaviour
 
         if(bossDead)
         {
-            GetComponent<Collider>().enabled = false;
+            //GetComponent<Collider>().enabled = false;
             if (GetComponent<Boss1>())
             {
                 moveObject.position = new Vector3(originHere.position.x, Mathf.Lerp(moveObject.position.y, goHere.position.y, 0.1f), originHere.position.z);
@@ -125,7 +125,7 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void Movement()
     {
-        GetComponent<Collider>().enabled = canBeDamaged;
+        //GetComponent<Collider>().enabled = canBeDamaged;
         if (playerInRange)
         {
             if (!isAttacking)

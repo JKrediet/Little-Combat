@@ -12,6 +12,8 @@ public class Boss1 : BaseEnemy
 
     public AudioSource source;
 
+    public AudioSource doorSource;
+
     protected override void Attack()
     {
         base.Attack();
@@ -24,6 +26,11 @@ public class Boss1 : BaseEnemy
 
         if (health <= 0f)
         {
+            if(doorSource != null)
+            {
+                doorSource.Play();
+            }
+
             agent.isStopped = true;
             anim.SetBool("isDead", true);
             bossDead = true;
