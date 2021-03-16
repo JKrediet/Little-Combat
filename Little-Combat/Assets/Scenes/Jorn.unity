@@ -968,6 +968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useFunctionFromThis: {fileID: 7351740}
+  source: {fileID: 0}
   render: {fileID: 0}
 --- !u!65 &702966188
 BoxCollider:
@@ -2840,6 +2841,7 @@ MonoBehaviour:
   canvas: {fileID: 1080697789}
   panel: {fileID: 0}
   text: {fileID: 0}
+  activationSound: {fileID: 0}
 --- !u!135 &1625842281
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3921,6 +3923,7 @@ MonoBehaviour:
   canvas: {fileID: 1080697789}
   panel: {fileID: 0}
   text: {fileID: 0}
+  activationSound: {fileID: 0}
 --- !u!135 &1970627619
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5029,6 +5032,11 @@ MonoBehaviour:
   shield:
     serializedVersion: 2
     m_Bits: 0
+  footOne: {fileID: 0}
+  footTwo: {fileID: 0}
+  attackSound: {fileID: 0}
+  source: {fileID: 0}
+  doorSource: {fileID: 0}
 --- !u!1 &3080154485247950145
 GameObject:
   m_ObjectHideFlags: 0
