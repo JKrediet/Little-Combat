@@ -13,14 +13,20 @@ public class HealingPoles : MonoBehaviour
     public Transform boss;
     public Vector3 bossOffset;
 
+    private bool checkForBoss = true;
+
     private void Update()
     {
-        line.SetPosition(0, origin.position - offset);
-        line.SetPosition(1, boss.position - bossOffset);
+        if(checkForBoss)
+        {
+            line.SetPosition(0, origin.position - offset);
+            line.SetPosition(1, boss.position - bossOffset);
+        }
     }
 
-    private void DisableLine()
+    public void DisableLine()
     {
+        checkForBoss = false;
         line.enabled = false;
 
         FindObjectOfType<Boss1>().canBeDamaged = true;
