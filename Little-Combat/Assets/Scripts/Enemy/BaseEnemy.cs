@@ -125,7 +125,7 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void Movement()
     {
-        //GetComponent<Collider>().enabled = canBeDamaged;
+        //  GetComponent<Collider>().enabled = canBeDamaged;
         if (playerInRange)
         {
             if (!isAttacking)

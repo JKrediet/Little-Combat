@@ -15,6 +15,8 @@ public class AnimationController : MonoBehaviour
     public GameObject gunno;
     private bool isAiming;
 
+    public AudioClip[] painClips;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -108,6 +110,15 @@ public class AnimationController : MonoBehaviour
     {
         //source.Stop();
         source.clip = foot2;
+        source.Play();
+    }
+    public void PainSound()
+    {
+        int i = 0;
+        i = Random.Range(0, 3);
+
+        source.Stop();
+        source.clip = painClips[i];
         source.Play();
     }
 

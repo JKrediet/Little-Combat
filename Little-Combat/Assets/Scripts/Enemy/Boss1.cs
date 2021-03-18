@@ -7,6 +7,9 @@ public class Boss1 : BaseEnemy
 {
     public AudioClip footOne;
     public AudioClip footTwo;
+    public AudioClip deathSound;
+
+    public AudioClip roarClip;
 
     public AudioClip attackSound;
 
@@ -67,6 +70,20 @@ public class Boss1 : BaseEnemy
     {
         source.Stop();
         source.clip = attackSound;
+        source.Play();
+    }
+
+    public void Roar()
+    {
+        source.Stop();
+        source.clip = roarClip;
+        source.Play();
+    }
+
+    public void DeathSound()
+    {
+        source.Stop();
+        source.clip = deathSound;
         source.Play();
     }
 
