@@ -615,6 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d5255ffd03db74e8f83946f684af1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blink: {fileID: 3544046142436188759, guid: ec250d57f2dec4945a80067a82f8f446, type: 3}
   playerDetectionRange: 20
   retreatRange: 10
   attackDamage: 1

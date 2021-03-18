@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckPoints : MonoBehaviour
 {
-    public int checkPointsNumber;
+    public int checkPointsNumber, number;
     public Transform spawnPoint;
 
     public GameObject canvas;
@@ -28,7 +28,7 @@ public class CheckPoints : MonoBehaviour
 
             canvas.SetActive(true);
 
-            PlayerPrefs.SetInt("LastCheckPoint", checkPointsNumber);
+            PlayerPrefs.SetInt("LastCheckPoint", number);
         }
     }
 

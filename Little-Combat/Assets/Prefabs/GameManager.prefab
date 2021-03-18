@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCheckPoint: 0
-  playerPrefab: {fileID: 8142035287181603790, guid: dbf724fd7cd53004eb4442a5854f7b7d, type: 3}
+  playerPrefabTutorial: {fileID: 8142035287181603790, guid: dbf724fd7cd53004eb4442a5854f7b7d, type: 3}
+  playerPrefabNeptune: {fileID: 8142035287181603790, guid: 284b14c28d44f25469c8c275f232ac11, type: 3}
   tutorial_puzzle1: 0
   tutorial_boss1: 0
   neptune_boss2: 0
-  tutorial_level: 0
-  neptune_level: 0
+  tutorial_puzzle1_1: 0
 --- !u!114 &9204325263328348107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,3 +68,13 @@ MonoBehaviour:
   stone2: {fileID: 0}
   stone2Pos: {fileID: 0}
   boss1: {fileID: 0}
+  deadBoss1: {fileID: 0}
+  equipment: {fileID: 0}
+  body: {fileID: 0}
+  particleDing: {fileID: 0}
+  pillar1: {fileID: 0}
+  pillar1Pos: {fileID: 0}
+  pillar2: {fileID: 0}
+  pillar2Pos: {fileID: 0}
+  pillar3: {fileID: 0}
+  pillar3Pos: {fileID: 0}

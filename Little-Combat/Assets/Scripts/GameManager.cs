@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public int currentCheckPoint;
-    public GameObject playerPrefab;
+    public GameObject playerPrefabTutorial, playerPrefabNeptune;
 
     private Vector3 spawnPosition;
     private List<GameObject> checkPoints;
@@ -27,14 +28,21 @@ public class GameManager : MonoBehaviour
         checkPoints = new List<GameObject>(tempList);
         foreach (GameObject check in tempList)
         {
-            checkPoints[check.GetComponent<CheckPoints>().checkPointsNumber] = check;
+            checkPoints[check.GetComponent<CheckPoints>().number] = check;
         }
         spawnPosition = checkPoints[currentCheckPoint].GetComponent<CheckPoints>().spawnPoint.position;
         if(currentCheckPoint >= checkPoints.Count)
         {
             currentCheckPoint = 0;
         }
-        Instantiate(playerPrefab, spawnPosition, checkPoints[currentCheckPoint].GetComponent<CheckPoints>().spawnPoint.rotation);
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            Instantiate(playerPrefabTutorial, spawnPosition, checkPoints[currentCheckPoint].GetComponent<CheckPoints>().spawnPoint.rotation);
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            Instantiate(playerPrefabNeptune, spawnPosition, checkPoints[currentCheckPoint].GetComponent<CheckPoints>().spawnPoint.rotation);
+        }
     }
 
     private void ClearedStages()

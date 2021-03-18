@@ -129,6 +129,7 @@ public class MoveObjects : MonoBehaviour
                 //pushRef.gameObject.layer = 11;
                 GetComponent<PlayerMovement>().isHoldingLaser = true;
                 FindObjectOfType<CameraContrller>().isHoldingLaser = true;
+                pushRef.GetComponent<Rigidbody>().freezeRotation = true;
 
                 //set object to position in front of player
                 if (!putObjectInPos)

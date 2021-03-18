@@ -12,6 +12,7 @@ public class NinjaVrouw : MonoBehaviour
     private Transform player;
     //state: state0 = idle /state1 = run/ state2 = attack/ state3 = retreat
 
+    public GameObject blink;
     public float playerDetectionRange, retreatRange, attackDamage, maxHealth;
     public bool canBeDamaged, bossDead;
     private float targetDistance, health;
@@ -74,6 +75,7 @@ public class NinjaVrouw : MonoBehaviour
                                     {
                                         dash = true;
                                         Attack();
+                                        Instantiate(blink, transform.position + transform.up, transform.rotation);
                                         Invoke("DashToPlayer", 0.5f);
                                     }
                                 }
@@ -127,6 +129,7 @@ public class NinjaVrouw : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z)), 1);
         agent.SetDestination(player.position - transform.forward);
         transform.position = new Vector3(player.position.x - transform.forward.x, 0, player.position.z - transform.forward.z);
+        Instantiate(blink, transform.position + transform.up, transform.rotation);
         agent.updateRotation = false;
     }
     private void Attack()

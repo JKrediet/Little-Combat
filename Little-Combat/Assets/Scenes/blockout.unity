@@ -26421,6 +26421,10 @@ PrefabInstance:
       propertyPath: activationSound
       value: 
       objectReference: {fileID: 1311982258}
+    - target: {fileID: 955417404821995424, guid: da2a055256d42bf43b6776b1bddd9d48, type: 3}
+      propertyPath: number
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 955417404821995425, guid: da2a055256d42bf43b6776b1bddd9d48, type: 3}
       propertyPath: m_Name
       value: Totem3
@@ -35896,6 +35900,10 @@ PrefabInstance:
       propertyPath: activationSound
       value: 
       objectReference: {fileID: 2114578146}
+    - target: {fileID: 955417404821995424, guid: da2a055256d42bf43b6776b1bddd9d48, type: 3}
+      propertyPath: number
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 955417404821995425, guid: da2a055256d42bf43b6776b1bddd9d48, type: 3}
       propertyPath: m_Name
       value: Totem2
