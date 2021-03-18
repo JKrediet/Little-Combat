@@ -56,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(health < maxHealth)
         {
-            health = Mathf.Clamp(health += 0.1f * Time.deltaTime, 0, maxHealth);
+            health = Mathf.Clamp(health += 0.05f * Time.deltaTime, 0, maxHealth);
             slider.value = health;
         }
     }

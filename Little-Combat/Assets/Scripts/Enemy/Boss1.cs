@@ -37,6 +37,7 @@ public class Boss1 : BaseEnemy
             agent.isStopped = true;
             anim.SetBool("isDead", true);
             bossDead = true;
+            GetComponent<Collider>().enabled = false;
             PlayerPrefs.SetInt("tutorial_boss1", 1);
 
             if (healthSlider != null)

@@ -41,6 +41,7 @@ public class NinjaVrouw : MonoBehaviour
             anim.SetBool("isDead", true);
             bossDead = true;
             PlayerPrefs.SetInt("tutorial_boss1", 1);
+            GetComponent<Collider>().enabled = false;
         }
     }
     public void GiveDamage(float _damageTaken)

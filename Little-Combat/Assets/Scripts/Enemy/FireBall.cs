@@ -53,6 +53,7 @@ public class FireBall : MonoBehaviour
             transform.SetParent(shield);
             transform.rotation = shield.transform.rotation;
             transform.position = shield.transform.position;
+            transform.GetComponent<Collider>().enabled = false;
             transform.localPosition += transform.forward * 0.5f;
             isOnShield = true;
             return true;
@@ -76,7 +77,8 @@ public class FireBall : MonoBehaviour
             if(Input.GetButtonDown("Shield") || Input.GetButtonDown("Fire1"))
             {
                 transform.SetParent(null);
-                rb.velocity = -transform.up * 20;
+                transform.GetComponent<Collider>().enabled = true;
+                rb.velocity = -transform.forward * 20;
             }
         }
     }

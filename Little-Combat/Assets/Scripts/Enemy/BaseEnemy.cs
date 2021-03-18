@@ -83,11 +83,7 @@ public class BaseEnemy : MonoBehaviour
 
         if(bossDead)
         {
-            //GetComponent<Collider>().enabled = false;
-            if (GetComponent<Boss1>())
-            {
-                moveObject.position = new Vector3(originHere.position.x, Mathf.Lerp(moveObject.position.y, goHere.position.y, 0.1f), originHere.position.z);
-            }
+            moveObject.position = new Vector3(originHere.position.x, Mathf.Lerp(moveObject.position.y, goHere.position.y, 0.1f), originHere.position.z);
         }
     }
     public void KillBoss()
