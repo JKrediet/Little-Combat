@@ -18,6 +18,11 @@ public class CheckPoints : MonoBehaviour
 
     private bool timeDown;
 
+    private void Start()
+    {
+        canvas.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider player)
     {
         if (player.tag == "Player")
@@ -25,8 +30,6 @@ public class CheckPoints : MonoBehaviour
             activationSound.Play();
 
             canOpen = true;
-
-            canvas.SetActive(true);
 
             PlayerPrefs.SetInt("LastCheckPoint", number);
         }

@@ -1,3 +1,7 @@
-﻿#0 This is the first totem you find!
-#1 This is the second totem you find!
-#2 This is the third totem you find!
+﻿#0 This is the first totem you find!<br><br>Very fun!
+#1 This is the second totem you find!<br><br>Very fun!
+#2 This is the third totem you find!<br><br>Very fun!
+#3 This is the fourth totem you find!<br><br>Very fun!
+#4 THis is the fifth totem you find!<br><br>Very fun!
+#5 This is the sixth totem you find!<br><br>Very fun!
+#6 This is the seventh totem you find!<br><br>Very fun!
