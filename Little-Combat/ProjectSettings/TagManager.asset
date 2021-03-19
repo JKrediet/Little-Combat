@@ -13,6 +13,7 @@ TagManager:
   - Charge
   - CheckPoint
   - Ninja
+  - BossCrystal
   layers:
   - Default
   - TransparentFX

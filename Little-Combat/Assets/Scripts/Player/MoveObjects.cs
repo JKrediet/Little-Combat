@@ -256,6 +256,10 @@ public class MoveObjects : MonoBehaviour
                 {
                     _hit.transform.GetComponent<DraaiTotem>().Rotate();
                 }
+                else if (_hit.transform.GetComponent<Crystals>())
+                {
+                    _hit.transform.GetComponent<Crystals>().TakeDamage();
+                }
             }
         }
     }
