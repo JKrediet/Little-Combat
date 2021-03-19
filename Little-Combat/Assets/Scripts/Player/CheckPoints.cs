@@ -7,7 +7,6 @@ public class CheckPoints : MonoBehaviour
     public int checkPointsNumber, number;
     public Transform spawnPoint;
 
-    public GameObject canvas;
 
     public GameObject panel;
     public TMPro.TMP_Text text;
@@ -20,7 +19,7 @@ public class CheckPoints : MonoBehaviour
 
     private void Start()
     {
-        canvas.SetActive(false);
+        panel.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider player)
@@ -41,7 +40,9 @@ public class CheckPoints : MonoBehaviour
         {
             canOpen = false;
 
-            canvas.SetActive(false);
+            activationSound.Stop();
+
+            panel.SetActive(false);
         }
     }
 
