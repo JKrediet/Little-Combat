@@ -8430,8 +8430,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 0
   source: {fileID: 3461475629920599602}
-  foot1: {fileID: 8300000, guid: c5d0f7e5c0c429b4c9f0d1bb2647aa4d, type: 3}
-  foot2: {fileID: 8300000, guid: db5a31e7782928e4db6754a9222cf17f, type: 3}
+  foot1: {fileID: 8300000, guid: 57330cfd187b6044a9cffb8192e6f4a8, type: 3}
+  foot2: {fileID: 8300000, guid: 6d6d7c629210b144391072eccd9f7131, type: 3}
   moveTool: {fileID: 3031976217459281891}
   sword: {fileID: 5944655695202934923}
   gunno: {fileID: 4522277211348388550}
@@ -9155,8 +9155,8 @@ MonoBehaviour:
   shield: {fileID: 7131103271892259159}
   source: {fileID: 863099390786674806}
   swordSoundClip: {fileID: 8300000, guid: c06c4b9aa4f6ce841917fbcc75f878bf, type: 3}
-  foot1: {fileID: 8300000, guid: c5d0f7e5c0c429b4c9f0d1bb2647aa4d, type: 3}
-  foot2: {fileID: 8300000, guid: db5a31e7782928e4db6754a9222cf17f, type: 3}
+  foot1: {fileID: 8300000, guid: 66438d8d610c2c34dbdfe5b91911b73e, type: 3}
+  foot2: {fileID: 8300000, guid: 289bcf8d8feae1644b8eab206d79cd6b, type: 3}
   status_Push: 0
   status_pickup: 0
   isHoldingLaser: 0
