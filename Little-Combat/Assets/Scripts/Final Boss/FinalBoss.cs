@@ -10,6 +10,8 @@ public class FinalBoss : MonoBehaviour
     public bool playerInRange;
     public int state;
     public Transform attackPos;
+    public LayerMask shield;
+    public float attackDamage;
 
     private void Awake()
     {
@@ -38,12 +40,46 @@ public class FinalBoss : MonoBehaviour
     }
     public void DamageHitBox()
     {
+        //actual attack
+        Collider[] colliders = Physics.OverlapSphere(attackPos.position, transform.lossyScale.z / 2);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.gameObject != gameObject)
+            {
+                if (CheckForShield(collider.transform.position))
+                {
+                    //Debug.Log(collider.transform.name);
 
+                    if (collider.GetComponent<PlayerHealth>())
+                    {
+                        collider.GetComponent<PlayerHealth>().GiveDamage(attackDamage);
+                    }
+                    else if (collider.GetComponent<ObjectHealth>())
+                    {
+                        collider.GetComponent<ObjectHealth>().DoDamage();
+                    }
+                }
+            }
+        }
     }
     public void StopAttack()
     {
         state = 0;
         anim.SetInteger("State", state);
+    }
+    protected bool CheckForShield(Vector3 target)
+    {
+        RaycastHit hit;
+        if (Physics.Linecast(transform.position + transform.up, target, out hit, shield))
+        {
+            FindObjectOfType<PlayerMovement>().FireBallHit();
+            return false;
+        }
+        else
+        {
+            return true;
+
+        }
     }
     private void OnDrawGizmos()
     {
