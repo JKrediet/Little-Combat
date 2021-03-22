@@ -49,6 +49,13 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        if(status_gun)
+        {
+            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+            {
+                Aim();
+            }
+        }
         if (!blocking)
         {
             if (!isTakingDamage)
@@ -90,11 +97,7 @@ public class PlayerMovement : MonoBehaviour
                         {
                             if (!status_shield)
                             {
-                                crosshair.gameObject.SetActive(!crosshair.gameObject.activeSelf);
-                                status_gun = !status_gun;
-                                FindObjectOfType<AnimationController>().AimToggle(status_gun);
-                                cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
-                                GetComponent<MoveObjects>().isHoldingGun = status_gun;
+                                Aim();
                             }
                         }
                     }
@@ -115,6 +118,14 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+    }
+    public void Aim()
+    {
+        crosshair.gameObject.SetActive(!crosshair.gameObject.activeSelf);
+        status_gun = !status_gun;
+        FindObjectOfType<AnimationController>().AimToggle(status_gun);
+        cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
+        GetComponent<MoveObjects>().isHoldingGun = status_gun;
     }
 
     public void Movement()
