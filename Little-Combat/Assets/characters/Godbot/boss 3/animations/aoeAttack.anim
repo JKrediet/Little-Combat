@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: uhm
+  m_Name: aoeAttack
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -102982,4 +102982,18 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.3333334
+    functionName: AttackTotem
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 0eb1a3c1d43f90d46ae76a9f41505220, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2
+    functionName: StopAttack
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 0eb1a3c1d43f90d46ae76a9f41505220, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

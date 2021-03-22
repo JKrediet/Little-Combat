@@ -5,13 +5,15 @@ using UnityEngine;
 public class FinalBoss : MonoBehaviour
 {
     public List<int> crystals;
+    public List<Transform> totems, TotemPos;
 
     public Animator anim;
-    public bool playerInRange;
+    public bool nextAttackNoAoe;
     public int state;
     public Transform attackPos;
     public LayerMask shield;
-    public float attackDamage, waitTime = 5;
+    public float attackDamage, slomoTime = 2, cooldown;
+    private float nextAttack;
 
     private void Awake()
     {
@@ -23,19 +25,60 @@ public class FinalBoss : MonoBehaviour
 
     private void Update()
     {
-        if(playerInRange)
+        if(state == 0)
         {
-            if(state == 0)
+            if(Time.time > nextAttack)
             {
-                playerInRange = false;
+                nextAttack = Time.time + cooldown;
                 Attack();
             }
         }
     }
+    //check crystal states
+    public bool CheckCrystals(int _value, int _value2)
+    {
+        for (int i = _value; i < _value2; i++)
+        {
+            if(crystals[i] != 5)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    public void ToNextStage()
+    {
+        anim.speed = 1;
+        anim.SetBool("ChangingState", true); //note: moet weer naar false ergens
+    }
 
     public void Attack()
     {
-        state = 1;
+        if (nextAttackNoAoe)
+        {
+            //rolls between arm attacks
+            state = Random.Range(1, 3);
+        }
+        else
+        {
+            //rolls between all attacks
+            state = Random.Range(1, 4);
+        }
+        nextAttackNoAoe = false;
+        //check if left arm is broken
+        if (CheckCrystals(0, 2) == true)
+        {
+            state = 1;
+        }
+        //check if right arm is broken
+        if (CheckCrystals(2, 4) == true)
+        {
+            state = 2;
+        }
+        if(state == 3)
+        {
+            nextAttackNoAoe = true;
+        }
         anim.SetInteger("State", state);
     }
     public void DamageHitBox()
@@ -48,15 +91,9 @@ public class FinalBoss : MonoBehaviour
             {
                 if (CheckForShield(collider.transform.position))
                 {
-                    //Debug.Log(collider.transform.name);
-
                     if (collider.GetComponent<PlayerHealth>())
                     {
                         collider.GetComponent<PlayerHealth>().GiveDamage(attackDamage);
-                    }
-                    else if (collider.GetComponent<ObjectHealth>())
-                    {
-                        collider.GetComponent<ObjectHealth>().DoDamage();
                     }
                 }
             }
@@ -70,7 +107,7 @@ public class FinalBoss : MonoBehaviour
     public void Pauze()
     {
         anim.speed = 0.01f;
-        Invoke("Unpause", waitTime);
+        Invoke("Unpause", slomoTime);
     }
     public void Unpause()
     {
@@ -87,7 +124,15 @@ public class FinalBoss : MonoBehaviour
         else
         {
             return true;
-
+        }
+    }
+    public void AttackTotem()
+    {
+        foreach (Transform totem in TotemPos)
+        {
+            int random = Random.Range(0,totems.Count);
+            Instantiate(totems[random], totem.position, Quaternion.identity);
+            print(random);
         }
     }
     private void OnDrawGizmos()
