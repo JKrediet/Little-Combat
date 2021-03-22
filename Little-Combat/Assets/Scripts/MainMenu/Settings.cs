@@ -10,12 +10,12 @@ public class Settings : MonoBehaviour
     public Slider musicSlider;
     public Slider vfxSlider;
 
-    public Dropdown qualityDropDown;
+    public TMP_Dropdown qualityDropDown;
 
     public AudioMixer vfxMixer;
     public AudioMixer musicMixer;
 
-    public Dropdown resolutionsDropdown;
+    public TMP_Dropdown resolutionsDropdown;
 
     Resolution[] resolutions;
 

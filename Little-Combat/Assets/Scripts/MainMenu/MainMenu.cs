@@ -85,7 +85,7 @@ public class MainMenu : MonoBehaviour
 
             loadingBar.value = progress;
 
-            progressText.text = progress * 100f + "%";
+            //progressText.text = progress * 100f + "%";
 
             yield return null;
         }

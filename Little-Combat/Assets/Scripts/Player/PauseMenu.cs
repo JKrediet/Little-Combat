@@ -18,17 +18,19 @@ public class PauseMenu : MonoBehaviour
         {
             if (settingsScreen.activeSelf == true)
             {
+                pauseScreen.SetActive(true);
                 settingsScreen.SetActive(false);
             }
             else
             {
                 isPaused = !isPaused;
+                pauseScreen.SetActive(true);
             }
         }
 
         if (isPaused)
         {
-            pauseScreen.SetActive(true);
+            //pauseScreen.SetActive(true);
             for (int i = 0; i < disableOnPause.Length; i++)
             {
                 disableOnPause[i].enabled = false;
@@ -57,6 +59,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Settings()
     {
+        pauseScreen.SetActive(false);
         settingsScreen.SetActive(true);
     }
 
@@ -67,6 +70,13 @@ public class PauseMenu : MonoBehaviour
 
     public void SettingsOff()
     {
+        pauseScreen.SetActive(true);
         settingsScreen.SetActive(false);
+    }
+
+    public void Back()
+    {
+        settingsScreen.SetActive(false);
+        pauseScreen.SetActive(true);
     }
 }
