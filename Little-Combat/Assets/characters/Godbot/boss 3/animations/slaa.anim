@@ -92982,6 +92982,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.8333333
+    functionName: Pauze
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 0eb1a3c1d43f90d46ae76a9f41505220, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 2
     functionName: StopAttack
     data: 

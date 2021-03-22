@@ -11,7 +11,7 @@ public class FinalBoss : MonoBehaviour
     public int state;
     public Transform attackPos;
     public LayerMask shield;
-    public float attackDamage;
+    public float attackDamage, waitTime = 5;
 
     private void Awake()
     {
@@ -66,6 +66,15 @@ public class FinalBoss : MonoBehaviour
     {
         state = 0;
         anim.SetInteger("State", state);
+    }
+    public void Pauze()
+    {
+        anim.speed = 0.01f;
+        Invoke("Unpause", waitTime);
+    }
+    public void Unpause()
+    {
+        anim.speed = 1;
     }
     protected bool CheckForShield(Vector3 target)
     {
