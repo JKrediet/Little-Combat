@@ -18,6 +18,10 @@ public class Dissolve : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            ActivateDissolve();
+        }
         if (dissolve)
         {
             if (amount > -1)
