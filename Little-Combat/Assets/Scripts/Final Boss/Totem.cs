@@ -26,11 +26,8 @@ public class Totem : MonoBehaviour
     private void RemoveTotem()
     {
         moveUp = false;
-        Destroy(gameObject, 1);
-    }
-    private void OnDestroy()
-    {
         FindObjectOfType<FinalBoss>().activeTotem.Remove(gameObject.transform);
+        Destroy(gameObject, 1);
     }
 
     private void Update()

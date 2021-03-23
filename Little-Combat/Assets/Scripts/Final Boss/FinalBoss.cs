@@ -15,6 +15,10 @@ public class FinalBoss : MonoBehaviour
     public float attackDamage, slomoTime = 2, cooldown;
     private float nextAttack;
 
+    //arms and masks
+    public GameObject arms, cylinders, happyMask, angryMask;
+    public bool mask1, mask2, rotate;
+
     private void Awake()
     {
         for(int i = 0; i < 4; i++)
@@ -33,6 +37,19 @@ public class FinalBoss : MonoBehaviour
                 Attack();
             }
         }
+        if(rotate)
+        {
+            if (mask1)
+            {
+                happyMask.transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+                rotate = false;
+            }
+            if (mask2)
+            {
+                angryMask.transform.Rotate(new Vector3(0, 90, 0), Space.Self);
+                rotate = false;
+            }
+        }
     }
     //check crystal states
     public bool CheckCrystals(int _value, int _value2)
@@ -46,10 +63,25 @@ public class FinalBoss : MonoBehaviour
         }
         return true;
     }
+    //gets called from crystals
     public void ToNextStage()
     {
         anim.speed = 1;
-        anim.SetBool("ChangingState", true); //note: moet weer naar false ergens
+        anim.SetBool("ChangingState", true);
+        if (!mask1)
+        {
+            rotate = true;
+            mask1 = true;
+        }
+        else if(!mask2)
+        {
+            rotate = true;
+            mask2 = true;
+        }
+    }
+    public void IdleAgain()
+    {
+        anim.SetBool("ChangingState", false);
     }
 
     public void Attack()
