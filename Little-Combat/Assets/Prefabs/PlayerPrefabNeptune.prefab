@@ -2894,7 +2894,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6702,8 +6702,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 0
   source: {fileID: 3461475629920599602}
-  foot1: {fileID: 8300000, guid: c5d0f7e5c0c429b4c9f0d1bb2647aa4d, type: 3}
-  foot2: {fileID: 8300000, guid: db5a31e7782928e4db6754a9222cf17f, type: 3}
+  foot1: {fileID: 8300000, guid: 57330cfd187b6044a9cffb8192e6f4a8, type: 3}
+  foot2: {fileID: 8300000, guid: 6d6d7c629210b144391072eccd9f7131, type: 3}
   moveTool: {fileID: 3031976217459281891}
   sword: {fileID: 5944655695202934923}
   gunno: {fileID: 4522277211348388550}
@@ -8221,7 +8221,6 @@ GameObject:
   - component: {fileID: 8142035288146833454}
   - component: {fileID: 8142035288146833456}
   - component: {fileID: 8142035288146833452}
-  - component: {fileID: 7407505279922755091}
   - component: {fileID: 863099390786674806}
   m_Layer: 10
   m_Name: Player
@@ -8321,8 +8320,8 @@ MonoBehaviour:
   shield: {fileID: 7131103271892259159}
   source: {fileID: 863099390786674806}
   swordSoundClip: {fileID: 8300000, guid: c06c4b9aa4f6ce841917fbcc75f878bf, type: 3}
-  foot1: {fileID: 8300000, guid: c5d0f7e5c0c429b4c9f0d1bb2647aa4d, type: 3}
-  foot2: {fileID: 8300000, guid: db5a31e7782928e4db6754a9222cf17f, type: 3}
+  foot1: {fileID: 8300000, guid: 57330cfd187b6044a9cffb8192e6f4a8, type: 3}
+  foot2: {fileID: 8300000, guid: 6d6d7c629210b144391072eccd9f7131, type: 3}
   status_Push: 0
   status_pickup: 0
   isHoldingLaser: 0
@@ -8384,14 +8383,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!81 &7407505279922755091
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8142035288146833461}
-  m_Enabled: 1
 --- !u!82 &863099390786674806
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8497,6 +8488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8142035288379783772}
+  - component: {fileID: 4439741623257972870}
   m_Layer: 10
   m_Name: CameraParent
   m_TagString: Player
@@ -8522,6 +8514,14 @@ Transform:
   m_Father: {fileID: 8142035287181603791}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &4439741623257972870
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8142035288379783775}
+  m_Enabled: 1
 --- !u!1 &8142035288444115440
 GameObject:
   m_ObjectHideFlags: 0

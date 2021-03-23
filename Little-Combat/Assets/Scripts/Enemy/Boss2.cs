@@ -13,6 +13,9 @@ public class Boss2 : BaseEnemy
     private bool inThirdStage, inSecondStage, isChangingStance;
     public Transform aim2, aim3, bzoop, aura;
 
+    public AudioSource source;
+    public AudioClip footStep001, footStep002, attackSound, scream, beat;
+
     protected override void Start()
     {
         base.Start();
@@ -44,6 +47,31 @@ public class Boss2 : BaseEnemy
             bossDead = true;
         }
     }
+
+    public void Footstep(int i)
+    {
+        source.Stop();
+
+        if(i == 1)
+        {
+            source.clip = footStep001;
+        }else if(i == 2)
+        {
+            source.clip = footStep002;
+        }else if(i == 3)
+        {
+            source.clip = attackSound;
+        }else if(i == 4)
+        {
+            source.clip = scream;
+        }else if(i == 5)
+        {
+            source.clip = beat;
+        }
+
+        source.Play();
+    }
+
     protected override void Movement()
     {
         if (playerInRange)
@@ -213,7 +241,7 @@ public class Boss2 : BaseEnemy
         agent.speed = 5;
         agent.isStopped = true;
         inThirdStage = true;
-        projectileSpeed *= 1.5f;
+        projectileSpeed *= 1.25f;
     }
 
     //hier shield damage 

@@ -12,6 +12,9 @@ public class NinjaVrouw : MonoBehaviour
     private Transform player;
     //state: state0 = idle /state1 = run/ state2 = attack/ state3 = retreat
 
+    public AudioSource source;
+    public AudioClip attack, footStep001, footStep002;
+
     public GameObject blink;
     public float playerDetectionRange, retreatRange, attackDamage, maxHealth;
     public bool canBeDamaged, bossDead;
@@ -44,6 +47,28 @@ public class NinjaVrouw : MonoBehaviour
             GetComponent<Collider>().enabled = false;
         }
     }
+
+    public void Swoosh()
+    {
+        source.Stop();
+        source.clip = attack;
+        source.Play();
+    }
+
+    public void Footstep001()
+    {
+        source.Stop();
+        source.clip = footStep001;
+        source.Play();
+    }
+
+    public void Footstep002()
+    {
+        source.Stop();
+        source.clip = footStep002;
+        source.Play();
+    }
+
     public void GiveDamage(float _damageTaken)
     {
         if (canBeDamaged)
