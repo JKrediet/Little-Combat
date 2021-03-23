@@ -5,7 +5,7 @@ using UnityEngine;
 public class FinalBoss : MonoBehaviour
 {
     public List<int> crystals;
-    public List<Transform> totems, TotemPos;
+    public List<Transform> totems, TotemPos, activeTotem;
 
     public Animator anim;
     public bool nextAttackNoAoe;
@@ -54,7 +54,7 @@ public class FinalBoss : MonoBehaviour
 
     public void Attack()
     {
-        if (nextAttackNoAoe)
+        if (nextAttackNoAoe || activeTotem.Count > 0)
         {
             //rolls between arm attacks
             state = Random.Range(1, 3);
@@ -132,7 +132,6 @@ public class FinalBoss : MonoBehaviour
         {
             int random = Random.Range(0,totems.Count);
             Instantiate(totems[random], totem.position, Quaternion.identity);
-            print(random);
         }
     }
     private void OnDrawGizmos()

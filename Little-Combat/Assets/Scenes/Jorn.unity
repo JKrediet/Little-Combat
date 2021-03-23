@@ -980,7 +980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crystalID: 1
-  health: 10
+  health: 3
 --- !u!1 &146110310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,7 +2226,7 @@ BoxCollider:
   m_GameObject: {fileID: 377191445}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2237,7 +2237,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377191445}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3665,7 +3665,7 @@ BoxCollider:
   m_GameObject: {fileID: 594731446}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -3676,7 +3676,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594731446}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5494,7 +5494,7 @@ BoxCollider:
   m_GameObject: {fileID: 920637854}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5505,7 +5505,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920637854}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8169,7 +8169,7 @@ BoxCollider:
   m_GameObject: {fileID: 1363542450}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -8180,7 +8180,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363542450}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8692,7 +8692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crystalID: 0
-  health: 10
+  health: 3
 --- !u!1 &1404378557
 GameObject:
   m_ObjectHideFlags: 0
@@ -13080,11 +13080,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crystals: 
   totems:
-  - {fileID: 8845237972635813987, guid: b3a7706078347334f98ccc0a55234b72, type: 3}
+  - {fileID: 5558478842244484968, guid: 59296f876bc08b641ab0045596dc6662, type: 3}
+  - {fileID: 4168872771849653330, guid: a77bf18f83d48574298f8e73c14addb1, type: 3}
   TotemPos:
   - {fileID: 594731447}
   - {fileID: 920637855}
   - {fileID: 377191446}
+  - {fileID: 1363542451}
+  activeTotem: []
   anim: {fileID: 4874105356837739976}
   nextAttackNoAoe: 0
   state: 0

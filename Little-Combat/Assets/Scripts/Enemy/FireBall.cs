@@ -9,6 +9,8 @@ public class FireBall : MonoBehaviour
     private bool isOnShield;
     public LayerMask shield;
 
+    public Transform originObject;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -44,8 +46,9 @@ public class FireBall : MonoBehaviour
 
     private bool CheckForShield()
     {
+        //hiernatu
         RaycastHit hit;
-        if(Physics.Linecast(transform.position, FindObjectOfType<Boss2>().transform.position, out hit, shield))
+        if(Physics.Linecast(transform.position, originObject.position, out hit, shield))
         {
             Transform shield = hit.transform.GetComponent<PlayerMovement>().shield;
             FindObjectOfType<PlayerMovement>().FireBallHit();
