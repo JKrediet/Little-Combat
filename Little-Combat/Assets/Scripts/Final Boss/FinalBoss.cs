@@ -9,9 +9,9 @@ public class FinalBoss : MonoBehaviour
 
     public Animator anim;
     public Rigidbody fireBall;
-    public bool nextAttackNoTotems, playerInMeleeRange;
+    public bool nextAttackNoTotems, playerInMeleeRange, mayAct;
     public int state, stage;
-    public Transform attackPos, shieldCheck, magicAttack, meteorIndecator;
+    public Transform attackPos, shieldCheck, magicAttack, meteorIndecator, crystal0, crystal1, crystal2, crystal3;
     public LayerMask shield;
     public float attackDamage, slomoTime = 2, cooldown;
     private float nextAttack;
@@ -20,6 +20,12 @@ public class FinalBoss : MonoBehaviour
     //arms and masks
     public GameObject arms, cylinders, happyMask, angryMask;
     public bool mask1, mask2, rotate;
+
+    //dissolve
+    private bool dissolveOn, dissolveOff;
+    private Material mat;
+    public float speed = 1;
+    private float amount;
 
     private void Awake()
     {
@@ -31,32 +37,77 @@ public class FinalBoss : MonoBehaviour
         {
             magicAttackPositions.Add(child);
         }
+        //anim.speed = 0;
     }
 
     private void Update()
     {
-        if(state == 0)
+        if(mayAct)
         {
-            if(Time.time > nextAttack)
+            if (state == 0)
             {
-                nextAttack = Time.time + cooldown;
-                Attack();
+                if (Time.time > nextAttack)
+                {
+                    nextAttack = Time.time + cooldown;
+                    Attack();
+                }
+            }
+            if (rotate)
+            {
+                if (mask1)
+                {
+                    if(!mask2)
+                    {
+                        happyMask.transform.Rotate(new Vector3(0, -90, 0) * Time.deltaTime, Space.Self);
+                        Invoke("StopRotating", 1);
+                    }
+                }
+                if (mask2)
+                {
+                    angryMask.transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime, Space.Self);
+                    Invoke("StopRotating", 1);
+                }
             }
         }
-        if(rotate)
+        Dissolve();
+    }
+    #region dissolve
+    public void Dissolve()
+    {
+        if (dissolveOn)
         {
-            if (mask1)
+            if (amount < 1)
             {
-                happyMask.transform.Rotate(new Vector3(0, -90, 0) * Time.deltaTime, Space.Self);
-                Invoke("StopRotating", 1);
+                amount += speed * Time.deltaTime;
+                mat.SetFloat("_CutoffHeight", amount);
             }
-            if (mask2)
+            else
             {
-                angryMask.transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime, Space.Self);
-                Invoke("StopRotating", 1);
+                dissolveOn = false;
+            }
+        }
+        if (dissolveOff)
+        {
+            if (amount > -1)
+            {
+                amount -= speed * Time.deltaTime;
+                mat.SetFloat("_CutoffHeight", amount);
+            }
+            else
+            {
+                dissolveOff = false;
             }
         }
     }
+    public void DissolveOn()
+    {
+        dissolveOn = true;
+    }
+    public void DissolveOff()
+    {
+        dissolveOff = true;
+    }
+    #endregion
     public void StopRotating()
     {
         rotate = false;
@@ -82,11 +133,46 @@ public class FinalBoss : MonoBehaviour
         {
             rotate = true;
             mask1 = true;
+
+            crystal0.GetComponent<Crystals>().DissolveOn();
+            crystal1.GetComponent<Crystals>().DissolveOn();
+            crystal2.GetComponent<Crystals>().DissolveOn();
+            crystal3.GetComponent<Crystals>().DissolveOn();
+
+            crystal0.GetComponent<Crystals>().health = 3;
+            crystal1.GetComponent<Crystals>().health = 3;
+            crystal2.GetComponent<Crystals>().health = 3;
+            crystal3.GetComponent<Crystals>().health = 3;
+
+            crystal0.GetComponent<Crystals>().Mimi();
+            crystal1.GetComponent<Crystals>().Mimi();
+            crystal2.GetComponent<Crystals>().Mimi();
+            crystal3.GetComponent<Crystals>().Mimi();
         }
         else if(stage == 1)
         {
+            Destroy(happyMask);
             rotate = true;
             mask2 = true;
+
+            crystal0.GetComponent<Crystals>().DissolveOn();
+            crystal1.GetComponent<Crystals>().DissolveOn();
+            crystal2.GetComponent<Crystals>().DissolveOn();
+            crystal3.GetComponent<Crystals>().DissolveOn();
+
+            crystal0.GetComponent<Crystals>().health = 3;
+            crystal1.GetComponent<Crystals>().health = 3;
+            crystal2.GetComponent<Crystals>().health = 3;
+            crystal3.GetComponent<Crystals>().health = 3;
+
+            crystal0.GetComponent<Crystals>().Mimi();
+            crystal1.GetComponent<Crystals>().Mimi();
+            crystal2.GetComponent<Crystals>().Mimi();
+            crystal3.GetComponent<Crystals>().Mimi();
+        }
+        else if(stage == 2)
+        {
+            Destroy(angryMask);
         }
         stage++;
     }
@@ -231,7 +317,7 @@ public class FinalBoss : MonoBehaviour
         int roll = Random.Range(3, 6);
         for (int i = 0; i < roll; i++)
         {
-            Instantiate(meteorIndecator, player.position, Quaternion.identity);
+            Instantiate(meteorIndecator, player.position - player.up, Quaternion.identity);
             yield return new WaitForSeconds(1);
         }
     }

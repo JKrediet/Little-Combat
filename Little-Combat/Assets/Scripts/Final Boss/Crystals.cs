@@ -39,11 +39,18 @@ public class Crystals : MonoBehaviour
             //GetComponent<MeshRenderer>().enabled = false;
         }
     }
-
+    public void Mimi()
+    {
+        bossie.crystals[crystalID] = crystalID;
+    }
 
     //dissolve 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            TakeDamage();
+        }
         if (dissolveOn)
         {
             if (amount < 1)
