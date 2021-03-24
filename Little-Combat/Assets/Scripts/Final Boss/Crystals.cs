@@ -9,10 +9,20 @@ public class Crystals : MonoBehaviour
 
     private FinalBoss bossie;
 
+    //dissolve
+    private bool dissolveOn, dissolveOff;
+    private Material mat;
+    public float speed = 1;
+    private float amount;
+
     private void Start()
     {
         bossie = FindObjectOfType<FinalBoss>();
         bossie.crystals[crystalID] = crystalID;
+
+        mat = GetComponent<Renderer>().material;
+        amount = 1;
+        mat.SetFloat("_CutoffHeight", amount);
     }
     public void TakeDamage()
     {
@@ -24,11 +34,51 @@ public class Crystals : MonoBehaviour
             {
                 bossie.ToNextStage();
             }
-            GetComponent<MeshRenderer>().enabled = false;
+            //turn crystal mesh off
+            DissolveOff();
+            //GetComponent<MeshRenderer>().enabled = false;
         }
     }
-    public void TurnMeshBackOn()
+
+
+    //dissolve 
+    private void Update()
     {
-        GetComponent<MeshRenderer>().enabled = true;
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            TakeDamage();
+        }
+        if (dissolveOn)
+        {
+            if (amount < 1)
+            {
+                amount += speed * Time.deltaTime;
+                mat.SetFloat("_CutoffHeight", amount);
+            }
+            else
+            {
+                dissolveOn = false;
+            }
+        }
+        if (dissolveOff)
+        {
+            if (amount > -1)
+            {
+                amount -= speed * Time.deltaTime;
+                mat.SetFloat("_CutoffHeight", amount);
+            }
+            else
+            {
+                dissolveOff = false;
+            }
+        }
+    }
+    public void DissolveOn()
+    {
+        dissolveOn = true;
+    }
+    public void DissolveOff()
+    {
+        dissolveOn = true;
     }
 }

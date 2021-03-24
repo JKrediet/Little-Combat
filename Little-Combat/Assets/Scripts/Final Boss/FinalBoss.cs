@@ -41,15 +41,19 @@ public class FinalBoss : MonoBehaviour
         {
             if (mask1)
             {
-                happyMask.transform.Rotate(new Vector3(0, -90, 0), Space.Self);
-                rotate = false;
+                happyMask.transform.Rotate(new Vector3(0, -90, 0) * Time.deltaTime, Space.Self);
+                Invoke("StopRotating", 1);
             }
             if (mask2)
             {
-                angryMask.transform.Rotate(new Vector3(0, 90, 0), Space.Self);
-                rotate = false;
+                angryMask.transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime, Space.Self);
+                Invoke("StopRotating", 1);
             }
         }
+    }
+    public void StopRotating()
+    {
+        rotate = false;
     }
     //check crystal states
     public bool CheckCrystals(int _value, int _value2)
