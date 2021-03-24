@@ -33,7 +33,7 @@ public class FireBall : MonoBehaviour
         {
             if(other.tag == "Boss")
             {
-                other.GetComponent<BaseEnemy>().GiveDamage(10);
+                other.GetComponent<BaseEnemy>().GiveDamage(5);
                 Explode();
             }
         }

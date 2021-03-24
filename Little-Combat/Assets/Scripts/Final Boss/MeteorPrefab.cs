@@ -2,46 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crystals : MonoBehaviour
+public class MeteorPrefab : MonoBehaviour
 {
-    public int crystalID;
-    public float health;
+    public Rigidbody meteor;
 
-    private FinalBoss bossie;
-
-    //dissolve
     private bool dissolveOn, dissolveOff;
     private Material mat;
     public float speed = 1;
     private float amount;
 
-    private void Start()
+    void Start()
     {
-        bossie = FindObjectOfType<FinalBoss>();
-        bossie.crystals[crystalID] = crystalID;
-
         mat = GetComponent<Renderer>().material;
-        amount = 1;
+        amount = -1;
         mat.SetFloat("_CutoffHeight", amount);
-    }
-    public void TakeDamage()
-    {
-        health--;
-        if(health == 0)
-        {
-            bossie.crystals[crystalID] = 5;
-            if (bossie.CheckCrystals(0, 4) == true)
-            {
-                bossie.ToNextStage();
-            }
-            //turn crystal mesh off
-            DissolveOff();
-            //GetComponent<MeshRenderer>().enabled = false;
-        }
-    }
+        DissolveOn();
 
-
-    //dissolve 
+        Rigidbody met = Instantiate(meteor, transform.position + transform.up * 50, transform.rotation);
+        met.GetComponent<Meteor>().originObject = transform;
+        met.velocity = -transform.up * 10;
+    }
     private void Update()
     {
         if (dissolveOn)
@@ -66,15 +46,18 @@ public class Crystals : MonoBehaviour
             else
             {
                 dissolveOff = false;
+                Destroy(gameObject);
             }
         }
     }
     public void DissolveOn()
     {
+        dissolveOff = false;
         dissolveOn = true;
     }
     public void DissolveOff()
     {
+        dissolveOn = false;
         dissolveOff = true;
     }
 }

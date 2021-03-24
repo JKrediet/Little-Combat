@@ -5,15 +5,17 @@ using UnityEngine;
 public class FinalBoss : MonoBehaviour
 {
     public List<int> crystals;
-    public List<Transform> totems, TotemPos, activeTotem;
+    public List<Transform> totems, TotemPos, activeTotem, magicAttackPositions;
 
     public Animator anim;
-    public bool nextAttackNoAoe;
-    public int state;
-    public Transform attackPos;
+    public Rigidbody fireBall;
+    public bool nextAttackNoTotems, playerInMeleeRange;
+    public int state, stage;
+    public Transform attackPos, shieldCheck, magicAttack, meteorIndecator;
     public LayerMask shield;
     public float attackDamage, slomoTime = 2, cooldown;
     private float nextAttack;
+    private Transform player;
 
     //arms and masks
     public GameObject arms, cylinders, happyMask, angryMask;
@@ -24,6 +26,10 @@ public class FinalBoss : MonoBehaviour
         for(int i = 0; i < 4; i++)
         {
             crystals.Add(0);
+        }
+        foreach(Transform child in magicAttack)
+        {
+            magicAttackPositions.Add(child);
         }
     }
 
@@ -72,16 +78,17 @@ public class FinalBoss : MonoBehaviour
     {
         anim.speed = 1;
         anim.SetBool("ChangingState", true);
-        if (!mask1)
+        if (stage == 0)
         {
             rotate = true;
             mask1 = true;
         }
-        else if(!mask2)
+        else if(stage == 1)
         {
             rotate = true;
             mask2 = true;
         }
+        stage++;
     }
     public void IdleAgain()
     {
@@ -90,17 +97,21 @@ public class FinalBoss : MonoBehaviour
 
     public void Attack()
     {
-        if (nextAttackNoAoe || activeTotem.Count > 0)
+        if(playerInMeleeRange)
         {
             //rolls between arm attacks
             state = Random.Range(1, 3);
         }
+        else if (nextAttackNoTotems || activeTotem.Count > 0)
+        {
+            state = 4;
+        }
         else
         {
             //rolls between all attacks
-            state = Random.Range(1, 4);
+            state = 3;
         }
-        nextAttackNoAoe = false;
+        nextAttackNoTotems = false;
         //check if left arm is broken
         if (CheckCrystals(0, 2) == true)
         {
@@ -113,7 +124,7 @@ public class FinalBoss : MonoBehaviour
         }
         if(state == 3)
         {
-            nextAttackNoAoe = true;
+            nextAttackNoTotems = true;
         }
         anim.SetInteger("State", state);
     }
@@ -152,7 +163,7 @@ public class FinalBoss : MonoBehaviour
     protected bool CheckForShield(Vector3 target)
     {
         RaycastHit hit;
-        if (Physics.Linecast(transform.position + transform.up, target, out hit, shield))
+        if (Physics.Linecast(shieldCheck.position, target, out hit, shield))
         {
             FindObjectOfType<PlayerMovement>().FireBallHit();
             return false;
@@ -164,15 +175,64 @@ public class FinalBoss : MonoBehaviour
     }
     public void AttackTotem()
     {
-        foreach (Transform totem in TotemPos)
+        //foreach (Transform totem in TotemPos)
+        //{
+
+        //}
+        int random = Random.Range(0, totems.Count);
+        Instantiate(totems[random], TotemPos[Random.Range(0, TotemPos.Count)].position, Quaternion.identity);
+    }
+    public IEnumerator SpawnMagic()
+    {
+        for (int i = 0; i < 20; i++)
         {
-            int random = Random.Range(0,totems.Count);
-            Instantiate(totems[random], totem.position, Quaternion.identity);
+            SpawnFireBall();
+            SpawnFireBall();
+            yield return new WaitForSeconds(0.5f);
         }
     }
-    private void OnDrawGizmos()
+    public void SpawnFireBall()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(attackPos.position, transform.lossyScale.z / 2);
+        int roll = Random.Range(0, 11);
+        Rigidbody fire = Instantiate(fireBall, magicAttackPositions[roll].position, transform.rotation);
+        fire.GetComponent<FireBall>().originObject = magicAttackPositions[roll];
+        fire.velocity = fire.transform.forward * 20;
+    }
+    public void MagicAttack()
+    {
+        int roll = Random.Range(0, 2);
+        if(roll == 0)
+        {
+            StartCoroutine(SpawnMagic());
+        }
+        else if(roll == 1)
+        {
+            StartCoroutine(SummonMeteors());
+        }
+
+    }
+    private void OnTriggerEnter(Collider _objectsInRange)
+    {
+        if(_objectsInRange.CompareTag("Player"))
+        {
+            playerInMeleeRange = true;
+        }
+    }
+    private void OnTriggerExit(Collider _objectsInRange)
+    {
+        if (_objectsInRange.CompareTag("Player"))
+        {
+            playerInMeleeRange = false;
+        }
+    }
+    private IEnumerator SummonMeteors()
+    {
+        player = FindObjectOfType<PlayerMovement>().transform;
+        int roll = Random.Range(3, 6);
+        for (int i = 0; i < roll; i++)
+        {
+            Instantiate(meteorIndecator, player.position, Quaternion.identity);
+            yield return new WaitForSeconds(1);
+        }
     }
 }

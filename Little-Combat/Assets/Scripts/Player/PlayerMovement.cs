@@ -99,6 +99,11 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 Aim();
                             }
+                            else
+                            {
+                                ToShield();
+                                Aim();
+                            }
                         }
                     }
                     if (Input.GetButtonDown("Shield"))
@@ -107,11 +112,12 @@ public class PlayerMovement : MonoBehaviour
                         {
                             if (!status_gun)
                             {
-                                status_shield = !status_shield;
-                                shield.gameObject.SetActive(status_shield);
-                                FindObjectOfType<AnimationController>().ShieldToggle(status_shield);
-                                cameraReference.GetComponent<CameraContrller>().ShieldToggle(status_shield);
-                                GetComponent<MoveObjects>().isShielding = status_shield;
+                                ToShield();
+                            }
+                            else
+                            {
+                                Aim();
+                                ToShield();
                             }
                         }
                     }
@@ -126,6 +132,14 @@ public class PlayerMovement : MonoBehaviour
         FindObjectOfType<AnimationController>().AimToggle(status_gun);
         cameraReference.GetComponent<CameraContrller>().AimToggle(status_gun);
         GetComponent<MoveObjects>().isHoldingGun = status_gun;
+    }
+    public void ToShield()
+    {
+        status_shield = !status_shield;
+        shield.gameObject.SetActive(status_shield);
+        FindObjectOfType<AnimationController>().ShieldToggle(status_shield);
+        cameraReference.GetComponent<CameraContrller>().ShieldToggle(status_shield);
+        GetComponent<MoveObjects>().isShielding = status_shield;
     }
 
     public void Movement()
