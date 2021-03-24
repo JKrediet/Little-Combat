@@ -7,6 +7,8 @@ using TMPro;
 
 public class BaseEnemy : MonoBehaviour
 {
+    public GameObject healthBar;
+
     public string bossName;
 
     public float maxHealth;
@@ -41,6 +43,11 @@ public class BaseEnemy : MonoBehaviour
         if(healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
+        }
+
+        if (healthBar)
+        {
+            healthBar.SetActive(false);
         }
 
         health = maxHealth;
@@ -107,6 +114,11 @@ public class BaseEnemy : MonoBehaviour
             if(healthText != null)
             {
                 healthText.gameObject.SetActive(true);
+            }
+
+            if (healthBar)
+            {
+                healthBar.SetActive(true);
             }
         }
     }
