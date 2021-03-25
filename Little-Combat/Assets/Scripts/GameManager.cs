@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private List<GameObject> checkPoints;
 
     //areas cleared
-    public int tutorial_puzzle1, tutorial_boss1, neptune_boss2;
+    public int tutorial_puzzle1, tutorial_boss1, neptune_boss, neptune_ninja, neptune_finalBoss, neptune_laserpuzzle;
     public int tutorial_puzzle1_1;
 
     private void Awake()
@@ -52,7 +52,10 @@ public class GameManager : MonoBehaviour
         tutorial_boss1 = PlayerPrefs.GetInt("tutorial_boss1", 0);
 
         //neptune
-        neptune_boss2 = PlayerPrefs.GetInt("neptune_boss2", 0);
+        neptune_boss = PlayerPrefs.GetInt("neptune_boss", 0);
+        neptune_ninja = PlayerPrefs.GetInt("neptune_ninja", 0);
+        neptune_finalBoss = PlayerPrefs.GetInt("neptune_finalBoss", 0);
+        neptune_laserpuzzle = PlayerPrefs.GetInt("neptune_laserpuzzle", 0);
     }
 
     private void BuildStages()
@@ -64,6 +67,22 @@ public class GameManager : MonoBehaviour
         if (tutorial_boss1 > 0)
         {
             GetComponent<BuildStage>().Tutorial_boss1();
+        }
+        if(neptune_boss > 0)
+        {
+            GetComponent<BuildStage>().Neptune_boss();
+        }
+        if (neptune_ninja > 0)
+        {
+            GetComponent<BuildStage>().Neptune_ninja();
+        }
+        if (neptune_finalBoss > 0)
+        {
+            GetComponent<BuildStage>().Neptune_finalBoss();
+        }
+        if (neptune_laserpuzzle > 0)
+        {
+            GetComponent<BuildStage>().Neptune_laserpuzzle();
         }
     }
     private void Update()

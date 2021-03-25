@@ -45,6 +45,7 @@ public class Boss2 : BaseEnemy
             agent.isStopped = true;
             anim.SetBool("isDead", true);
             bossDead = true;
+            PlayerPrefs.SetInt("neptune_boss", 1);
         }
     }
 
@@ -241,7 +242,7 @@ public class Boss2 : BaseEnemy
     {
         DoneAttacking();
         anim.SetInteger("currentPhase", 2);
-        attackRange = 4;
+        attackRange = 6;
         shieldHealh = 2;
         agent.speed = 5;
         agent.isStopped = true;

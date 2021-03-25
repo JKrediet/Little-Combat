@@ -43,7 +43,7 @@ public class NinjaVrouw : MonoBehaviour
             agent.isStopped = true;
             anim.SetBool("isDead", true);
             bossDead = true;
-            PlayerPrefs.SetInt("tutorial_boss1", 1);
+            PlayerPrefs.SetInt("neptune_ninja", 1);
             GetComponent<Collider>().enabled = false;
         }
     }

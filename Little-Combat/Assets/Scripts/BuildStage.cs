@@ -63,7 +63,19 @@ public class BuildStage : MonoBehaviour
 
 
     //neptune
-    public void Neptune_boss2()
+    public void Neptune_boss()
+    {
+        //boss 2 moet dood zijn
+    }
+    public void Neptune_ninja()
+    {
+        //boss 2 moet dood zijn
+    }
+    public void Neptune_finalBoss()
+    {
+        //boss 2 moet dood zijn
+    }
+    public void Neptune_laserpuzzle()
     {
         //boss 2 moet dood zijn
     }

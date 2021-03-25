@@ -8,6 +8,7 @@ public class PuzzleLaser : MonoBehaviour
     public LineRenderer line;
     public LayerMask mask;
     public bool isHitByLaser, mayNotChange, dontDoLaser;
+    public Transform laserPos;
     private PuzzleLaser laser;
 
     void Update()
@@ -23,9 +24,9 @@ public class PuzzleLaser : MonoBehaviour
             if (!dontDoLaser)
             {
                 RaycastHit _hit;
-                if (Physics.Raycast(transform.position, transform.forward, out _hit, laserRange, mask))
+                if (Physics.Raycast(laserPos.position, laserPos.forward, out _hit, laserRange, mask))
                 {
-                    line.SetPosition(0, transform.position);
+                    line.SetPosition(0, laserPos.position);
                     line.SetPosition(1, _hit.point);
                     //turn on hit laser
                     if (_hit.transform.GetComponent<PuzzleLaser>())
@@ -45,8 +46,8 @@ public class PuzzleLaser : MonoBehaviour
                         laser.isHitByLaser = false;
                         laser = null;
                     }
-                    line.SetPosition(0, transform.position);
-                    line.SetPosition(1, transform.position + transform.forward * laserRange);
+                    line.SetPosition(0, laserPos.position);
+                    line.SetPosition(1, laserPos.position + laserPos.forward * laserRange);
                 }
             }
         }
@@ -58,8 +59,8 @@ public class PuzzleLaser : MonoBehaviour
                 laser.isHitByLaser = false;
                 laser = null;
             }
-            line.SetPosition(0, transform.position);
-            line.SetPosition(1, transform.position);
+            line.SetPosition(0, laserPos.position);
+            line.SetPosition(1, laserPos.position);
         }
     }
 }

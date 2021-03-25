@@ -149,6 +149,7 @@ public class FinalBoss : MonoBehaviour
         }
         else if (stage == 3)
         {
+            PlayerPrefs.SetInt("neptune_finalBoss", 1);
             Destroy(gameObject);
         }
         stage++;

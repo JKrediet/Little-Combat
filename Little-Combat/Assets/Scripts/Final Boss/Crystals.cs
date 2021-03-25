@@ -48,10 +48,6 @@ public class Crystals : MonoBehaviour
     //dissolve 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            TakeDamage();
-        }
         if (dissolveOn)
         {
             if (amount < 1)

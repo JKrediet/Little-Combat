@@ -6,6 +6,8 @@ public class Puzzle : MonoBehaviour
 {
     public List<Transform> draaiDingetjes;
     public bool somethingIsRotating, done;
+    public GameObject finalBoss;
+    public Transform bossPosRot;
 
     public void Awake()
     {
@@ -33,6 +35,11 @@ public class Puzzle : MonoBehaviour
             draaiDingetjes[i].GetComponent<DraaiTotem>().needToRotate = somethingIsRotating;
         }
         done = CheckIfAllAreTrue();
+        if(done == true)
+        {
+            PlayerPrefs.SetInt("neptune_laserpuzzle", 1);
+            Instantiate(finalBoss, bossPosRot.position, bossPosRot.rotation);
+        }
     }
     public bool CheckIfAllAreTrue()
     {
@@ -45,5 +52,16 @@ public class Puzzle : MonoBehaviour
             }
         }
         return true;
+    }
+    private void Update()
+    {
+        if (done == true)
+        {
+            transform.Translate(-transform.up * Time.deltaTime);
+            if (transform.position.y <= -10)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
