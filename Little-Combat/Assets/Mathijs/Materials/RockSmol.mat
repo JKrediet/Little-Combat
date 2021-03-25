@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: RockSmol
-  m_Shader: {fileID: -6465566751694194690, guid: 618700a1d417b58438cbc273c58c6ae5, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: a1209f23022d8ad46a6c6c368f5c5102, type: 3}
   m_ShaderKeywords: _MASKMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -132,7 +132,7 @@ Material:
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
-    - _CutoffHeight: 0
+    - _CutoffHeight: 1
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
     - _DetailNormalScale: 1
