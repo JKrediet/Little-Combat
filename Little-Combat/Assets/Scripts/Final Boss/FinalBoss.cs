@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class FinalBoss : MonoBehaviour
 {
+    public AudioSource source;
+    public AudioSource source2;
+    public AudioClip[] clips;
+
     public List<int> crystals;
     public List<Transform> totems, TotemPos, activeTotem, magicAttackPositions;
 
@@ -164,6 +168,20 @@ public class FinalBoss : MonoBehaviour
     public void IdleAgain()
     {
         anim.SetBool("ChangingState", false);
+    }
+
+    public void PlayAudio(int i)
+    {
+        source.Stop();
+        source.clip = clips[i];
+        source.Play();
+    }
+
+    public void PlayAudio2(int i)
+    {
+        source2.Stop();
+        source2.clip = clips[i];
+        source2.Play();
     }
 
     public void Attack()

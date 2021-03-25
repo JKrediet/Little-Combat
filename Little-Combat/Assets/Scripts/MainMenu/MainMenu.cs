@@ -21,6 +21,8 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+
         if (PlayerPrefs.GetInt("NewGameStarted") == 1)
         {
             continueButton.interactable = true;

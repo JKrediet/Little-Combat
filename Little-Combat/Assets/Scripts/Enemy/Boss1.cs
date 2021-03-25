@@ -50,6 +50,11 @@ public class Boss1 : BaseEnemy
             {
                 healthText.gameObject.SetActive(false);
             }
+
+            if (healthBar)
+            {
+                healthBar.SetActive(false);
+            }
         }
     }
 
