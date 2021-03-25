@@ -22,6 +22,14 @@ public class BuildStage : MonoBehaviour
     public GameObject pillar2Pos;
     public GameObject pillar3;
     public GameObject pillar3Pos;
+    //neptune level boss ball
+    public GameObject boss;
+    public GameObject stairs;
+    public GameObject stairsholder;
+    public GameObject bossDead;
+    public GameObject ninja;
+    public GameObject ninjaDead;
+    public GameObject puzzle;
 
     //tutorial
     public void Tutorial_puzzle1()
@@ -65,18 +73,25 @@ public class BuildStage : MonoBehaviour
     //neptune
     public void Neptune_boss()
     {
-        //boss 2 moet dood zijn
+        boss.GetComponent<Boss2>().KillBoss();
+        Instantiate(bossDead, boss.transform.position, Quaternion.identity);
+        stairs.transform.position = stairsholder.transform.position;
+        Destroy(boss); // kan niet volgens mij
     }
     public void Neptune_ninja()
     {
-        //boss 2 moet dood zijn
+        boss.GetComponent<NinjaVrouw>().KillNinja();
+        Instantiate(ninjaDead, ninja.transform.position, Quaternion.identity);
+        Destroy(ninja);
     }
     public void Neptune_finalBoss()
     {
-        //boss 2 moet dood zijn
+        //boss 2 moet dood zijn ??
     }
     public void Neptune_laserpuzzle()
     {
-        //boss 2 moet dood zijn
+        puzzle.GetComponent<Puzzle>().done = true;
+        puzzle.GetComponent<Puzzle>().MayRotate();
+        Destroy(puzzle);
     }
 }

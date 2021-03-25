@@ -71,14 +71,9 @@ public class BaseEnemy : MonoBehaviour
             
         }
 
-        if(healthText != null)
+        if (healthText != null)
         {
             healthText.text = bossName + " | " + health.ToString() + "/" + maxHealth.ToString();
-        }
-
-        if (Input.GetKeyDown("k"))
-        {
-            health = 0f;
         }
 
         if (!bossDead)

@@ -47,6 +47,10 @@ public class NinjaVrouw : MonoBehaviour
             GetComponent<Collider>().enabled = false;
         }
     }
+    public void KillNinja()
+    {
+        health = 0;
+    }
 
     public void Swoosh()
     {
