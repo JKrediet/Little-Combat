@@ -133,48 +133,32 @@ public class FinalBoss : MonoBehaviour
         {
             rotate = true;
             mask1 = true;
-
-            crystal0.GetComponent<Crystals>().DissolveOn();
-            crystal1.GetComponent<Crystals>().DissolveOn();
-            crystal2.GetComponent<Crystals>().DissolveOn();
-            crystal3.GetComponent<Crystals>().DissolveOn();
-
-            crystal0.GetComponent<Crystals>().health = 3;
-            crystal1.GetComponent<Crystals>().health = 3;
-            crystal2.GetComponent<Crystals>().health = 3;
-            crystal3.GetComponent<Crystals>().health = 3;
-
-            crystal0.GetComponent<Crystals>().Mimi();
-            crystal1.GetComponent<Crystals>().Mimi();
-            crystal2.GetComponent<Crystals>().Mimi();
-            crystal3.GetComponent<Crystals>().Mimi();
+            Invoke("CrystalsOn", 2);
         }
-        else if(stage == 1)
+        else if (stage == 1)
         {
             Destroy(happyMask);
             rotate = true;
             mask2 = true;
-
-            crystal0.GetComponent<Crystals>().DissolveOn();
-            crystal1.GetComponent<Crystals>().DissolveOn();
-            crystal2.GetComponent<Crystals>().DissolveOn();
-            crystal3.GetComponent<Crystals>().DissolveOn();
-
-            crystal0.GetComponent<Crystals>().health = 3;
-            crystal1.GetComponent<Crystals>().health = 3;
-            crystal2.GetComponent<Crystals>().health = 3;
-            crystal3.GetComponent<Crystals>().health = 3;
-
-            crystal0.GetComponent<Crystals>().Mimi();
-            crystal1.GetComponent<Crystals>().Mimi();
-            crystal2.GetComponent<Crystals>().Mimi();
-            crystal3.GetComponent<Crystals>().Mimi();
+            Invoke("CrystalsOn", 2);
         }
-        else if(stage == 2)
+        else if (stage == 2)
         {
             Destroy(angryMask);
+            Invoke("CrystalsOn", 2);
+        }
+        else if (stage == 3)
+        {
+            Destroy(gameObject);
         }
         stage++;
+    }
+    public void CrystalsOn()
+    {
+        crystal0.GetComponent<Crystals>().RestoreCrystal();
+        crystal1.GetComponent<Crystals>().RestoreCrystal();
+        crystal2.GetComponent<Crystals>().RestoreCrystal();
+        crystal3.GetComponent<Crystals>().RestoreCrystal();
     }
     public void IdleAgain()
     {
@@ -222,11 +206,14 @@ public class FinalBoss : MonoBehaviour
         {
             if (collider.gameObject != gameObject)
             {
-                if (CheckForShield(collider.transform.position))
+                if (collider.gameObject.CompareTag("Player"))
                 {
-                    if (collider.GetComponent<PlayerHealth>())
+                    if (CheckForShield(collider.transform.position))
                     {
-                        collider.GetComponent<PlayerHealth>().GiveDamage(attackDamage);
+                        if (collider.GetComponent<PlayerHealth>())
+                        {
+                            collider.GetComponent<PlayerHealth>().GiveDamage(attackDamage);
+                        }
                     }
                 }
             }

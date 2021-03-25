@@ -36,12 +36,13 @@ public class Crystals : MonoBehaviour
             }
             //turn crystal mesh off
             DissolveOff();
-            //GetComponent<MeshRenderer>().enabled = false;
         }
     }
-    public void Mimi()
+    public void RestoreCrystal()
     {
+        DissolveOn();
         bossie.crystals[crystalID] = crystalID;
+        health = 3;
     }
 
     //dissolve 
@@ -60,6 +61,7 @@ public class Crystals : MonoBehaviour
             }
             else
             {
+                amount = 1;
                 dissolveOn = false;
             }
         }
@@ -72,6 +74,7 @@ public class Crystals : MonoBehaviour
             }
             else
             {
+                amount = -1;
                 dissolveOff = false;
             }
         }
