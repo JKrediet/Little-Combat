@@ -42,8 +42,8 @@ public class Reflective : MonoBehaviour
         }
         else
         {
-            lineRen.SetPosition(0, transform.position);
-            lineRen.SetPosition(1, transform.position + transform.forward * lineLength);
+            lineRen.SetPosition(0, shootPoint.transform.position);
+            lineRen.SetPosition(1, shootPoint.transform.position + shootPoint.transform.forward * lineLength);
         }
     }
 }

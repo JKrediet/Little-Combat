@@ -33,7 +33,7 @@ public class Laser : MonoBehaviour
 
         if(Physics.Raycast(shootPoint.position, shootPoint.forward, out _hit, lineLength, laserMask))
         {
-            lineRen.SetPosition(0, transform.position);
+            lineRen.SetPosition(0, shootPoint.transform.position);
             lineRen.SetPosition(1, _hit.point);
 
             if (_hit.transform.GetComponent<Reflective>())
@@ -51,8 +51,8 @@ public class Laser : MonoBehaviour
         }
         else
         {
-            lineRen.SetPosition(0, transform.position);
-            lineRen.SetPosition(1, transform.position + transform.forward * lineLength);
+            lineRen.SetPosition(0, shootPoint.transform.position);
+            lineRen.SetPosition(1, shootPoint.transform.position + shootPoint.transform.forward * lineLength);
         }
     }
 

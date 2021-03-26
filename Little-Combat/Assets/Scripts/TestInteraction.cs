@@ -16,8 +16,6 @@ public class TestInteraction : Interaction // This is an interaction. It can be 
     void Start()
     {
         render = GetComponent<MeshRenderer>();
-
-        render.material.SetColor("_BaseColor", Color.red);
     }
 
     public override void OnInteraction()
@@ -35,13 +33,5 @@ public class TestInteraction : Interaction // This is an interaction. It can be 
             isPlaying = true;
         }
 
-        // Turn the color of the cube green
-        render.material.SetColor("_BaseColor", Color.green);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
