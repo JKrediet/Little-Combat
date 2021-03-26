@@ -21,7 +21,11 @@ public class Settings : MonoBehaviour
 
     private void Start()
     {
+        musicSlider.value = GetMusicLevel();
+        vfxSlider.value = GetVFXLevel();
+
         qualityDropDown.value = QualitySettings.GetQualityLevel();
+        qualityDropDown.RefreshShownValue();
 
         resolutions = Screen.resolutions;
 
@@ -71,5 +75,33 @@ public class Settings : MonoBehaviour
     public void SetFullScreen(bool fullScreen)
     {
         Screen.fullScreen = fullScreen;
+    }
+
+    public float GetMusicLevel()
+    {
+        float value;
+        bool result = musicMixer.GetFloat("volume", out value);
+        if (result)
+        {
+            return value;
+        }
+        else
+        {
+            return 0f;
+        }
+    }
+
+    public float GetVFXLevel()
+    {
+        float value;
+        bool result = vfxMixer.GetFloat("volume", out value);
+        if (result)
+        {
+            return value;
+        }
+        else
+        {
+            return 0f;
+        }
     }
 }
