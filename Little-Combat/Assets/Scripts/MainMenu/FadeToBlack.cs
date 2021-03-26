@@ -8,10 +8,9 @@ public class FadeToBlack : MonoBehaviour
 {
     public GameObject image;
 
-
     public void StartFade()
     {
-        image.SetActive(true);
+        GetComponent<Animator>().SetTrigger("New Trigger");
     }
 
     public void OnFaded()
