@@ -11,7 +11,7 @@ public class Boss2 : BaseEnemy
     public float projectileSpeed, timeBeforeFireBall, shieldHealh;
     private float countDown;
     private bool inThirdStage, inSecondStage, isChangingStance;
-    public Transform aim2, aim3, bzoop, aura;
+    public Transform aim2, aim3, bzoop, aura, finalbossduer;
 
     public AudioSource source;
     public AudioClip footStep001, footStep002, attackSound, scream, beat;
@@ -45,6 +45,7 @@ public class Boss2 : BaseEnemy
             agent.isStopped = true;
             anim.SetBool("isDead", true);
             bossDead = true;
+            finalbossduer.GetComponent<Door>().bossDead = true;
             PlayerPrefs.SetInt("neptune_boss", 1);
         }
     }

@@ -25,6 +25,8 @@ public class NinjaVrouw : MonoBehaviour
     public TMP_Text healthText;
     public LayerMask shield;
 
+    public Transform finalninjadeur;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -35,17 +37,17 @@ public class NinjaVrouw : MonoBehaviour
     }
     private void Update()
     {
-        CheckDistance();
-        Movement();
-
         if (health <= 0f)
         {
             agent.isStopped = true;
             anim.SetBool("isDead", true);
             bossDead = true;
             PlayerPrefs.SetInt("neptune_ninja", 1);
+            finalninjadeur.GetComponent<Door>().ninjaDead = true;
             GetComponent<Collider>().enabled = false;
         }
+        CheckDistance();
+        Movement();
     }
     public void KillNinja()
     {

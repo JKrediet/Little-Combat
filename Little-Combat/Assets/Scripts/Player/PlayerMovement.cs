@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
                             //shhhh het ging me te sloom      <------
                             if (Input.GetButton("Running"))
                             {
-                                speed = startSpeed * 3;
+                                //speed = startSpeed * 3;
                             }
                             else
                             {

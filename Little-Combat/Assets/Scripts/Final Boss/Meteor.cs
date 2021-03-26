@@ -16,7 +16,7 @@ public class Meteor : MonoBehaviour
         }
         if(other.transform == originObject)
         {
-            other.GetComponent<MeteorPrefab>().DissolveOff();
+            //other.GetComponent<MeteorPrefab>().DissolveOff();
             //actual attack
             Collider[] colliders = Physics.OverlapSphere(transform.position, transform.lossyScale.z / 2);
             foreach (Collider collider in colliders)

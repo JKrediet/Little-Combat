@@ -30,6 +30,8 @@ public class BuildStage : MonoBehaviour
     public GameObject ninja;
     public GameObject ninjaDead;
     public GameObject puzzle;
+    //deur
+    public Transform finalbossduer;
 
     //tutorial
     public void Tutorial_puzzle1()
@@ -76,12 +78,14 @@ public class BuildStage : MonoBehaviour
         boss.GetComponent<Boss2>().KillBoss();
         Instantiate(bossDead, boss.transform.position, Quaternion.identity);
         stairs.transform.position = stairsholder.transform.position;
+        finalbossduer.GetComponent<Door>().bossDead = true;
         Destroy(boss); // kan niet volgens mij
     }
     public void Neptune_ninja()
     {
-        boss.GetComponent<NinjaVrouw>().KillNinja();
+        ninja.GetComponent<NinjaVrouw>().KillNinja();
         Instantiate(ninjaDead, ninja.transform.position, Quaternion.identity);
+        finalbossduer.GetComponent<Door>().ninjaDead = true;
         Destroy(ninja);
     }
     public void Neptune_finalBoss()
