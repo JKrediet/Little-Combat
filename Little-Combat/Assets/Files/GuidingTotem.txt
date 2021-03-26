@@ -1,6 +1,6 @@
-﻿#0 This is the first totem you find!<br><br>Very fun!
-#1 This is the second totem you find!<br><br>Very fun!
-#2 This is the third totem you find!<br><br>Very fun!
+﻿#0 Use the stone to acitvate the pressure plate. This might open the door...
+#1 Try to get the stone on the wall down and use it to defeat the boss.
+#2 Place the totem correcty to redirect the laser to the activater to start the portal.
 #3 This is the fourth totem you find!<br><br>Very fun!
 #4 THis is the fifth totem you find!<br><br>Very fun!
 #5 This is the sixth totem you find!<br><br>Very fun!
