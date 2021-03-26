@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed, gravity, jumpForce, CameraRotationSpeed, playerDamage, attackCooldown;
+    public float speed, gravity, jumpForce, CameraRotationSpeed, playerDamage, attackCooldown, swapCooldown;
     public Transform cameraReference, cameraFollow, shield;
     public AudioSource source;
     public AudioClip swordSoundClip;
@@ -25,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     //attack
     public bool isAttacking;
-    private float nextAttack;
+    private float nextAttack, nextSwap;
+    public List<Transform> fireballs;
 
     private void Start()
     {
@@ -53,7 +54,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             {
-                Aim();
+                if(Time.time > nextSwap)
+                {
+                    Aim();
+                } 
             }
         }
         if (!blocking)
@@ -127,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Aim()
     {
+        nextSwap = Time.time + swapCooldown;
         crosshair.gameObject.SetActive(!crosshair.gameObject.activeSelf);
         status_gun = !status_gun;
         FindObjectOfType<AnimationController>().AimToggle(status_gun);
@@ -135,6 +140,11 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ToShield()
     {
+        foreach(Transform traa in fireballs)
+        {
+            traa.GetComponent<FireBall>().ShootBall();
+            fireballs.Remove(traa);
+        }
         status_shield = !status_shield;
         shield.gameObject.SetActive(status_shield);
         FindObjectOfType<AnimationController>().ShieldToggle(status_shield);

@@ -51,6 +51,7 @@ public class FireBall : MonoBehaviour
         if(Physics.Linecast(transform.position, originObject.position, out hit, shield))
         {
             Transform shield = hit.transform.GetComponent<PlayerMovement>().shield;
+            FindObjectOfType<PlayerMovement>().fireballs.Add(transform);
             FindObjectOfType<PlayerMovement>().FireBallHit();
             rb.velocity = Vector3.zero;
             transform.SetParent(shield);
@@ -77,12 +78,16 @@ public class FireBall : MonoBehaviour
     {
         if(isOnShield)
         {
-            if(Input.GetButtonDown("Shield") || Input.GetButtonDown("Fire1"))
+            if(Input.GetButtonDown("Shield") || Input.GetButtonDown("Fire1") || Input.GetButtonDown("Aim"))
             {
-                transform.SetParent(null);
-                transform.GetComponent<Collider>().enabled = true;
-                rb.velocity = -transform.forward * 20;
+                ShootBall();
             }
         }
+    }
+    public void ShootBall()
+    {
+        transform.SetParent(null);
+        transform.GetComponent<Collider>().enabled = true;
+        rb.velocity = -transform.forward * 20;
     }
 }
