@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Neptune Scene.unity
     guid: 2426050069aabb44d863206bd3d28920
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 306c7ec03425a8240b982c0b39635bd7
   m_configObjects: {}
