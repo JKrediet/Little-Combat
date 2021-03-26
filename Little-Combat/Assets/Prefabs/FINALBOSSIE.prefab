@@ -2252,7 +2252,7 @@ MonoBehaviour:
   attackPos: {fileID: 9033234379720003835}
   shieldCheck: {fileID: 9033234378140546041}
   magicAttack: {fileID: 9033234379421462854}
-  meteorIndecator: {fileID: 2849737548578228684, guid: 72faab98e6c4492429ddb50d28ec9c58, type: 3}
+  meteorIndecator: {fileID: 2690827911194827443, guid: adf6684c7e77d0e40b3371f325f560b3, type: 3}
   crystal0: {fileID: 9033234378551633468}
   crystal1: {fileID: 9033234380002817296}
   crystal2: {fileID: 9033234380087579085}
