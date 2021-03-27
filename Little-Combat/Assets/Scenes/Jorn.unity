@@ -9284,6 +9284,7 @@ MonoBehaviour:
   CameraRotationSpeed: 2
   playerDamage: 15
   attackCooldown: 0.5
+  swapCooldown: 0
   cameraReference: {fileID: 367724987}
   cameraFollow: {fileID: 767628483}
   shield: {fileID: 82578167}
@@ -9304,6 +9305,7 @@ MonoBehaviour:
   crosshair: {fileID: 11008713}
   controller: {fileID: 0}
   isAttacking: 0
+  fireballs: []
 --- !u!81 &1662165797
 AudioListener:
   m_ObjectHideFlags: 0
