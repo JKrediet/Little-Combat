@@ -39,7 +39,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_34060926:
-        m_Texture: {fileID: 2800000, guid: 93a3f030b870b4f4c940a5259d5ed3a1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3b293ca7d996aa24fa20d7ab373a4fc9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:

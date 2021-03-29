@@ -288,7 +288,7 @@ public class FinalBoss : MonoBehaviour
     }
     public void SpawnFireBall()
     {
-        int roll = Random.Range(0, 11);
+        int roll = Random.Range(0, magicAttackPositions.Count);
         Rigidbody fire = Instantiate(fireBall, magicAttackPositions[roll].position, transform.rotation);
         fire.GetComponent<FireBall>().originObject = magicAttackPositions[roll];
         fire.velocity = fire.transform.forward * 20;

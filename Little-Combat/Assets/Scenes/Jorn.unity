@@ -11775,6 +11775,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle+models
       objectReference: {fileID: 0}
+    - target: {fileID: 1491570719627667385, guid: 11caf62698060544ba2db2488900a305, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1491570719627667390, guid: 11caf62698060544ba2db2488900a305, type: 3}
       propertyPath: draaiDingetjes.Array.data[0]
       value: 
