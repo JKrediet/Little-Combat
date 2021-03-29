@@ -12,14 +12,18 @@ public class Reflective : MonoBehaviour
 
     public float lineLength;
 
+    private Reflective tempRef = null;
+
 
     private void Update()
     {
-        //lineRen.enabled = false;
+        
     }
 
     public void OnReflection()
     {
+        lineRen.enabled = true;
+
         RaycastHit _hit;
 
         if(Physics.Raycast(shootPoint.position, shootPoint.forward, out _hit, lineLength, laserMask))
@@ -30,6 +34,7 @@ public class Reflective : MonoBehaviour
             if (_hit.transform.GetComponent<Reflective>())
             {
                 _hit.transform.GetComponent<Reflective>().OnReflection();
+                tempRef = _hit.transform.GetComponent<Reflective>();
             }
             else
             {
@@ -44,6 +49,16 @@ public class Reflective : MonoBehaviour
         {
             lineRen.SetPosition(0, shootPoint.transform.position);
             lineRen.SetPosition(1, shootPoint.transform.position + shootPoint.transform.forward * lineLength);
+
+            if (tempRef != null)
+            {
+                tempRef.StopLaser();
+            }
         }
+    }
+
+    public void StopLaser()
+    {
+        lineRen.enabled = false;
     }
 }

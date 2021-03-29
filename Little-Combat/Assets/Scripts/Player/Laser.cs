@@ -14,6 +14,9 @@ public class Laser : MonoBehaviour
     public float lineLength;
 
     private Transform cam;
+    private Reflective tempRef = null;
+
+    private bool reflected;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,7 @@ public class Laser : MonoBehaviour
             if (_hit.transform.GetComponent<Reflective>())
             {
                 _hit.transform.GetComponent<Reflective>().OnReflection();
+                tempRef = _hit.transform.GetComponent<Reflective>();
             }
             else
             {
@@ -53,6 +57,11 @@ public class Laser : MonoBehaviour
         {
             lineRen.SetPosition(0, shootPoint.transform.position);
             lineRen.SetPosition(1, shootPoint.transform.position + shootPoint.transform.forward * lineLength);
+
+            if(tempRef != null)
+            {
+                tempRef.StopLaser();
+            }
         }
     }
 
