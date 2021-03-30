@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraContrller : MonoBehaviour
 {
     public Transform cameraLookat, cameraLaserPosition, cameraAimPosition, cameraShieldPosition;
-    public float lookSpeed, maxLookAngle, collisionOffset = 0.2f;
+    public float lookSpeed, maxLookAngle, minLookAngle, collisionOffset = 0.2f;
     public bool isHoldingLaser, isAiming, isShielding;
     public LayerMask ignoreLayer;
 
@@ -39,16 +39,16 @@ public class CameraContrller : MonoBehaviour
         rotation.x += Input.GetAxis("Mouse X") * lookSpeed;
         if(isHoldingLaser)
         {
-            rotation.y = Mathf.Clamp(rotation.y, -maxLookAngle, -maxLookAngle);
+            rotation.y = Mathf.Clamp(rotation.y, -minLookAngle, -maxLookAngle);
         }
         else if(isAiming)
         {
             //shhhhh dont mind the hardcode, imma but lazy om extra variable aan te maken...
-            rotation.y = Mathf.Clamp(rotation.y, -maxLookAngle, maxLookAngle);
+            rotation.y = Mathf.Clamp(rotation.y, -minLookAngle, maxLookAngle);
         }
         else
         {
-            rotation.y = Mathf.Clamp(rotation.y, -maxLookAngle, maxLookAngle);
+            rotation.y = Mathf.Clamp(rotation.y, -minLookAngle, maxLookAngle);
         }
         cameraLookat.localRotation = Quaternion.Euler(-rotation.y, rotation.x, 0);
     }

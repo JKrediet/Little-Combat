@@ -9566,7 +9566,8 @@ MonoBehaviour:
   cameraAimPosition: {fileID: 3467823874423759068}
   cameraShieldPosition: {fileID: 5892018770495180334}
   lookSpeed: 10
-  maxLookAngle: 30
+  maxLookAngle: 50
+  minLookAngle: 30
   collisionOffset: 0.2
   isHoldingLaser: 0
   isAiming: 0
