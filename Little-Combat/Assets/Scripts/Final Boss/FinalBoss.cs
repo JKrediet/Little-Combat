@@ -137,19 +137,19 @@ public class FinalBoss : MonoBehaviour
         {
             rotate = true;
             mask1 = true;
-            Invoke("CrystalsOn", 2);
+            Invoke("CrystalsOn", 3);
         }
         else if (stage == 1)
         {
             Destroy(happyMask);
             rotate = true;
             mask2 = true;
-            Invoke("CrystalsOn", 2);
+            Invoke("CrystalsOn", 3);
         }
         else if (stage == 2)
         {
             Destroy(angryMask);
-            Invoke("CrystalsOn", 2);
+            Invoke("CrystalsOn", 3);
         }
         else if (stage == 3)
         {
@@ -192,7 +192,16 @@ public class FinalBoss : MonoBehaviour
         if(playerInMeleeRange)
         {
             //rolls between arm attacks
-            state = Random.Range(1, 3);
+            int roll = Random.Range(1, 5);
+            if(roll < 5)
+            {
+                state = Random.Range(1, 3);
+            }
+            else
+            {
+                state = 4;
+            }
+
         }
         else if (nextAttackNoTotems || activeTotem.Count > 0)
         {

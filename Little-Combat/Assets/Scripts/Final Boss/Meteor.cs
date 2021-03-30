@@ -10,10 +10,6 @@ public class Meteor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<PlayerHealth>())
-        {
-            other.GetComponent<PlayerHealth>().GiveDamage(1);
-        }
         if(other.transform == originObject)
         {
             //other.GetComponent<MeteorPrefab>().DissolveOff();

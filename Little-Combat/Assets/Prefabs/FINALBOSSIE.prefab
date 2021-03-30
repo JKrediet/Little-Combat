@@ -2264,7 +2264,7 @@ GameObject:
   - component: {fileID: 7157291048290668006}
   - component: {fileID: 2072877693}
   - component: {fileID: 2072877694}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FINALBOSSIE
   m_TagString: Untagged
   m_Icon: {fileID: 0}

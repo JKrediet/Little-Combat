@@ -96,6 +96,8 @@ public class BuildStage : MonoBehaviour
     {
         puzzle.GetComponent<Puzzle>().done = true;
         puzzle.GetComponent<Puzzle>().MayRotate();
+        puzzle.GetComponent<Puzzle>().SpawnBoss();
+
         Destroy(puzzle);
     }
 }

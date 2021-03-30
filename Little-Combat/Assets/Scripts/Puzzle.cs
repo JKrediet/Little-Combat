@@ -38,8 +38,12 @@ public class Puzzle : MonoBehaviour
         if(done == true)
         {
             PlayerPrefs.SetInt("neptune_laserpuzzle", 1);
-            Instantiate(finalBoss, bossPosRot.position, bossPosRot.rotation);
+            SpawnBoss();
         }
+    }
+    public void SpawnBoss()
+    {
+        Instantiate(finalBoss, bossPosRot.position, bossPosRot.rotation);
     }
     public bool CheckIfAllAreTrue()
     {
