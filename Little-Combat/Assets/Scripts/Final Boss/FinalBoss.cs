@@ -131,6 +131,7 @@ public class FinalBoss : MonoBehaviour
     //gets called from crystals
     public void ToNextStage()
     {
+        mayAct = false;
         anim.speed = 1;
         anim.SetBool("ChangingState", true);
         if (stage == 0)
@@ -167,6 +168,7 @@ public class FinalBoss : MonoBehaviour
         crystal1.GetComponent<Crystals>().RestoreCrystal();
         crystal2.GetComponent<Crystals>().RestoreCrystal();
         crystal3.GetComponent<Crystals>().RestoreCrystal();
+        mayAct = true;
     }
     public void IdleAgain()
     {
@@ -189,45 +191,53 @@ public class FinalBoss : MonoBehaviour
 
     public void Attack()
     {
-        if(playerInMeleeRange)
+        if (mayAct)
         {
-            //rolls between arm attacks
-            int roll = Random.Range(1, 5);
-            if(roll < 5)
+            if (playerInMeleeRange)
             {
-                state = Random.Range(1, 3);
+                //rolls between arm attacks
+                int roll = Random.Range(1, 5);
+                if (roll < 4)
+                {
+                    state = Random.Range(1, 3);
+                }
+                else
+                {
+                    state = 4;
+                }
+
             }
-            else
+            else if (nextAttackNoTotems || activeTotem.Count > 0)
             {
                 state = 4;
             }
-
+            else
+            {
+                //rolls between all attacks
+                state = 3;
+            }
+            nextAttackNoTotems = false;
+            //check if left arm is broken
+            if (CheckCrystals(0, 2) == true)
+            {
+                state = 1;
+            }
+            //check if right arm is broken
+            if (CheckCrystals(2, 4) == true)
+            {
+                state = 2;
+            }
+            if (state == 3)
+            {
+                nextAttackNoTotems = true;
+            }
+            anim.SetInteger("State", state);
+            Invoke("StateToZero", 5);
         }
-        else if (nextAttackNoTotems || activeTotem.Count > 0)
-        {
-            state = 4;
-        }
-        else
-        {
-            //rolls between all attacks
-            state = 3;
-        }
-        nextAttackNoTotems = false;
-        //check if left arm is broken
-        if (CheckCrystals(0, 2) == true)
-        {
-            state = 1;
-        }
-        //check if right arm is broken
-        if (CheckCrystals(2, 4) == true)
-        {
-            state = 2;
-        }
-        if(state == 3)
-        {
-            nextAttackNoTotems = true;
-        }
-        anim.SetInteger("State", state);
+    }
+    public void StateToZero()
+    {
+        state = 0;
     }
     public void DamageHitBox()
     {
@@ -279,10 +289,6 @@ public class FinalBoss : MonoBehaviour
     }
     public void AttackTotem()
     {
-        //foreach (Transform totem in TotemPos)
-        //{
-
-        //}
         int random = Random.Range(0, totems.Count);
         Instantiate(totems[random], TotemPos[Random.Range(0, TotemPos.Count)].position, Quaternion.identity);
     }
