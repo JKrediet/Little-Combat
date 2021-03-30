@@ -75,18 +75,24 @@ public class BuildStage : MonoBehaviour
     //neptune
     public void Neptune_boss()
     {
-        boss.GetComponent<Boss2>().KillBoss();
-        Instantiate(bossDead, boss.transform.position, Quaternion.identity);
-        stairs.transform.position = stairsholder.transform.position;
-        finalbossduer.GetComponent<Door>().bossDead = true;
-        Destroy(boss); // kan niet volgens mij
+        if (boss != null)
+        {
+            boss.GetComponent<Boss2>().KillBoss();
+            Instantiate(bossDead, boss.transform.position, Quaternion.identity);
+            stairs.transform.position = stairsholder.transform.position;
+            finalbossduer.GetComponent<Door>().bossDead = true;
+            Destroy(boss); // kan niet volgens mij\
+        }
     }
     public void Neptune_ninja()
     {
-        ninja.GetComponent<NinjaVrouw>().KillNinja();
-        Instantiate(ninjaDead, ninja.transform.position, Quaternion.identity);
-        finalbossduer.GetComponent<Door>().ninjaDead = true;
-        Destroy(ninja);
+        if (boss != null)
+        {
+            ninja.GetComponent<NinjaVrouw>().KillNinja();
+            Instantiate(ninjaDead, ninja.transform.position, Quaternion.identity);
+            finalbossduer.GetComponent<Door>().ninjaDead = true;
+            Destroy(ninja);
+        }
     }
     public void Neptune_finalBoss()
     {
@@ -94,10 +100,14 @@ public class BuildStage : MonoBehaviour
     }
     public void Neptune_laserpuzzle()
     {
-        puzzle.GetComponent<Puzzle>().done = true;
-        puzzle.GetComponent<Puzzle>().MayRotate();
-        puzzle.GetComponent<Puzzle>().SpawnBoss();
+        if (boss != null)
+        {
+            puzzle.GetComponent<Puzzle>().done = true;
+            puzzle.GetComponent<Puzzle>().MayRotate();
+            puzzle.GetComponent<Puzzle>().SpawnBoss();
 
-        Destroy(puzzle);
+
+            Destroy(puzzle);
+        }
     }
 }

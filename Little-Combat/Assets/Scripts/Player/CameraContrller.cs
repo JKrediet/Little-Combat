@@ -39,7 +39,7 @@ public class CameraContrller : MonoBehaviour
         rotation.x += Input.GetAxis("Mouse X") * lookSpeed;
         if(isHoldingLaser)
         {
-            rotation.y = Mathf.Clamp(rotation.y, -minLookAngle, -maxLookAngle);
+            rotation.y = Mathf.Clamp(rotation.y, -minLookAngle, 90);
         }
         else if(isAiming)
         {
