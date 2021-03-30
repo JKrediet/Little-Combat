@@ -712,6 +712,36 @@ Transform:
   m_Father: {fileID: 733912892980208231}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 71.93336, y: -1.6985599, z: -3.7539375}
+--- !u!1 &768178323918917140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8395680132528816449}
+  m_Layer: 0
+  m_Name: 'fireball '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8395680132528816449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768178323918917140}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.248, z: 0.698}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8142035288146833457}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &774357817503693579
 GameObject:
   m_ObjectHideFlags: 0
@@ -8242,6 +8272,7 @@ Transform:
   m_Children:
   - {fileID: 8142035287502111689}
   - {fileID: 8142035287727828965}
+  - {fileID: 8395680132528816449}
   m_Father: {fileID: 8142035287181603791}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8319,6 +8350,7 @@ MonoBehaviour:
   cameraReference: {fileID: 8142035288444115436}
   cameraFollow: {fileID: 8142035288379783772}
   shield: {fileID: 7131103271892259159}
+  fireBallpos: {fileID: 8395680132528816449}
   source: {fileID: 863099390786674806}
   swordSoundClip: {fileID: 8300000, guid: c06c4b9aa4f6ce841917fbcc75f878bf, type: 3}
   foot1: {fileID: 8300000, guid: 57330cfd187b6044a9cffb8192e6f4a8, type: 3}

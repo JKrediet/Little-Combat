@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed, gravity, jumpForce, CameraRotationSpeed, playerDamage, attackCooldown, swapCooldown;
-    public Transform cameraReference, cameraFollow, shield;
+    public Transform cameraReference, cameraFollow, shield, fireBallpos;
     public AudioSource source;
     public AudioClip swordSoundClip;
     public AudioClip foot1, foot2;

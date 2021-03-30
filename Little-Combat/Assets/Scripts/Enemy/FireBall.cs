@@ -56,9 +56,8 @@ public class FireBall : MonoBehaviour
             rb.velocity = Vector3.zero;
             transform.SetParent(shield);
             transform.rotation = shield.transform.rotation;
-            transform.position = shield.transform.position;
+            transform.position = FindObjectOfType<PlayerMovement>().fireBallpos.position;
             transform.GetComponent<Collider>().enabled = false;
-            transform.localPosition += transform.forward * 0.5f;
             isOnShield = true;
             return true;
         }
