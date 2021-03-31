@@ -10,8 +10,19 @@ public class MusicPlayer : MonoBehaviour
     private AudioClip currentClip;
     private int currentClipIndex;
 
-    private void Start()
+    public static MusicPlayer instance;
+
+    private void Awake()
     {
+        if(instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(this);
+
         source.clip = playList[0];
 
         currentClip = source.clip;
