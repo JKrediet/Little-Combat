@@ -10,9 +10,13 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 6;
     public float health;
 
+    public GameObject deathScreen;
+
     public RectTransform fillBar;
 
     public Slider slider;
+
+    bool isDead;
 
     private void Start()
     {
@@ -25,20 +29,34 @@ public class PlayerHealth : MonoBehaviour
     }
     public void GiveDamage(float _damageTaken)
     {
-        FindObjectOfType<AnimationController>().IsTakingDamage();
-        FindObjectOfType<PlayerMovement>().isTakingDamage = true;
-        if (health != 0)
+        if (!isDead)
         {
-            health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
-            slider.value = health;
-
-            if (health == 0)
+            FindObjectOfType<AnimationController>().IsTakingDamage();
+            FindObjectOfType<PlayerMovement>().isTakingDamage = true;
+            if (health != 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                FindObjectOfType<PlayerMovement>().isDead = true;
-                FindObjectOfType<AnimationController>().Death();
+                health = Mathf.Clamp(health - _damageTaken, 0, maxHealth);
+                slider.value = health;
+
+                if (health <= 0)
+                {
+                    deathScreen.SetActive(true);
+                    FindObjectOfType<PlayerMovement>().isDead = true;
+                    FindObjectOfType<AnimationController>().Death();
+                    isDead = true;
+
+                    for (int i = 0; i < GetComponent<PauseMenu>().disableOnPause.Length; i++)
+                    {
+                        GetComponent<PauseMenu>().disableOnPause[i].enabled = false;
+                    }
+
+                    GetComponent<PauseMenu>().enabled = false;
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
+                }
             }
         }
+
     }
     public void GiveHealth(int _healthRestored)
     {
@@ -59,5 +77,15 @@ public class PlayerHealth : MonoBehaviour
             health = Mathf.Clamp(health += 0.1f * Time.deltaTime, 0, maxHealth);
             slider.value = health;
         }
+    }
+
+    public void Respawn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
