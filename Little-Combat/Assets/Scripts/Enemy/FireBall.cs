@@ -29,7 +29,7 @@ public class FireBall : MonoBehaviour
                 Explode();
             }
         }
-        if(isOnShield)
+        else if(isOnShield)
         {
             if(other.tag == "Boss")
             {
@@ -37,9 +37,13 @@ public class FireBall : MonoBehaviour
                 Explode();
             }
         }
-        if(other.tag == "Charge")
+        else if(other.tag == "Charge")
         {
             other.GetComponent<Charges>().TurnOn();
+            Explode();
+        }
+        else
+        {
             Explode();
         }
     }

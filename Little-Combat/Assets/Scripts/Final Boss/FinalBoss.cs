@@ -158,7 +158,7 @@ public class FinalBoss : MonoBehaviour
 
             FindObjectOfType<FadeToBlack>().StartFade();
 
-            Destroy(gameObject);//hier doet boss dood gaan <-------------------------------
+            Destroy(gameObject, 5);//hier doet boss dood gaan <-------------------------------
         }
         stage++;
     }
