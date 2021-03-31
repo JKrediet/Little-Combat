@@ -42,9 +42,13 @@ public class FireBall : MonoBehaviour
             other.GetComponent<Charges>().TurnOn();
             Explode();
         }
+        else if(other == originObject)
+        {
+
+        }
         else
         {
-            Explode();
+            //Explode();
         }
     }
 
