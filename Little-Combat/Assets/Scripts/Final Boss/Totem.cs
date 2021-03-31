@@ -10,6 +10,7 @@ public class Totem : MonoBehaviour
     private float nextAttack, cooldown = 2;
     private bool moveUp;
     private Vector3 origin, moveTo;
+    public List<Transform> fireballs;
 
     public int health;
 
@@ -25,6 +26,11 @@ public class Totem : MonoBehaviour
     }
     private void RemoveTotem()
     {
+        List<Transform> tempList = new List<Transform>(fireballs);
+        foreach(Transform trans in tempList)
+        {
+            trans.GetComponent<FireBall>().Explode();
+        }
         moveUp = false;
         FindObjectOfType<FinalBoss>().activeTotem.Remove(gameObject.transform);
         Destroy(gameObject, 1);
@@ -56,6 +62,7 @@ public class Totem : MonoBehaviour
             Rigidbody fire = Instantiate(fireBall, shootPos.position, transform.rotation);
             fire.GetComponent<FireBall>().originObject = transform;
             fire.velocity = fire.transform.forward * projectileSpeed;
+            fireballs.Add(fire.transform);
         }
     }
 }

@@ -48,7 +48,7 @@ public class FireBall : MonoBehaviour
     {
         //hiernatu
         RaycastHit hit;
-        if(Physics.Linecast(transform.position, originObject.position, out hit, shield))
+        if (Physics.Linecast(transform.position, originObject.position, out hit, shield))
         {
             Transform shield = hit.transform.GetComponent<PlayerMovement>().shield;
             FindObjectOfType<PlayerMovement>().fireballs.Add(transform);
@@ -67,8 +67,9 @@ public class FireBall : MonoBehaviour
         }
     }
 
-    private void Explode()
+    public void Explode()
     {
+        originObject.GetComponent<Totem>().fireballs.Remove(gameObject.transform);
         GameObject UwU = Instantiate(boem, transform.position, transform.rotation);
         Destroy(UwU, 2);
         Destroy(gameObject);

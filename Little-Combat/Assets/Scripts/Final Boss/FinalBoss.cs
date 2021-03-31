@@ -310,7 +310,7 @@ public class FinalBoss : MonoBehaviour
     }
     public void MagicAttack()
     {
-        int roll = Random.Range(0, 2);
+        int roll = 0;
         if(roll == 0)
         {
             StartCoroutine(SpawnMagic());

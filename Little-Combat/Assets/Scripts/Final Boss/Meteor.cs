@@ -14,25 +14,20 @@ public class Meteor : MonoBehaviour
         {
             //other.GetComponent<MeteorPrefab>().DissolveOff();
             //actual attack
-            Collider[] colliders = Physics.OverlapSphere(transform.position, transform.lossyScale.z / 2);
-            foreach (Collider collider in colliders)
-            {
-                if (collider.gameObject != gameObject)
-                {
-                    if (CheckForShield(collider.transform.position))
-                    {
-                        if (collider.GetComponent<PlayerHealth>())
-                        {
-                            collider.GetComponent<PlayerHealth>().GiveDamage(1);
-                        }
-                    }
-                }
-            }
+            
             Explode();
         }
     }
     private void Explode()
     {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, transform.lossyScale.z / 2);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.GetComponent<PlayerHealth>())
+            {
+                collider.GetComponent<PlayerHealth>().GiveDamage(1);
+            }
+        }
         GameObject UwU = Instantiate(boem, transform.position, transform.rotation);
         Destroy(UwU, 2);
         Destroy(gameObject);

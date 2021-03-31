@@ -140,10 +140,11 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ToShield()
     {
-        foreach(Transform traa in fireballs)
+        List<Transform> tempList = new List<Transform>(fireballs);
+        foreach(Transform traa in tempList)
         {
-            traa.GetComponent<FireBall>().ShootBall();
             fireballs.Remove(traa);
+            traa.GetComponent<FireBall>().ShootBall();
         }
         status_shield = !status_shield;
         shield.gameObject.SetActive(status_shield);
