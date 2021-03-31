@@ -955,11 +955,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d188124d7dd40499178d0c59a25390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 0.1
+  scrollSpeed: 0.2
   moveObject: {fileID: 455302967}
   title: Little Combat
   titleText: {fileID: 909060751}
-  credits: 
+  credits: '
+
+    Art
+
+    Fady Betros
+
+    Mathijs van den Nieuwenhoff
+
+
+
+    Programming
+
+    Jorn
+    Krediet
+
+    Hidde Loman'
   creditText: {fileID: 1049116470}
 --- !u!114 &1836058955
 MonoBehaviour:

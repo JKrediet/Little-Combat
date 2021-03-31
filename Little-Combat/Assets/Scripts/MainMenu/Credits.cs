@@ -20,17 +20,10 @@ public class Credits : MonoBehaviour
 
     public TMP_Text creditText;
 
-    private void Start()
-    {
-        string path = "Assets/Files/credits.txt";
-
-        StreamReader reader = new StreamReader(path);
-
-        creditText.text = reader.ReadToEnd();
-    }
-
     private void Update()
     {
+        creditText.text = credits;
+
         moveObject.Translate(0f, scrollSpeed, 0f);
     }
 }

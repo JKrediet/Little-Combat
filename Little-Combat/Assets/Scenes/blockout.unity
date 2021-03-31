@@ -28688,6 +28688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01359fe429a487a46b23147122e46d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textInfo: The pressure plates.. put the stones on top to escape this prison.
 --- !u!4 &973499328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 955417404821995428, guid: da2a055256d42bf43b6776b1bddd9d48, type: 3}
@@ -35075,6 +35076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01359fe429a487a46b23147122e46d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textInfo: Use the lasers to your advantage, redirect them towards the last reflector.
 --- !u!1 &1313182095 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4583296293051004533, guid: 4f2d07f13e663544d8f723569f50c826, type: 3}
@@ -56825,6 +56827,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01359fe429a487a46b23147122e46d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textInfo: You can't avoid the warden, make sure you get "that" stone on top of
+    the pressure plate to make him weak.
 --- !u!1001 &2117185489
 PrefabInstance:
   m_ObjectHideFlags: 0

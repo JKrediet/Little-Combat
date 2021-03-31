@@ -53,8 +53,6 @@ public class CheckPoints : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F) && !timeDown)
             {
                 timeDown = true;
-
-                GetComponent<GuidingStatue>().ResetInfo();
                 panel.SetActive(!panel.activeSelf);
 
                 StartCoroutine(TypeSentence(GetComponent<GuidingStatue>().GetInfo()));
