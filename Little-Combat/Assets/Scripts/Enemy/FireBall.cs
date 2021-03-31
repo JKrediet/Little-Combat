@@ -73,7 +73,10 @@ public class FireBall : MonoBehaviour
 
     public void Explode()
     {
-        originObject.GetComponent<Totem>().fireballs.Remove(gameObject.transform);
+        if(originObject.GetComponent<Totem>())
+        {
+            originObject.GetComponent<Totem>().fireballs.Remove(gameObject.transform);
+        }
         GameObject UwU = Instantiate(boem, transform.position, transform.rotation);
         Destroy(UwU, 2);
         Destroy(gameObject);
