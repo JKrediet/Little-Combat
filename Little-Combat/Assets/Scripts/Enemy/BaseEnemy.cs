@@ -86,6 +86,7 @@ public class BaseEnemy : MonoBehaviour
         if(bossDead)
         {
             moveObject.position = new Vector3(originHere.position.x, Mathf.Lerp(moveObject.position.y, goHere.position.y, 0.1f), originHere.position.z);
+            healthBar.SetActive(false);
         }
     }
     public void KillBoss()
