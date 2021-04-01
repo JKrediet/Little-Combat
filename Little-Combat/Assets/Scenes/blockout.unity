@@ -29633,6 +29633,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.158
       objectReference: {fileID: 0}
+    - target: {fileID: 5186261173459780453, guid: da2a055256d42bf43b6776b1bddd9d48, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.128
+      objectReference: {fileID: 0}
     - target: {fileID: 6985637567021831798, guid: da2a055256d42bf43b6776b1bddd9d48, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
