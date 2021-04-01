@@ -28692,7 +28692,7 @@ MonoBehaviour:
 
 
     (Press
-    MB 2 to move the stones)'
+    right mouse button to move the stones)'
 --- !u!4 &973499328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 955417404821995428, guid: da2a055256d42bf43b6776b1bddd9d48, type: 3}
@@ -56835,8 +56835,8 @@ MonoBehaviour:
     the pressure plate to make him weak.
 
 
-    (use q and e to toggle between stances
-    and MB1 to melee attack)
+    (use q and e to toggle between gun
+    and shield and left mouse button to melee attack)
 
 
 '
