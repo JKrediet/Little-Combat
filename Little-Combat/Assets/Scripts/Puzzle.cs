@@ -7,7 +7,7 @@ public class Puzzle : MonoBehaviour
     public List<Transform> draaiDingetjes;
     public bool somethingIsRotating, done;
     public GameObject finalBoss;
-    public Transform bossPosRot;
+    public Transform bossPosRot, door;
 
     public void Awake()
     {
@@ -38,6 +38,7 @@ public class Puzzle : MonoBehaviour
         if(done == true)
         {
             PlayerPrefs.SetInt("neptune_laserpuzzle", 1);
+            door.GetComponent<HoriDoorManager>().anime = true;
             SpawnBoss();
         }
     }

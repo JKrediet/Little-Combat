@@ -14,6 +14,7 @@ public class FireBall : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Destroy(gameObject, 20);
     }
     private void OnTriggerEnter(Collider other)
     {
